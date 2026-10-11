@@ -80,7 +80,344 @@
       animation: driftMistRight 22s ease-in-out infinite;
     }
 
-    /* Frosted Glassmorphism Elements */
+    /* =========================================================================
+       LIQUID GLASS DESIGN SYSTEM (Inspired by ui-layouts.com/components/liquid-glass)
+       ========================================================================= */
+
+    /* Hidden Optical Filter Container */
+    .liquid-glass-filter-svg {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    /* 1. Rectangular Liquid Glass Navigation Header (Attached to Top) */
+    .liquid-glass-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 50;
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.72) 100%);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+      border-left: 1px solid rgba(255, 255, 255, 0.5);
+      border-right: 1px solid rgba(255, 255, 255, 0.5);
+      border-top: none;
+      box-shadow: 
+        0 4px 20px -2px rgba(0, 0, 0, 0.05),
+        0 12px 32px -4px rgba(0, 0, 0, 0.03),
+        inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1.5px 1.5px 0 rgba(0, 0, 0, 0.03),
+        inset 1.5px 0 1.5px 0 rgba(255, 255, 255, 0.5),
+        inset -1.5px 0 1.5px 0 rgba(255, 255, 255, 0.5);
+      transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    @media (min-width: 768px) {
+      .liquid-glass-header {
+        border-bottom-left-radius: 28px;
+        border-bottom-right-radius: 28px;
+      }
+    }
+
+    .liquid-glass-header.header-scrolled {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.86) 100%);
+      box-shadow: 
+        0 8px 32px -4px rgba(0, 0, 0, 0.08),
+        0 20px 48px -8px rgba(0, 0, 0, 0.04),
+        inset 0 1.5px 1px 0 #ffffff,
+        inset 0 -1.5px 1.5px 0 rgba(0, 0, 0, 0.04);
+      border-bottom-color: rgba(255, 255, 255, 1);
+    }
+
+    /* 3-Layer Glass Components for Header */
+    .liquid-glass-bend {
+      position: absolute;
+      inset: 0;
+      border-bottom-left-radius: inherit;
+      border-bottom-right-radius: inherit;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      filter: url(#glass-blur);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .liquid-glass-face {
+      position: absolute;
+      inset: 0;
+      border-bottom-left-radius: inherit;
+      border-bottom-right-radius: inherit;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      box-shadow: 
+        0 4px 14px rgba(0, 0, 0, 0.04),
+        0 0 24px rgba(255, 255, 255, 0.4);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .liquid-glass-edge {
+      position: absolute;
+      inset: 0;
+      border-bottom-left-radius: inherit;
+      border-bottom-right-radius: inherit;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      box-shadow: 
+        inset 2px 2px 3px 0 rgba(255, 255, 255, 0.7),
+        inset -2px -2px 3px 0 rgba(255, 255, 255, 0.45);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    /* 2. Liquid Glass Interactive Tabs & Pills */
+    .liquid-glass-tab-tray {
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .liquid-glass-tab {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 9999px;
+      box-shadow: 
+        0 2px 6px -1px rgba(0, 0, 0, 0.04),
+        inset 1px 1.5px 1px 0 rgba(255, 255, 255, 0.9),
+        inset -1px -1px 1px 0 rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .liquid-glass-tab:hover {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(255, 255, 255, 1);
+      box-shadow: 
+        0 6px 18px -2px rgba(0, 0, 0, 0.08),
+        0 0 16px rgba(255, 255, 255, 0.6),
+        inset 1.5px 2px 1.5px 0 #ffffff,
+        inset -1.5px -1.5px 1.5px 0 rgba(0, 0, 0, 0.03);
+      transform: translateY(-1px);
+    }
+
+    .liquid-glass-tab:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* Active Tab (Illuminated Dark Glass) */
+    .liquid-glass-tab.active,
+    .liquid-glass-tab-active {
+      background: linear-gradient(135deg, rgba(20, 24, 21, 0.96) 0%, rgba(40, 52, 42, 0.94) 100%) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.35) !important;
+      box-shadow: 
+        0 6px 18px -2px rgba(20, 26, 22, 0.25),
+        0 0 16px rgba(77, 107, 60, 0.25),
+        inset 1.5px 1.5px 1.5px 0 rgba(255, 255, 255, 0.5),
+        inset -1.5px -1.5px 1.5px 0 rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* Navigation Links Tray & Pills */
+    .liquid-glass-pill-tray {
+      background: rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 9999px;
+      padding: 4px 6px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .liquid-nav-link {
+      position: relative;
+      padding: 6px 13px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #37413a;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .liquid-nav-link:hover {
+      color: #111827;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        inset 1px 1px 1px rgba(255, 255, 255, 0.95),
+        inset -1px -1px 1px rgba(0, 0, 0, 0.02);
+      transform: translateY(-0.5px);
+    }
+
+    /* Aria AI Header Capsule */
+    .liquid-glass-btn-aria {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(242, 249, 240, 0.88) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(77, 107, 60, 0.3);
+      border-radius: 9999px;
+      box-shadow: 
+        0 2px 8px -1px rgba(77, 107, 60, 0.08),
+        inset 1.5px 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+        inset -1px -1px 1px 0 rgba(77, 107, 60, 0.1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .liquid-glass-btn-aria:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(230, 245, 226, 0.95) 100%);
+      border-color: rgba(77, 107, 60, 0.55);
+      box-shadow: 
+        0 6px 18px -2px rgba(77, 107, 60, 0.22),
+        0 0 16px rgba(163, 230, 53, 0.2),
+        inset 2px 2px 2px 0 #ffffff;
+      transform: translateY(-1px);
+    }
+
+    /* WhatsApp Header Capsule */
+    .liquid-glass-btn-wa {
+      background: linear-gradient(135deg, rgba(236, 253, 245, 0.92) 0%, rgba(209, 250, 229, 0.85) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 9999px;
+      box-shadow: 
+        0 2px 8px -1px rgba(16, 185, 129, 0.12),
+        inset 1.5px 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+        inset -1px -1px 1px 0 rgba(16, 185, 129, 0.15);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .liquid-glass-btn-wa:hover {
+      background: linear-gradient(135deg, rgba(209, 250, 229, 0.98) 0%, rgba(167, 243, 208, 0.92) 100%);
+      border-color: rgba(16, 185, 129, 0.6);
+      box-shadow: 
+        0 6px 18px -2px rgba(16, 185, 129, 0.25),
+        0 0 18px rgba(52, 211, 153, 0.25),
+        inset 2px 2px 2px 0 #ffffff;
+      transform: translateY(-1px);
+    }
+
+    /* Obsidian Primary Glass Button */
+    .liquid-glass-btn-primary {
+      background: linear-gradient(135deg, #161a17 0%, #29342a 100%);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 9999px;
+      box-shadow: 
+        0 4px 14px -1px rgba(22, 26, 23, 0.3),
+        0 0 16px rgba(77, 107, 60, 0.15),
+        inset 1.5px 1.5px 1.5px 0 rgba(255, 255, 255, 0.45),
+        inset -1.5px -1.5px 1.5px 0 rgba(0, 0, 0, 0.4);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .liquid-glass-btn-primary:hover {
+      background: linear-gradient(135deg, #4D6B3C 0%, #3a542c 100%);
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow: 
+        0 8px 24px -2px rgba(77, 107, 60, 0.4),
+        0 0 24px rgba(132, 204, 22, 0.25),
+        inset 2px 2px 2px 0 rgba(255, 255, 255, 0.65);
+      transform: translateY(-1px);
+    }
+
+    /* 3. Estimator Selection Cards & Tabs (Liquid Glass Cards) */
+    .liquid-glass-card-tab {
+      position: relative;
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.03),
+        inset 1.5px 1.5px 1.5px 0 rgba(255, 255, 255, 0.9),
+        inset -1px -1px 1px 0 rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .liquid-glass-card-tab:hover {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(77, 107, 60, 0.35);
+      box-shadow: 
+        0 6px 18px rgba(0, 0, 0, 0.06),
+        0 0 16px rgba(77, 107, 60, 0.12),
+        inset 2px 2px 2px 0 #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .liquid-glass-card-tab.active {
+      background: linear-gradient(135deg, rgba(77, 107, 60, 0.96) 0%, rgba(54, 78, 41, 0.96) 100%) !important;
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.35) !important;
+      box-shadow: 
+        0 8px 24px rgba(77, 107, 60, 0.32),
+        0 0 20px rgba(77, 107, 60, 0.2),
+        inset 2px 2px 2px 0 rgba(255, 255, 255, 0.55),
+        inset -2px -2px 2px 0 rgba(0, 0, 0, 0.25) !important;
+    }
+
+    /* Liquid Glass Card Container */
+    .liquid-glass-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(247, 250, 245, 0.72) 100%);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 
+        0 20px 48px -12px rgba(0, 0, 0, 0.06),
+        inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1.5px 1.5px 0 rgba(0, 0, 0, 0.02);
+    }
+
+    /* 4. Aria AI Quick Prompt Chips */
+    .liquid-glass-chip {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 9999px;
+      box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.03),
+        inset 1px 1px 1px rgba(255, 255, 255, 0.9);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .liquid-glass-chip:hover {
+      background: rgba(240, 248, 238, 0.96);
+      border-color: rgba(77, 107, 60, 0.38);
+      color: #4D6B3C;
+      box-shadow: 
+        0 4px 12px rgba(77, 107, 60, 0.14),
+        inset 1.5px 1.5px 1.5px #ffffff;
+      transform: translateY(-1px);
+    }
+
+    /* Backward compatibility fallback */
     .frosted-pill {
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(20px);
@@ -316,6 +653,18 @@
 <body class="bg-[#FCFCFB] text-editorial-dark font-sans antialiased selection:bg-moss selection:text-white relative overflow-x-hidden">
 
   <!-- ========================================================================= -->
+  <!-- LIQUID GLASS OPTICAL REFRACTION SVG FILTER                                -->
+  <!-- ========================================================================= -->
+  <svg class="liquid-glass-filter-svg" aria-hidden="true">
+    <defs>
+      <filter id="glass-blur" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox">
+        <feTurbulence type="fractalNoise" baseFrequency="0.003 0.007" numOctaves="1" result="turbulence" />
+        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ========================================================================= -->
   <!-- ATMOSPHERIC BACKGROUNDS                                                   -->
   <!-- ========================================================================= -->
   <div class="fixed inset-0 pointer-events-none z-0 bg-swiss-grid max-w-7xl mx-auto border-x border-black/[0.04]" aria-hidden="true"></div>
@@ -323,18 +672,26 @@
   <div class="fixed top-1/3 -right-48 w-[620px] h-[820px] rounded-full pointer-events-none z-0 bg-gradient-to-bl from-[#EBF3ED]/50 via-[#E4EFEA]/30 to-transparent blur-3xl animate-mist-right" aria-hidden="true"></div>
 
   <!-- ========================================================================= -->
-  <!-- TOP FLOATING NAVIGATION MENU (Spanning across full-width hero)            -->
+  <!-- LIQUID GLASS TOP NAVIGATION HEADER                                         -->
+  <!-- Attached flush to top, rectangular with slightly rounded bottom corners   -->
   <!-- ========================================================================= -->
-  <header class="fixed top-0 left-0 right-0 z-50 w-full px-4 md:px-8 py-5 transition-all duration-300 pointer-events-none" id="primary-header">
-    <div class="max-w-7xl mx-auto frosted-pill rounded-full px-4 py-2.5 md:py-3 shadow-pill flex items-center justify-between pointer-events-auto transition-all duration-300">
+  <header class="liquid-glass-header" id="primary-header">
+    <!-- Optical refraction bend layer -->
+    <div class="liquid-glass-bend" aria-hidden="true"></div>
+    <!-- Specular ambient glow and inner rim edge layers -->
+    <div class="liquid-glass-face" aria-hidden="true"></div>
+    <div class="liquid-glass-edge" aria-hidden="true"></div>
+
+    <!-- Header Content Container -->
+    <div class="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
       
-      <!-- Brand & Status Pill -->
+      <!-- Brand & Live Status Pill -->
       <a class="flex items-center gap-3 group focus:outline-none" href="#">
-        <div class="w-8 h-8 rounded-full bg-editorial-dark text-white font-display font-bold flex items-center justify-center text-xs tracking-wider transition-transform duration-300 group-hover:scale-105 shadow-sm">
+        <div class="w-9 h-9 rounded-full bg-editorial-dark text-white font-display font-bold flex items-center justify-center text-xs tracking-wider transition-transform duration-300 group-hover:scale-105 shadow-sm border border-white/25" style="box-shadow: inset 1px 1px 1.5px rgba(255,255,255,0.4), 0 2px 6px rgba(0,0,0,0.12);">
           SA
         </div>
         <div class="flex flex-col">
-          <span class="font-display font-bold tracking-tight text-sm text-editorial-dark">Shahroz Ahmed</span>
+          <span class="font-display font-bold tracking-tight text-sm text-editorial-dark group-hover:text-moss transition-colors">Shahroz Ahmed</span>
           <span class="inline-flex items-center gap-1.5 text-[10px] font-mono text-editorial-gray">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse inline-block"></span>
             Available for new projects
@@ -342,36 +699,63 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium tracking-wide text-editorial-dark/80" id="nav-links">
-        <a class="hover:text-moss transition-colors" href="#why-it-works">Why It Works</a>
-        <a class="hover:text-moss transition-colors" href="#services">Services</a>
-        <a class="hover:text-moss transition-colors" href="#scope-estimator">Estimator</a>
-        <a class="hover:text-moss transition-colors" href="#who-builds-this">About</a>
-        <a class="hover:text-moss transition-colors" href="#blog">Blog</a>
-        <a class="hover:text-moss transition-colors" href="#testimonials">Testimonials</a>
+      <!-- Desktop Navigation Tabs in Liquid Tray -->
+      <nav class="hidden lg:flex items-center gap-1 liquid-glass-pill-tray" id="nav-links">
+        <a class="liquid-nav-link" href="#why-it-works">Why It Works</a>
+        <a class="liquid-nav-link" href="#services">Services</a>
+        <a class="liquid-nav-link" href="#scope-estimator">Estimator</a>
+        <a class="liquid-nav-link" href="#who-builds-this">About</a>
+        <a class="liquid-nav-link" href="#blog">Blog</a>
+        <a class="liquid-nav-link" href="#testimonials">Testimonials</a>
       </nav>
 
       <!-- Action Pill Group -->
-      <div class="flex items-center gap-2.5">
+      <div class="flex items-center gap-2 sm:gap-2.5">
         <!-- Trigger AI Advisor Drawer -->
-        <button class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-editorial-border bg-white text-xs font-medium text-editorial-dark hover:border-moss/40 hover:bg-moss-soft transition-all shadow-sm" onclick="toggleAiDrawer(true)">
-          <svg class="w-3.5 h-3.5 text-moss" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button class="liquid-glass-btn-aria hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 md:py-2 text-xs font-semibold text-editorial-dark" onclick="toggleAiDrawer(true)">
+          <svg class="w-3.5 h-3.5 text-moss animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
           </svg>
           Ask Aria AI
         </button>
 
         <!-- WhatsApp Quick-Chat Action -->
-        <a class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/60 transition-colors" href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20consult%20on%20an%20IT/AI%20architecture" rel="noopener noreferrer" target="_blank">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        <a class="liquid-glass-btn-wa hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 md:py-2 text-xs font-semibold text-emerald-800" href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20consult%20on%20an%20IT/AI%20architecture" rel="noopener noreferrer" target="_blank">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
           WhatsApp Chat
         </a>
 
-        <!-- Primary Pill Button: Direct Booking to Email -->
-        <a class="inline-flex items-center gap-1.5 px-4 md:px-5 py-2 rounded-full bg-editorial-dark text-white text-xs md:text-sm font-semibold tracking-wide hover:bg-moss transition-all duration-300 shadow-sm hover:shadow-md" href="mailto:harral008@gmail.com?subject=AI%20Architecture%20Call%20Booking">
+        <!-- Primary Pill Button: Obsidian Liquid Glass -->
+        <a class="liquid-glass-btn-primary inline-flex items-center gap-1.5 px-4 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-semibold tracking-wide text-white" href="mailto:harral008@gmail.com?subject=AI%20Architecture%20Call%20Booking">
           <span>Book a Call</span>
-          <span class="text-xs">→</span>
+          <span class="text-xs transition-transform group-hover:translate-x-0.5">→</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileNavToggle" class="lg:hidden liquid-glass-tab w-9 h-9 flex items-center justify-center text-editorial-dark" onclick="toggleMobileNav()" aria-label="Toggle navigation menu">
+          <svg id="mobileNavIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Slide-Down Tray -->
+    <div id="mobileNavDropdown" class="hidden lg:hidden border-t border-white/60 bg-white/95 backdrop-blur-2xl rounded-b-2xl px-6 py-4 shadow-xl space-y-3 transition-all duration-300">
+      <div class="flex flex-col gap-2 font-medium text-sm text-editorial-dark">
+        <a class="liquid-nav-link" href="#why-it-works" onclick="toggleMobileNav(false)">Why It Works</a>
+        <a class="liquid-nav-link" href="#services" onclick="toggleMobileNav(false)">Services</a>
+        <a class="liquid-nav-link" href="#scope-estimator" onclick="toggleMobileNav(false)">Scope Estimator</a>
+        <a class="liquid-nav-link" href="#who-builds-this" onclick="toggleMobileNav(false)">About Shahroz</a>
+        <a class="liquid-nav-link" href="#blog" onclick="toggleMobileNav(false)">Blog &amp; Insights</a>
+        <a class="liquid-nav-link" href="#testimonials" onclick="toggleMobileNav(false)">Testimonials</a>
+      </div>
+      <div class="pt-3 border-t border-black/[0.06] flex items-center gap-2">
+        <button class="liquid-glass-btn-aria flex-1 py-2 text-xs font-semibold text-editorial-dark flex items-center justify-center gap-1.5" onclick="toggleAiDrawer(true); toggleMobileNav(false)">
+          Ask Aria AI
+        </button>
+        <a class="liquid-glass-btn-wa flex-1 py-2 text-xs font-semibold text-emerald-800 flex items-center justify-center gap-1.5" href="https://wa.me/923349791008" target="_blank">
+          WhatsApp
         </a>
       </div>
     </div>
@@ -632,12 +1016,12 @@
             Production AI Architecture Services
           </h2>
         </div>
-        <div class="flex flex-wrap gap-2" id="service-filters">
-          <button class="service-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-editorial-dark text-white" data-category="all" onclick="filterServices('all')">All Offerings</button>
-          <button class="service-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-white text-editorial-gray border border-editorial-border hover:border-moss/40 hover:text-moss" data-category="rag" onclick="filterServices('rag')">Enterprise RAG</button>
-          <button class="service-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-white text-editorial-gray border border-editorial-border hover:border-moss/40 hover:text-moss" data-category="agents" onclick="filterServices('agents')">Autonomous Agents</button>
-          <button class="service-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-white text-editorial-gray border border-editorial-border hover:border-moss/40 hover:text-moss" data-category="fine-tune" onclick="filterServices('fine-tune')">Custom Fine-Tuning</button>
-          <button class="service-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-white text-editorial-gray border border-editorial-border hover:border-moss/40 hover:text-moss" data-category="cloud" onclick="filterServices('cloud')">Cloud Infrastructure</button>
+        <div class="flex flex-wrap gap-2 p-1.5 rounded-2xl md:rounded-full liquid-glass-tab-tray" id="service-filters">
+          <button class="service-filter-btn liquid-glass-tab liquid-glass-tab-active active px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all" data-category="all" onclick="filterServices('all')">All Offerings</button>
+          <button class="service-filter-btn liquid-glass-tab px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all text-editorial-gray hover:text-editorial-dark" data-category="rag" onclick="filterServices('rag')">Enterprise RAG</button>
+          <button class="service-filter-btn liquid-glass-tab px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all text-editorial-gray hover:text-editorial-dark" data-category="agents" onclick="filterServices('agents')">Autonomous Agents</button>
+          <button class="service-filter-btn liquid-glass-tab px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all text-editorial-gray hover:text-editorial-dark" data-category="fine-tune" onclick="filterServices('fine-tune')">Custom Fine-Tuning</button>
+          <button class="service-filter-btn liquid-glass-tab px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all text-editorial-gray hover:text-editorial-dark" data-category="cloud" onclick="filterServices('cloud')">Cloud Infrastructure</button>
         </div>
       </div>
 
@@ -761,7 +1145,7 @@
       <!-- ======================================================================= -->
       <!-- INTERACTIVE PROJECT SCOPE & COST ESTIMATOR WIDGET                       -->
       <!-- ======================================================================= -->
-      <div class="mt-16 frosted-card rounded-[28px] p-8 sm:p-12 border border-moss/20 bg-gradient-to-br from-white via-white to-moss-soft/50 shadow-glass" id="scope-estimator">
+      <div class="mt-16 liquid-glass-card rounded-[28px] p-8 sm:p-12 shadow-glass relative" id="scope-estimator">
         <div class="max-w-3xl mb-8">
           <div class="text-xs font-mono font-semibold uppercase tracking-wider text-moss mb-2">// SCOPE CALCULATOR</div>
           <h3 class="font-display text-2xl sm:text-3xl font-bold text-editorial-dark">
@@ -782,17 +1166,17 @@
                 1. Select Architecture Paradigm:
               </label>
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                <button type="button" class="scope-cat-btn px-3 py-2.5 rounded-xl border text-left transition-all border-moss bg-moss text-white" data-val="rag" onclick="setScopeCategory('rag', 3200, 'Custom AI / RAG System')">
+                <button type="button" class="scope-cat-btn liquid-glass-card-tab active p-3.5 rounded-xl text-left transition-all" data-val="rag" onclick="setScopeCategory('rag', 3200, 'Custom AI / RAG System')">
                   <div class="text-xs font-bold">RAG Knowledge Base</div>
-                  <div class="text-[10px] opacity-80 font-mono mt-0.5">$3,200 base</div>
+                  <div class="text-[10px] text-white/90 font-mono mt-0.5">$3,200 base</div>
                 </button>
-                <button type="button" class="scope-cat-btn px-3 py-2.5 rounded-xl border border-editorial-border bg-white text-editorial-dark text-left transition-all hover:border-moss/40" data-val="agents" onclick="setScopeCategory('agents', 4500, 'Multi-Agent Automation')">
+                <button type="button" class="scope-cat-btn liquid-glass-card-tab p-3.5 rounded-xl text-left transition-all text-editorial-dark" data-val="agents" onclick="setScopeCategory('agents', 4500, 'Multi-Agent Automation')">
                   <div class="text-xs font-bold">Multi-Agent Workflow</div>
-                  <div class="text-[10px] opacity-80 font-mono mt-0.5">$4,500 base</div>
+                  <div class="text-[10px] text-editorial-gray font-mono mt-0.5">$4,500 base</div>
                 </button>
-                <button type="button" class="scope-cat-btn px-3 py-2.5 rounded-xl border border-editorial-border bg-white text-editorial-dark text-left transition-all hover:border-moss/40" data-val="sovereign" onclick="setScopeCategory('sovereign', 6800, 'Enterprise Sovereign Platform')">
+                <button type="button" class="scope-cat-btn liquid-glass-card-tab p-3.5 rounded-xl text-left transition-all text-editorial-dark" data-val="sovereign" onclick="setScopeCategory('sovereign', 6800, 'Enterprise Sovereign Platform')">
                   <div class="text-xs font-bold">Sovereign Platform</div>
-                  <div class="text-[10px] opacity-80 font-mono mt-0.5">$6,800 base</div>
+                  <div class="text-[10px] text-editorial-gray font-mono mt-0.5">$6,800 base</div>
                 </button>
               </div>
             </div>
@@ -803,17 +1187,17 @@
                 2. Deployment Velocity &amp; Hardening:
               </label>
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                <button type="button" class="scope-scale-btn px-3 py-2.5 rounded-xl border text-left transition-all border-moss bg-moss text-white" data-scale="mvp" onclick="setScopeScale('mvp', 1.0, '1–2 Weeks (Rapid MVP)')">
+                <button type="button" class="scope-scale-btn liquid-glass-card-tab active p-3.5 rounded-xl text-left transition-all" data-scale="mvp" onclick="setScopeScale('mvp', 1.0, '1–2 Weeks (Rapid MVP)')">
                   <div class="text-xs font-bold">Rapid MVP</div>
-                  <div class="text-[10px] opacity-80 font-mono mt-0.5">1–2 Weeks</div>
+                  <div class="text-[10px] text-white/90 font-mono mt-0.5">1–2 Weeks</div>
                 </button>
-                <button type="button" class="scope-scale-btn px-3 py-2.5 rounded-xl border border-editorial-border bg-white text-editorial-dark text-left transition-all hover:border-moss/40" data-scale="hardened" onclick="setScopeScale('hardened', 1.35, '3–4 Weeks (Hardened Production)')">
+                <button type="button" class="scope-scale-btn liquid-glass-card-tab p-3.5 rounded-xl text-left transition-all text-editorial-dark" data-scale="hardened" onclick="setScopeScale('hardened', 1.35, '3–4 Weeks (Hardened Production)')">
                   <div class="text-xs font-bold">Production Scale</div>
-                  <div class="text-[10px] opacity-80 font-mono mt-0.5">3–4 Weeks</div>
+                  <div class="text-[10px] text-editorial-gray font-mono mt-0.5">3–4 Weeks</div>
                 </button>
-                <button type="button" class="scope-scale-btn px-3 py-2.5 rounded-xl border border-editorial-border bg-white text-editorial-dark text-left transition-all hover:border-moss/40" data-scale="enterprise" onclick="setScopeScale('enterprise', 1.75, '5–6 Weeks (Enterprise Complete)')">
+                <button type="button" class="scope-scale-btn liquid-glass-card-tab p-3.5 rounded-xl text-left transition-all text-editorial-dark" data-scale="enterprise" onclick="setScopeScale('enterprise', 1.75, '5–6 Weeks (Enterprise Complete)')">
                   <div class="text-xs font-bold">Full Enterprise</div>
-                  <div class="text-[10px] opacity-80 font-mono mt-0.5">5–6 Weeks</div>
+                  <div class="text-[10px] text-editorial-gray font-mono mt-0.5">5–6 Weeks</div>
                 </button>
               </div>
             </div>
@@ -876,15 +1260,15 @@
 
             <div class="mt-8 pt-5 border-t border-black/[0.06] space-y-2.5">
               <!-- WhatsApp Lock-in CTA -->
-              <a id="btn-lock-scope" href="#" class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm" target="_blank" rel="noopener noreferrer">
+              <a id="btn-lock-scope" href="#" class="liquid-glass-btn-wa w-full py-3.5 px-4 rounded-xl text-emerald-900 text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm" target="_blank" rel="noopener noreferrer">
                 <span>Lock In Scope on WhatsApp</span>
-                <span>→</span>
+                <span class="text-xs">→</span>
               </a>
 
               <!-- Email Scope Summary CTA -->
-              <a id="btn-email-scope" href="#" class="w-full py-2.5 px-4 rounded-xl border border-editorial-border bg-white hover:bg-moss-soft hover:text-moss text-editorial-dark text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
+              <a id="btn-email-scope" href="#" class="liquid-glass-tab w-full py-3 px-4 rounded-xl text-editorial-dark text-xs font-semibold flex items-center justify-center gap-2 transition-all">
                 <span>Email Scope to Shahroz</span>
-                <span>✉</span>
+                <span class="text-xs">✉</span>
               </a>
             </div>
           </div>
@@ -1177,16 +1561,16 @@
     <!-- Suggested Prompt Chips & Input -->
     <div class="p-4 border-t border-black/[0.06] bg-white space-y-3">
       <div class="flex flex-wrap gap-1.5">
-        <button class="text-[10px] font-mono bg-black/[0.03] hover:bg-moss-soft hover:text-moss text-editorial-dark px-2.5 py-1 rounded-full border border-black/[0.05] transition-colors" onclick="sendQuickPrompt('How do you prevent hallucinations in RAG?')">
+        <button class="liquid-glass-chip text-[10px] font-mono px-3 py-1.5 text-editorial-dark" onclick="sendQuickPrompt('How do you prevent hallucinations in RAG?')">
           RAG Hallucination Guardrails?
         </button>
-        <button class="text-[10px] font-mono bg-black/[0.03] hover:bg-moss-soft hover:text-moss text-editorial-dark px-2.5 py-1 rounded-full border border-black/[0.05] transition-colors" onclick="sendQuickPrompt('What is the typical MVP turnaround time?')">
+        <button class="liquid-glass-chip text-[10px] font-mono px-3 py-1.5 text-editorial-dark" onclick="sendQuickPrompt('What is the typical MVP turnaround time?')">
           MVP Turnaround?
         </button>
-        <button class="text-[10px] font-mono bg-black/[0.03] hover:bg-moss-soft hover:text-moss text-editorial-dark px-2.5 py-1 rounded-full border border-black/[0.05] transition-colors" onclick="sendQuickPrompt('Can you integrate a WhatsApp bot with our backend?')">
+        <button class="liquid-glass-chip text-[10px] font-mono px-3 py-1.5 text-editorial-dark" onclick="sendQuickPrompt('Can you integrate a WhatsApp bot with our backend?')">
           WhatsApp Bot Integration?
         </button>
-        <button class="text-[10px] font-mono bg-black/[0.03] hover:bg-moss-soft hover:text-moss text-editorial-dark px-2.5 py-1 rounded-full border border-black/[0.05] transition-colors" onclick="sendQuickPrompt('Do you deploy self-hosted models on our own AWS/GCP?')">
+        <button class="liquid-glass-chip text-[10px] font-mono px-3 py-1.5 text-editorial-dark" onclick="sendQuickPrompt('Do you deploy self-hosted models on our own AWS/GCP?')">
           Self-Hosted vs API Models?
         </button>
       </div>
@@ -1463,11 +1847,11 @@
 
       buttons.forEach(btn => {
         if (btn.getAttribute('data-category') === category) {
-          btn.classList.add('bg-editorial-dark', 'text-white');
-          btn.classList.remove('bg-white', 'text-editorial-gray', 'border-editorial-border');
+          btn.classList.add('liquid-glass-tab-active', 'active');
+          btn.classList.remove('text-editorial-gray');
         } else {
-          btn.classList.remove('bg-editorial-dark', 'text-white');
-          btn.classList.add('bg-white', 'text-editorial-gray', 'border-editorial-border');
+          btn.classList.remove('liquid-glass-tab-active', 'active');
+          btn.classList.add('text-editorial-gray');
         }
       });
 
@@ -1479,6 +1863,19 @@
           card.style.display = 'none';
         }
       });
+    }
+
+    // Mobile Navigation Drawer Toggle
+    function toggleMobileNav(forceState) {
+      const dropdown = document.getElementById('mobileNavDropdown');
+      if (!dropdown) return;
+      const isOpen = !dropdown.classList.contains('hidden');
+      const nextState = typeof forceState === 'boolean' ? forceState : !isOpen;
+      if (nextState) {
+        dropdown.classList.remove('hidden');
+      } else {
+        dropdown.classList.add('hidden');
+      }
     }
 
     // ---------------------------------------------------------------------------
@@ -1494,12 +1891,19 @@
       currentCategoryName = name;
 
       document.querySelectorAll('.scope-cat-btn').forEach(btn => {
+        const sub = btn.querySelectorAll('div')[1];
         if (btn.getAttribute('data-val') === type) {
-          btn.classList.add('border-moss', 'bg-moss', 'text-white');
-          btn.classList.remove('border-editorial-border', 'bg-white', 'text-editorial-dark');
+          btn.classList.add('active');
+          if (sub) {
+            sub.classList.add('text-white/90');
+            sub.classList.remove('text-editorial-gray');
+          }
         } else {
-          btn.classList.remove('border-moss', 'bg-moss', 'text-white');
-          btn.classList.add('border-editorial-border', 'bg-white', 'text-editorial-dark');
+          btn.classList.remove('active');
+          if (sub) {
+            sub.classList.remove('text-white/90');
+            sub.classList.add('text-editorial-gray');
+          }
         }
       });
 
@@ -1511,12 +1915,19 @@
       currentTimelineText = timelineDesc;
 
       document.querySelectorAll('.scope-scale-btn').forEach(btn => {
+        const sub = btn.querySelectorAll('div')[1];
         if (btn.getAttribute('data-scale') === scale) {
-          btn.classList.add('border-moss', 'bg-moss', 'text-white');
-          btn.classList.remove('border-editorial-border', 'bg-white', 'text-editorial-dark');
+          btn.classList.add('active');
+          if (sub) {
+            sub.classList.add('text-white/90');
+            sub.classList.remove('text-editorial-gray');
+          }
         } else {
-          btn.classList.remove('border-moss', 'bg-moss', 'text-white');
-          btn.classList.add('border-editorial-border', 'bg-white', 'text-editorial-dark');
+          btn.classList.remove('active');
+          if (sub) {
+            sub.classList.remove('text-white/90');
+            sub.classList.add('text-editorial-gray');
+          }
         }
       });
 
