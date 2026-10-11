@@ -702,7 +702,7 @@
       <!-- Desktop Navigation Tabs in Liquid Tray -->
       <nav class="hidden lg:flex items-center gap-1 liquid-glass-pill-tray" id="nav-links">
         <a class="liquid-nav-link" href="#why-it-works">Why It Works</a>
-        <a class="liquid-nav-link" href="#services">Services</a>
+        <a class="liquid-nav-link" href="services.html">Services</a>
         <a class="liquid-nav-link" href="#scope-estimator">Estimator</a>
         <a class="liquid-nav-link" href="#who-builds-this">About</a>
         <a class="liquid-nav-link" href="#blog">Blog</a>
@@ -744,7 +744,7 @@
     <div id="mobileNavDropdown" class="hidden lg:hidden border-t border-white/60 bg-white/95 backdrop-blur-2xl rounded-b-2xl px-6 py-4 shadow-xl space-y-3 transition-all duration-300">
       <div class="flex flex-col gap-2 font-medium text-sm text-editorial-dark">
         <a class="liquid-nav-link" href="#why-it-works" onclick="toggleMobileNav(false)">Why It Works</a>
-        <a class="liquid-nav-link" href="#services" onclick="toggleMobileNav(false)">Services</a>
+        <a class="liquid-nav-link" href="services.html" onclick="toggleMobileNav(false)">Services</a>
         <a class="liquid-nav-link" href="#scope-estimator" onclick="toggleMobileNav(false)">Scope Estimator</a>
         <a class="liquid-nav-link" href="#who-builds-this" onclick="toggleMobileNav(false)">About Shahroz</a>
         <a class="liquid-nav-link" href="#blog" onclick="toggleMobileNav(false)">Blog &amp; Insights</a>
@@ -1006,146 +1006,166 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTION 02: TECHNICAL SERVICES CATALOG & ARCHITECTURE PACKAGES           -->
+    <!-- SECTION 02: SERVICES OVERVIEW TEASER (LINKS TO SERVICES.HTML)             -->
     <!-- ========================================================================= -->
     <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 border-t border-black/[0.05]" id="services">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-        <div>
-          <div class="text-xs font-mono font-medium uppercase tracking-wider text-moss mb-2">// 02. SERVICES CATALOG</div>
+        <div class="max-w-2xl">
+          <div class="text-xs font-mono font-medium uppercase tracking-wider text-moss mb-2">// 02. SERVICES &amp; CAPABILITIES</div>
           <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-editorial-dark">
-            Production AI Architecture Services
+            AI Built for Real Business Growth — Explained Simply
           </h2>
+          <p class="text-editorial-gray text-sm mt-3 leading-relaxed">
+            Eliminate repetitive busywork, respond to customers 24/7, and get instant visibility into your numbers. Zero technical jargon — just reliable systems that save hours every single week.
+          </p>
         </div>
-        <div class="flex flex-wrap gap-2 p-1.5 rounded-2xl md:rounded-full liquid-glass-tab-tray" id="service-filters">
-          <button class="service-filter-btn liquid-glass-tab liquid-glass-tab-active active px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all" data-category="all" onclick="filterServices('all')">All Offerings</button>
-          <button class="service-filter-btn liquid-glass-tab px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all text-editorial-gray hover:text-editorial-dark" data-category="rag" onclick="filterServices('rag')">Enterprise RAG</button>
-          <button class="service-filter-btn liquid-glass-tab px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all text-editorial-gray hover:text-editorial-dark" data-category="agents" onclick="filterServices('agents')">Autonomous Agents</button>
-          <button class="service-filter-btn liquid-glass-tab px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all text-editorial-gray hover:text-editorial-dark" data-category="fine-tune" onclick="filterServices('fine-tune')">Custom Fine-Tuning</button>
-          <button class="service-filter-btn liquid-glass-tab px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all text-editorial-gray hover:text-editorial-dark" data-category="cloud" onclick="filterServices('cloud')">Cloud Infrastructure</button>
+        <div class="flex-shrink-0">
+          <a class="liquid-glass-btn-primary inline-flex items-center gap-2 px-5 py-3 text-xs sm:text-sm font-semibold tracking-wide text-white group" href="services.html">
+            <span>Explore All 7 Services</span>
+            <span class="text-xs transition-transform group-hover:translate-x-1">→</span>
+          </a>
         </div>
       </div>
 
-      <!-- Services Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Services 3-Pillar Teaser Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- Service Card 1: Enterprise RAG -->
-        <div class="service-card frosted-card rounded-2xl p-8 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300" data-cat="rag">
+        <!-- Teaser Pillar 1: Customer Support & Calls -->
+        <div class="frosted-card rounded-2xl p-7 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-moss/10 text-moss text-[11px] font-mono font-semibold">
-                High-Precision Retrieval
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-mono font-semibold border border-emerald-200/50">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                24/7 Coverage
               </span>
-              <span class="text-xs font-mono text-editorial-gray">01 / RAG</span>
+              <span class="text-xs font-mono text-editorial-gray">Pillar 01</span>
             </div>
-            <h3 class="font-display text-2xl font-bold text-editorial-dark mb-3">Enterprise RAG &amp; Neural Search Engines</h3>
-            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
-              Custom retrieval-augmented generation pipelines tailored to internal wikis, legal repositories, and massive multi-tenant databases. Featuring hybrid BM25 + dense vector embeddings, semantic re-ranking, and automated DeepEval evaluation suites to guarantee sub-0.05 hallucination rates.
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-2.5 group-hover:text-moss transition-colors">
+              Customer Support &amp; AI Phone Calls
+            </h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-5">
+              Knowledge-base chatbots that answer client inquiries at midnight and weekends, plus natural voice phone agents that qualify new leads and schedule calendar appointments automatically.
             </p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Pinecone / Qdrant</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">LangChain</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">DeepEval Guardrails</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">FastAPI</span>
+            <div class="space-y-2 mb-6 text-xs text-editorial-dark/90 font-medium">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>24/7 Smart Business Knowledge Chatbots</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>AI Voice Agents for Inbound &amp; Outbound Calls</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Zero Missed Leads &amp; Instant WhatsApp Sync</span>
+              </div>
             </div>
           </div>
           <div class="pt-5 border-t border-black/[0.06] flex items-center justify-between">
-            <span class="text-xs font-mono text-editorial-gray">Turnaround: 1–3 Weeks</span>
-            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1" href="mailto:harral008@gmail.com?subject=Enterprise%20RAG%20Inquiry">
-              Scope This System →
+            <span class="text-xs font-mono text-editorial-gray">Never Miss a Lead</span>
+            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform" href="services.html#service-chatbots">
+              View Service Details →
             </a>
           </div>
         </div>
 
-        <!-- Service Card 2: Autonomous Agents -->
-        <div class="service-card frosted-card rounded-2xl p-8 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300" data-cat="agents">
+        <!-- Teaser Pillar 2: Invoicing, Dashboards & Data -->
+        <div class="frosted-card rounded-2xl p-7 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-mono font-semibold">
-                Self-Healing Automation
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-moss/10 text-moss text-[11px] font-mono font-semibold border border-moss/20">
+                <span class="w-1.5 h-1.5 rounded-full bg-moss inline-block"></span>
+                Financial Clarity
               </span>
-              <span class="text-xs font-mono text-editorial-gray">02 / AGENTS</span>
+              <span class="text-xs font-mono text-editorial-gray">Pillar 02</span>
             </div>
-            <h3 class="font-display text-2xl font-bold text-editorial-dark mb-3">Autonomous Multi-Agent Workflows</h3>
-            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
-              Coordinated AI agents with deterministic tool-calling APIs, persistent state graphs, and automated human-in-the-loop validation checkpoints. Replaces fragile script pipelines with robust agent networks executing lead enrichment, support triage, and invoice reconciliation.
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-2.5 group-hover:text-moss transition-colors">
+              Invoicing, Dashboards &amp; Data Insights
+            </h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-5">
+              Automated invoice generation with polite overdue payment follow-ups, real-time KPI dashboards on your phone, and plain-English sales trend analysis that spots leaks without spreadsheets.
             </p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">LangGraph / CrewAI</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Temporal / Celery</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">PostgreSQL State</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Webhooks &amp; ERP</span>
+            <div class="space-y-2 mb-6 text-xs text-editorial-dark/90 font-medium">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Automated Invoicing &amp; Overdue Follow-ups</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Live Revenue &amp; Performance Dashboards</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Smart Data Analysis &amp; Growth Insights</span>
+              </div>
             </div>
           </div>
           <div class="pt-5 border-t border-black/[0.06] flex items-center justify-between">
-            <span class="text-xs font-mono text-editorial-gray">Turnaround: 2–4 Weeks</span>
-            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1" href="mailto:harral008@gmail.com?subject=Agentic%20Workflow%20Inquiry">
-              Scope This System →
+            <span class="text-xs font-mono text-editorial-gray">Faster Cash Flow</span>
+            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform" href="services.html#service-invoicing">
+              View Service Details →
             </a>
           </div>
         </div>
 
-        <!-- Service Card 3: Custom Fine-Tuning -->
-        <div class="service-card frosted-card rounded-2xl p-8 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300" data-cat="fine-tune">
+        <!-- Teaser Pillar 3: Workflow Automation & Private AI -->
+        <div class="frosted-card rounded-2xl p-7 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-moss/10 text-moss text-[11px] font-mono font-semibold">
-                Sovereign Model Hosting
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/[0.05] text-editorial-dark text-[11px] font-mono font-semibold border border-black/[0.08]">
+                <span class="w-1.5 h-1.5 rounded-full bg-editorial-dark inline-block"></span>
+                Save 15+ Hrs/Wk
               </span>
-              <span class="text-xs font-mono text-editorial-gray">03 / MODELS</span>
+              <span class="text-xs font-mono text-editorial-gray">Pillar 03</span>
             </div>
-            <h3 class="font-display text-2xl font-bold text-editorial-dark mb-3">Custom LLM Fine-Tuning &amp; Private Inference</h3>
-            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
-              Adapt open-weight models (Llama 3, Mistral, Qwen) using domain-specific dataset curation and LoRA/QLoRA parameter-efficient adapters. Deployed on dedicated private GPUs via vLLM or Ollama for total compliance, zero data leakage, and drastically reduced token costs.
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-2.5 group-hover:text-moss transition-colors">
+              Office Automation &amp; Private AI Setups
+            </h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-5">
+              Automated email sorting, contract and PDF information extraction, and completely private on-premise AI deployments for medical, legal, and financial businesses where privacy is paramount.
             </p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">vLLM Inference Engine</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">LoRA / QLoRA</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Hugging Face</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Air-Gapped VPC</span>
+            <div class="space-y-2 mb-6 text-xs text-editorial-dark/90 font-medium">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Automated Document &amp; Email Processing</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Private &amp; Secure On-Premise AI Setups</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>100% Confidential Data Guarantee</span>
+              </div>
             </div>
           </div>
           <div class="pt-5 border-t border-black/[0.06] flex items-center justify-between">
-            <span class="text-xs font-mono text-editorial-gray">Turnaround: 2–3 Weeks</span>
-            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1" href="mailto:harral008@gmail.com?subject=LLM%20Fine-Tuning%20Inquiry">
-              Scope This System →
-            </a>
-          </div>
-        </div>
-
-        <!-- Service Card 4: Cloud Infrastructure -->
-        <div class="service-card frosted-card rounded-2xl p-8 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300" data-cat="cloud">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-mono font-semibold">
-                Sub-15ms Latency
-              </span>
-              <span class="text-xs font-mono text-editorial-gray">04 / INFRA</span>
-            </div>
-            <h3 class="font-display text-2xl font-bold text-editorial-dark mb-3">Resilient Cloud &amp; Full-Stack AI Software</h3>
-            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
-              High-concurrency full-stack web and mobile backends designed for streaming LLM tokens, WebSockets, rate-limited user sessions, and real-time observability. End-to-end containerized deployment with Terraform, automated GitHub Actions CI/CD, and Prometheus telemetry.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">FastAPI + Next.js</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Docker / K8s</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Terraform</span>
-              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Redis Caching</span>
-            </div>
-          </div>
-          <div class="pt-5 border-t border-black/[0.06] flex items-center justify-between">
-            <span class="text-xs font-mono text-editorial-gray">Turnaround: 3–5 Weeks</span>
-            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1" href="mailto:harral008@gmail.com?subject=Cloud%20Architecture%20Inquiry">
-              Scope This System →
+            <span class="text-xs font-mono text-editorial-gray">Maximum Privacy &amp; Time</span>
+            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform" href="services.html#service-automation">
+              View Service Details →
             </a>
           </div>
         </div>
 
       </div>
 
-      <!-- ======================================================================= -->
-      <!-- INTERACTIVE PROJECT SCOPE & COST ESTIMATOR WIDGET                       -->
-      <!-- ======================================================================= -->
-      <div class="mt-16 liquid-glass-card rounded-[28px] p-8 sm:p-12 shadow-glass relative" id="scope-estimator">
+      <!-- Bottom Teaser Ribbon -->
+      <div class="mt-8 liquid-glass-pill-tray p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-white/70">
+        <div class="flex items-center gap-3 text-xs text-editorial-dark font-medium">
+          <span class="w-8 h-8 rounded-full bg-moss/10 text-moss flex items-center justify-center font-bold">✓</span>
+          <span>Looking for a tailored combination? All services integrate directly with WhatsApp, Google Workspace, and your current CRM.</span>
+        </div>
+        <a class="text-xs font-mono font-bold text-moss hover:underline flex items-center gap-1 flex-shrink-0" href="services.html">
+          Browse Complete Services &amp; Client Process →
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- INTERACTIVE PROJECT SCOPE & COST ESTIMATOR WIDGET                       -->
+    <!-- ======================================================================= -->
+    <section class="pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10" id="scope-section">
+      <div class="liquid-glass-card rounded-[28px] p-8 sm:p-12 shadow-glass relative" id="scope-estimator">
         <div class="max-w-3xl mb-8">
           <div class="text-xs font-mono font-semibold uppercase tracking-wider text-moss mb-2">// SCOPE CALCULATOR</div>
           <h3 class="font-display text-2xl sm:text-3xl font-bold text-editorial-dark">
@@ -1625,7 +1645,7 @@
         <div class="text-xs font-mono uppercase font-semibold text-editorial-dark mb-3">Navigation</div>
         <div class="flex flex-col space-y-2 text-xs font-mono text-editorial-gray">
           <a class="hover:text-moss transition-colors" href="#why-it-works">Why It Works</a>
-          <a class="hover:text-moss transition-colors" href="#services">Services Catalog</a>
+          <a class="hover:text-moss transition-colors" href="services.html">Services Catalog</a>
           <a class="hover:text-moss transition-colors" href="#scope-estimator">Cost Estimator</a>
           <a class="hover:text-moss transition-colors" href="#who-builds-this">About Shahroz</a>
           <a class="hover:text-moss transition-colors" href="#blog">Blog &amp; Insights</a>
