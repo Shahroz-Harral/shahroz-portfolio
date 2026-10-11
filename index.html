@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Shahroz Ahmed — Senior IT &amp; AI Solutions Architect</title>
+  <meta name="description" content="Shahroz Ahmed — Senior IT & AI Solutions Architect. Architecting production-grade enterprise RAG systems, autonomous multi-agent workflows, and private sovereign AI cloud infrastructure.">
+  <link rel="canonical" href="https://shahrozahmed.ai">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shahroz Ahmed — Senior IT & AI Solutions Architect">
+  <meta property="og:description" content="Architecting production-grade enterprise RAG systems, autonomous multi-agent workflows, and private AI cloud infrastructure.">
+  <meta property="og:image" content="assets/shahroz_avatar.png">
+  
+  <!-- Google Fonts: Syne, Plus Jakarta Sans, Cormorant Garamond, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS v3 with Forms & Container Plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['Syne', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            moss: {
+              DEFAULT: '#4D6B3C',
+              dark: '#3A522C',
+              light: '#6E9456',
+              soft: '#F4F7F2',
+            },
+            emerald: {
+              accent: '#10B981',
+            },
+            editorial: {
+              dark: '#111310',
+              gray: '#60645E',
+              border: 'rgba(0, 0, 0, 0.08)',
+            }
+          },
+          boxShadow: {
+            'glass': '0 20px 40px -15px rgba(0, 0, 0, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.06)',
+            'glass-hover': '0 30px 60px -20px rgba(77, 107, 60, 0.12), 0 0 1px 1px rgba(0, 0, 0, 0.1)',
+            'pill': '0 4px 20px rgba(0, 0, 0, 0.06)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Editorial & Framer Parallax CSS Styles -->
+  <style>
+    /* Swiss Vertical Hairline Grid Background */
+    .bg-swiss-grid {
+      background-size: 160px 100%;
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+    }
+    
+    /* Drifting Ambient Mist */
+    @keyframes driftMistLeft {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.45; }
+      50% { transform: translateY(-40px) scale(1.08); opacity: 0.65; }
+    }
+    @keyframes driftMistRight {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+      50% { transform: translateY(50px) scale(1.12); opacity: 0.7; }
+    }
+    .animate-mist-left {
+      animation: driftMistLeft 18s ease-in-out infinite;
+    }
+    .animate-mist-right {
+      animation: driftMistRight 22s ease-in-out infinite;
+    }
+
+    /* Frosted Glassmorphism Elements */
+    .frosted-pill {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .frosted-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 0, 0, 0.07);
+    }
+
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fafafa;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d4d8cf;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4D6B3C;
+    }
+
+    /* =========================================================================
+       FULL-WIDTH HERO SCROLL TRACK & FRAMER PARALLAX STAGE
+       ========================================================================= */
+    .hero-scroll-track {
+      position: relative;
+      height: 250vh;
+      width: 100%;
+      background-color: #FCFCFB;
+    }
+
+    .hero-sticky-frame {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-color: #FCFCFB;
+      z-index: 10;
+    }
+
+    /* Full-Screen 100vw Stage */
+    .hero-aspect-stage,
+    .framer-nr2y0a {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #FCFCFB;
+      transform: translateZ(0);
+    }
+
+    /* 1. Background Video Layer */
+    .framer-8n5uqp {
+      height: 145%;
+      width: 120%;
+      left: -10%;
+      right: -10%;
+      overflow: clip;
+      pointer-events: none;
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      will-change: top;
+      transition: opacity 0.3s ease;
+    }
+
+    .framer-18qjevd-container {
+      pointer-events: none;
+      z-index: 0;
+      flex: none;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .framer-18qjevd-container video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: 50% 50%;
+      background-color: transparent;
+      transform: translateZ(0);
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    /* 2. White Light Gradient Parallax Overlay */
+    .framer-uru8mj {
+      height: 145%;
+      width: 140%;
+      left: -20%;
+      overflow: clip;
+      pointer-events: none;
+      z-index: 1;
+      background: 
+        linear-gradient(0deg, #fcfcfb 0%, rgba(252, 252, 251, 0.94) 30%, rgba(252, 252, 251, 0.55) 55%, rgba(252, 252, 251, 0) 100%),
+        radial-gradient(ellipse 70% 50% at 50% 68%, rgba(255, 255, 255, 0.92) 0%, rgba(252, 252, 251, 0.45) 45%, rgba(252, 252, 251, 0) 80%);
+      position: absolute;
+      top: 104px;
+      will-change: top;
+    }
+
+    /* 3. Soft Grey Arch */
+    .framer-bsrji8 {
+      filter: blur(12px);
+      -webkit-filter: blur(12px);
+      height: 720px;
+      overflow: clip;
+      pointer-events: none;
+      will-change: transform;
+      z-index: 2;
+      background: linear-gradient(180deg, rgba(45, 47, 46, 0.92) 0%, rgba(75, 77, 76, 0.58) 12%, rgba(125, 127, 126, 0.14) 30%, rgba(125, 127, 126, 0) 48%);
+      border-radius: 50%;
+      position: absolute;
+      bottom: -540px;
+      left: -10%;
+      right: -10%;
+    }
+
+    /* 4. Arch Moving Gradient Glow (Vibrant White-Teal Glow) */
+    .framer-nest18 {
+      filter: blur(14px);
+      -webkit-filter: blur(14px);
+      pointer-events: none;
+      z-index: 3;
+      background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(210, 250, 238, 0.78) 25%, rgba(105, 205, 181, 0.55) 55%, rgba(105, 205, 181, 0) 100%);
+      border-radius: 50%;
+      width: 380px;
+      height: 210px;
+      position: absolute;
+      bottom: 45px;
+      left: 50%;
+      transform-origin: 50% 50%;
+      will-change: left, top, transform;
+    }
+
+    /* 5. Arch Light Highlight (Crisp White-Teal Rim Highlight) */
+    .framer-xiz7ec {
+      filter: blur(3px);
+      -webkit-filter: blur(3px);
+      pointer-events: none;
+      z-index: 4;
+      background: radial-gradient(50% 50% at 50% 50%, #ffffff 0%, rgba(231, 255, 245, 0.95) 25%, rgba(105, 205, 181, 0.85) 55%, rgba(105, 205, 181, 0) 100%);
+      border-radius: 50%;
+      width: 170px;
+      height: 26px;
+      position: absolute;
+      top: 524px;
+      left: 50%;
+      transform-origin: 50% 50%;
+      will-change: left, top, transform;
+    }
+
+    /* 6. Dot Matrix Grid Overlay */
+    .matrix-grid-overlay {
+      position: absolute;
+      top: 14%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      height: 55%;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.55;
+      mix-blend-mode: screen;
+    }
+    .dot-matrix-svg {
+      width: 100%;
+      height: 100%;
+      shape-rendering: geometricPrecision;
+    }
+
+    /* 7. In-Stage Hero UI Content Stack */
+    .hero-ui-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6.5rem 1.5rem 3rem;
+      pointer-events: none;
+    }
+
+    .hero-content-stack {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      pointer-events: auto;
+      transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 48px;
+      background: rgba(0, 0, 0, 0.1);
+      margin: 24px auto 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .line-beam {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(77, 107, 60, 0.9) 0%, rgba(16, 185, 129, 0) 100%);
+      animation: pulseBeam 2s ease-in-out infinite;
+    }
+    @keyframes pulseBeam {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+  </style>
+</head>
+
+<body class="bg-[#FCFCFB] text-editorial-dark font-sans antialiased selection:bg-moss selection:text-white relative overflow-x-hidden">
+
+  <!-- ========================================================================= -->
+  <!-- ATMOSPHERIC BACKGROUNDS                                                   -->
+  <!-- ========================================================================= -->
+  <div class="fixed inset-0 pointer-events-none z-0 bg-swiss-grid max-w-7xl mx-auto border-x border-black/[0.04]" aria-hidden="true"></div>
+  <div class="fixed -top-24 -left-48 w-[520px] h-[720px] rounded-full pointer-events-none z-0 bg-gradient-to-br from-[#E6EFE2]/60 via-[#F2F8EE]/40 to-transparent blur-3xl animate-mist-left" aria-hidden="true"></div>
+  <div class="fixed top-1/3 -right-48 w-[620px] h-[820px] rounded-full pointer-events-none z-0 bg-gradient-to-bl from-[#EBF3ED]/50 via-[#E4EFEA]/30 to-transparent blur-3xl animate-mist-right" aria-hidden="true"></div>
+
+  <!-- ========================================================================= -->
+  <!-- TOP FLOATING NAVIGATION MENU (Spanning across full-width hero)            -->
+  <!-- ========================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 w-full px-4 md:px-8 py-5 transition-all duration-300 pointer-events-none" id="primary-header">
+    <div class="max-w-7xl mx-auto frosted-pill rounded-full px-4 py-2.5 md:py-3 shadow-pill flex items-center justify-between pointer-events-auto transition-all duration-300">
+      
+      <!-- Brand & Status Pill -->
+      <a class="flex items-center gap-3 group focus:outline-none" href="#">
+        <div class="w-8 h-8 rounded-full bg-editorial-dark text-white font-display font-bold flex items-center justify-center text-xs tracking-wider transition-transform duration-300 group-hover:scale-105 shadow-sm">
+          SA
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold tracking-tight text-sm text-editorial-dark">Shahroz Ahmed</span>
+          <span class="inline-flex items-center gap-1.5 text-[10px] font-mono text-editorial-gray">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse inline-block"></span>
+            Available for new projects
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium tracking-wide text-editorial-dark/80" id="nav-links">
+        <a class="hover:text-moss transition-colors" href="#why-it-works">Why It Works</a>
+        <a class="hover:text-moss transition-colors" href="#services">Services</a>
+        <a class="hover:text-moss transition-colors" href="#scope-estimator">Estimator</a>
+        <a class="hover:text-moss transition-colors" href="#who-builds-this">About</a>
+        <a class="hover:text-moss transition-colors" href="#blog">Blog</a>
+        <a class="hover:text-moss transition-colors" href="#testimonials">Testimonials</a>
+      </nav>
+
+      <!-- Action Pill Group -->
+      <div class="flex items-center gap-2.5">
+        <!-- Trigger AI Advisor Drawer -->
+        <button class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-editorial-border bg-white text-xs font-medium text-editorial-dark hover:border-moss/40 hover:bg-moss-soft transition-all shadow-sm" onclick="toggleAiDrawer(true)">
+          <svg class="w-3.5 h-3.5 text-moss" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+          Ask Aria AI
+        </button>
+
+        <!-- WhatsApp Quick-Chat Action -->
+        <a class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/60 transition-colors" href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20consult%20on%20an%20IT/AI%20architecture" rel="noopener noreferrer" target="_blank">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          WhatsApp Chat
+        </a>
+
+        <!-- Primary Pill Button: Direct Booking to Email -->
+        <a class="inline-flex items-center gap-1.5 px-4 md:px-5 py-2 rounded-full bg-editorial-dark text-white text-xs md:text-sm font-semibold tracking-wide hover:bg-moss transition-all duration-300 shadow-sm hover:shadow-md" href="mailto:harral008@gmail.com?subject=AI%20Architecture%20Call%20Booking">
+          <span>Book a Call</span>
+          <span class="text-xs">→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================= -->
+    <!-- FULL-WIDTH HERO SECTION COVERING WHOLE SCREEN WITH FRAMER PARALLAX STAGE  -->
+    <!-- ========================================================================= -->
+    <section class="hero-scroll-track w-full relative" id="heroTrack" aria-label="Hero Section">
+      
+      <!-- Pinned Sticky Container (100vw x 100vh) -->
+      <div class="hero-sticky-frame sticky top-0 left-0 w-full h-screen overflow-hidden flex items-center justify-center bg-[#FCFCFB]" id="heroStickyFrame">
+        
+        <!-- Full-Width Hero Stage -->
+        <div class="hero-aspect-stage framer-nr2y0a w-full h-full relative overflow-hidden" id="hero-area">
+          
+          <!-- 1. Background Video Layer (High-Resolution Looping Aurora) -->
+          <div class="framer-8n5uqp" id="framerBgMotion">
+            <div class="framer-18qjevd-container">
+              <video 
+                id="framerAuroraVideo"
+                poster="assets/hero-aurora-poster.webp" 
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                preload="auto">
+                <source src="assets/hero-aurora-2560.webm" type="video/webm">
+                <source src="assets/hero-aurora-2560.mp4" type="video/mp4">
+                <source src="assets/hero-aurora-1080.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <!-- 2. White Light Gradient Parallax Overlay (Rises up during scroll) -->
+          <div class="framer-uru8mj" id="heroGradientOverlay"></div>
+
+          <!-- 3. Soft Grey Arch -->
+          <div class="framer-bsrji8" id="hero-arch"></div>
+
+          <!-- 4. Arch Moving Gradient Glow (White-Teal Ambient Radiant Glow) -->
+          <div class="framer-nest18" id="archMovingGlow"></div>
+
+          <!-- 5. Arch Light Highlight (Crisp White-Teal Rim Highlight) -->
+          <div class="framer-xiz7ec" id="archLightHighlight"></div>
+
+          <!-- 6. Dot Matrix Grid Overlay -->
+          <div class="matrix-grid-overlay" id="matrixGridOverlay" aria-hidden="true">
+            <svg class="dot-matrix-svg" id="dotMatrixSvg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"></svg>
+          </div>
+
+          <!-- 7. In-Stage Foreground Interactive UI Content Stack -->
+          <div class="hero-ui-overlay" id="heroUiOverlay">
+            <div class="hero-content-stack" id="heroContentStack">
+              
+              <!-- Category Badge -->
+              <div class="hero-badge-wrap mb-4" id="heroBadgeWrap">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-black/[0.08] text-[11px] font-mono uppercase tracking-wider text-editorial-dark shadow-sm">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Senior IT &amp; AI Solutions Architect
+                </span>
+              </div>
+
+              <!-- Main Display Headline -->
+              <h1 class="hero-title font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-editorial-dark mb-4 leading-[1.12] max-w-4xl mx-auto" id="heroTitle">
+                <span>Architecting Production AI Systems</span><br>
+                <span class="font-serif italic font-normal text-3xl sm:text-4xl lg:text-5xl text-editorial-dark/90">with Zero Fluff</span>
+              </h1>
+
+              <!-- Subtitle -->
+              <p class="text-sm sm:text-base font-normal text-editorial-gray max-w-xl mx-auto mb-7 leading-relaxed">
+                From high-precision enterprise RAG knowledge bases to autonomous multi-agent pipelines and sovereign models. Fully built, battle-tested, done right — delivered fast.
+              </p>
+
+              <!-- Interactive Buttons -->
+              <div class="hero-cta-group flex flex-wrap items-center justify-center gap-3.5" id="heroCtaGroup">
+                <a href="mailto:harral008@gmail.com?subject=AI%20Strategy%20Consultation" class="px-6 py-3 rounded-full bg-editorial-dark text-white text-xs sm:text-sm font-semibold hover:bg-moss transition-all duration-300 shadow-md flex items-center gap-2" id="btnStartNow">
+                  <span>Book a Strategy Call</span>
+                  <span>→</span>
+                </a>
+
+                <a href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20discuss%20an%20AI%20project" class="px-6 py-3 rounded-full bg-white/85 hover:bg-white text-editorial-dark border border-black/10 text-xs sm:text-sm font-semibold transition-all duration-300 shadow-sm flex items-center gap-2" id="btnWhatsAppHero" target="_blank" rel="noopener noreferrer">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span>WhatsApp Shahroz</span>
+                </a>
+              </div>
+
+              <!-- Glowing Center Scroll Indicator -->
+              <div class="hero-scroll-line" id="heroScrollLine" aria-hidden="true">
+                <div class="line-beam"></div>
+              </div>
+
+            </div>
+          </div> <!-- /hero-ui-overlay -->
+
+        </div> <!-- /hero-area -->
+
+      </div> <!-- /hero-sticky-frame -->
+
+    </section> <!-- /hero-scroll-track -->
+
+    <!-- ========================================================================= -->
+    <!-- SOCIAL PROOF & METRICS ROW                                                -->
+    <!-- ========================================================================= -->
+    <section class="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 border-b border-black/[0.06]" id="metrics-bar">
+      <div class="flex flex-wrap items-center justify-around gap-6 mb-8 py-4 border-b border-black/[0.06]">
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-mono font-bold text-editorial-dark">50+</div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-editorial-gray mt-1">AI Systems Deployed</div>
+        </div>
+        <div class="h-8 w-px bg-black/[0.08] hidden sm:block"></div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-mono font-bold text-moss">5x</div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-editorial-gray mt-1">Avg. ROI Per Project</div>
+        </div>
+        <div class="h-8 w-px bg-black/[0.08] hidden sm:block"></div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-mono font-bold text-editorial-dark">10+</div>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-editorial-gray mt-1">Verticals Transformed</div>
+        </div>
+      </div>
+
+      <p class="text-[11px] font-mono tracking-widest text-editorial-gray uppercase mb-6 text-center">
+        Worked with &amp; Trusted by Industry Leaders
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 md:gap-16 opacity-80">
+        <span class="font-mono text-sm md:text-base font-semibold tracking-wider text-editorial-dark hover:text-moss transition-colors">Bright Data</span>
+        <span class="font-mono text-sm md:text-base font-semibold tracking-wider text-editorial-dark hover:text-moss transition-colors">GoLogin</span>
+        <span class="font-mono text-sm md:text-base font-semibold tracking-wider text-editorial-dark hover:text-moss transition-colors">Higgsfield AI</span>
+        <span class="font-mono text-sm md:text-base font-semibold tracking-wider text-editorial-dark hover:text-moss transition-colors">Hostinger</span>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 01: WHY IT WORKS (6 Capability Bento Cards)                      -->
+    <!-- ========================================================================= -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10" id="why-it-works">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="text-xs font-mono font-medium uppercase tracking-wider text-moss mb-2">// 01. WHY IT WORKS</div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-editorial-dark">
+            AI systems built for impact
+          </h2>
+        </div>
+        <p class="text-sm font-normal text-editorial-gray max-w-md">
+          Built for teams ready to move fast, cut waste, and win bigger with AI. Fully built, battle-tested, done right — delivered fast.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Bento 01 -->
+        <div class="frosted-card rounded-[20px] p-7 flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group border border-moss/20 bg-gradient-to-br from-white via-white to-moss-soft/40">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono uppercase font-semibold bg-moss text-white">Efficiency</span>
+              <span class="text-xs font-mono text-editorial-gray">01</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-3 group-hover:text-moss transition-colors">Cut Costs Without Cutting Corners</h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">Eliminate manual work draining your team — email triage, data entry, approvals. AI handles it 24/7 so your people focus on what moves the business.</p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06] flex items-center justify-between text-xs font-mono text-editorial-gray">
+            <span>24/7 Automation</span>
+            <span class="text-moss font-semibold group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+
+        <!-- Bento 02 -->
+        <div class="frosted-card rounded-[20px] p-7 flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-mono text-moss uppercase tracking-wider font-semibold">Speed to Value</span>
+              <span class="text-xs font-mono text-editorial-gray">02</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-3 group-hover:text-moss transition-colors">Delivered in Weeks, Not Months</h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">Forget 6-month roadmaps. A structured discovery-to-deployment process gets your first working AI system live fast — phased, tested, and high-velocity.</p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06] flex items-center justify-between text-xs font-mono text-editorial-gray">
+            <span>Phased &amp; Tested</span>
+            <span class="text-moss font-semibold group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+
+        <!-- Bento 03 -->
+        <div class="frosted-card rounded-[20px] p-7 flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-mono text-moss uppercase tracking-wider font-semibold">Custom Fit</span>
+              <span class="text-xs font-mono text-editorial-gray">03</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-3 group-hover:text-moss transition-colors">AI That Works for Your Industry</h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">Generic tools produce generic results. Every system I build is tailored — your workflows, your data, your edge cases. Built to fit, not forced to adapt.</p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06] flex items-center justify-between text-xs font-mono text-editorial-gray">
+            <span>Tailored Architecture</span>
+            <span class="text-moss font-semibold group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+
+        <!-- Bento 04 -->
+        <div class="frosted-card rounded-[20px] p-7 flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-mono text-moss uppercase tracking-wider font-semibold">Full Accountability</span>
+              <span class="text-xs font-mono text-editorial-gray">04</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-3 group-hover:text-moss transition-colors">End-to-End Ownership</h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">Strategy, build, deployment, training, and support — all under one roof. One person accountable, no agency handoffs to junior developers.</p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06] flex items-center justify-between text-xs font-mono text-editorial-gray">
+            <span>No Agency Handoffs</span>
+            <span class="text-moss font-semibold group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+
+        <!-- Bento 05 -->
+        <div class="frosted-card rounded-[20px] p-7 flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-mono text-moss uppercase tracking-wider font-semibold">Governance</span>
+              <span class="text-xs font-mono text-editorial-gray">05</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-3 group-hover:text-moss transition-colors">Your Team Stays in Control</h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">Every system ships with full documentation and handoff training. No black boxes, no locked vendor dependencies, and total code transparency.</p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06] flex items-center justify-between text-xs font-mono text-editorial-gray">
+            <span>Full Handoff Training</span>
+            <span class="text-moss font-semibold group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+
+        <!-- Bento 06 -->
+        <div class="frosted-card rounded-[20px] p-7 flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-mono text-moss uppercase tracking-wider font-semibold">Privacy &amp; Defense</span>
+              <span class="text-xs font-mono text-editorial-gray">06</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-3 group-hover:text-moss transition-colors">Private, Secure by Default</h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">Self-hosted models, on-prem deployments, private AI environments. Your data never leaves your infrastructure unless you explicitly choose it to.</p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06] flex items-center justify-between text-xs font-mono text-editorial-gray">
+            <span>Self-Hosted Models</span>
+            <span class="text-moss font-semibold group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 02: TECHNICAL SERVICES CATALOG & ARCHITECTURE PACKAGES           -->
+    <!-- ========================================================================= -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 border-t border-black/[0.05]" id="services">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="text-xs font-mono font-medium uppercase tracking-wider text-moss mb-2">// 02. SERVICES CATALOG</div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-editorial-dark">
+            Production AI Architecture Services
+          </h2>
+        </div>
+        <div class="flex flex-wrap gap-2" id="service-filters">
+          <button class="service-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-editorial-dark text-white" data-category="all" onclick="filterServices('all')">All Offerings</button>
+          <button class="service-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-white text-editorial-gray border border-editorial-border hover:border-moss/40 hover:text-moss" data-category="rag" onclick="filterServices('rag')">Enterprise RAG</button>
+          <button class="service-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-white text-editorial-gray border border-editorial-border hover:border-moss/40 hover:text-moss" data-category="agents" onclick="filterServices('agents')">Autonomous Agents</button>
+          <button class="service-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-white text-editorial-gray border border-editorial-border hover:border-moss/40 hover:text-moss" data-category="fine-tune" onclick="filterServices('fine-tune')">Custom Fine-Tuning</button>
+          <button class="service-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-white text-editorial-gray border border-editorial-border hover:border-moss/40 hover:text-moss" data-category="cloud" onclick="filterServices('cloud')">Cloud Infrastructure</button>
+        </div>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Service Card 1: Enterprise RAG -->
+        <div class="service-card frosted-card rounded-2xl p-8 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300" data-cat="rag">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-moss/10 text-moss text-[11px] font-mono font-semibold">
+                High-Precision Retrieval
+              </span>
+              <span class="text-xs font-mono text-editorial-gray">01 / RAG</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-editorial-dark mb-3">Enterprise RAG &amp; Neural Search Engines</h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
+              Custom retrieval-augmented generation pipelines tailored to internal wikis, legal repositories, and massive multi-tenant databases. Featuring hybrid BM25 + dense vector embeddings, semantic re-ranking, and automated DeepEval evaluation suites to guarantee sub-0.05 hallucination rates.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Pinecone / Qdrant</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">LangChain</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">DeepEval Guardrails</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">FastAPI</span>
+            </div>
+          </div>
+          <div class="pt-5 border-t border-black/[0.06] flex items-center justify-between">
+            <span class="text-xs font-mono text-editorial-gray">Turnaround: 1–3 Weeks</span>
+            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1" href="mailto:harral008@gmail.com?subject=Enterprise%20RAG%20Inquiry">
+              Scope This System →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 2: Autonomous Agents -->
+        <div class="service-card frosted-card rounded-2xl p-8 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300" data-cat="agents">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-mono font-semibold">
+                Self-Healing Automation
+              </span>
+              <span class="text-xs font-mono text-editorial-gray">02 / AGENTS</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-editorial-dark mb-3">Autonomous Multi-Agent Workflows</h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
+              Coordinated AI agents with deterministic tool-calling APIs, persistent state graphs, and automated human-in-the-loop validation checkpoints. Replaces fragile script pipelines with robust agent networks executing lead enrichment, support triage, and invoice reconciliation.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">LangGraph / CrewAI</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Temporal / Celery</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">PostgreSQL State</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Webhooks &amp; ERP</span>
+            </div>
+          </div>
+          <div class="pt-5 border-t border-black/[0.06] flex items-center justify-between">
+            <span class="text-xs font-mono text-editorial-gray">Turnaround: 2–4 Weeks</span>
+            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1" href="mailto:harral008@gmail.com?subject=Agentic%20Workflow%20Inquiry">
+              Scope This System →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 3: Custom Fine-Tuning -->
+        <div class="service-card frosted-card rounded-2xl p-8 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300" data-cat="fine-tune">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-moss/10 text-moss text-[11px] font-mono font-semibold">
+                Sovereign Model Hosting
+              </span>
+              <span class="text-xs font-mono text-editorial-gray">03 / MODELS</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-editorial-dark mb-3">Custom LLM Fine-Tuning &amp; Private Inference</h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
+              Adapt open-weight models (Llama 3, Mistral, Qwen) using domain-specific dataset curation and LoRA/QLoRA parameter-efficient adapters. Deployed on dedicated private GPUs via vLLM or Ollama for total compliance, zero data leakage, and drastically reduced token costs.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">vLLM Inference Engine</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">LoRA / QLoRA</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Hugging Face</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Air-Gapped VPC</span>
+            </div>
+          </div>
+          <div class="pt-5 border-t border-black/[0.06] flex items-center justify-between">
+            <span class="text-xs font-mono text-editorial-gray">Turnaround: 2–3 Weeks</span>
+            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1" href="mailto:harral008@gmail.com?subject=LLM%20Fine-Tuning%20Inquiry">
+              Scope This System →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 4: Cloud Infrastructure -->
+        <div class="service-card frosted-card rounded-2xl p-8 border border-black/[0.07] flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300" data-cat="cloud">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-mono font-semibold">
+                Sub-15ms Latency
+              </span>
+              <span class="text-xs font-mono text-editorial-gray">04 / INFRA</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-editorial-dark mb-3">Resilient Cloud &amp; Full-Stack AI Software</h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
+              High-concurrency full-stack web and mobile backends designed for streaming LLM tokens, WebSockets, rate-limited user sessions, and real-time observability. End-to-end containerized deployment with Terraform, automated GitHub Actions CI/CD, and Prometheus telemetry.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">FastAPI + Next.js</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Docker / K8s</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Terraform</span>
+              <span class="px-2.5 py-1 rounded-md bg-black/[0.04] text-[11px] font-mono text-editorial-dark">Redis Caching</span>
+            </div>
+          </div>
+          <div class="pt-5 border-t border-black/[0.06] flex items-center justify-between">
+            <span class="text-xs font-mono text-editorial-gray">Turnaround: 3–5 Weeks</span>
+            <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1" href="mailto:harral008@gmail.com?subject=Cloud%20Architecture%20Inquiry">
+              Scope This System →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================================= -->
+      <!-- INTERACTIVE PROJECT SCOPE & COST ESTIMATOR WIDGET                       -->
+      <!-- ======================================================================= -->
+      <div class="mt-16 frosted-card rounded-[28px] p-8 sm:p-12 border border-moss/20 bg-gradient-to-br from-white via-white to-moss-soft/50 shadow-glass" id="scope-estimator">
+        <div class="max-w-3xl mb-8">
+          <div class="text-xs font-mono font-semibold uppercase tracking-wider text-moss mb-2">// SCOPE CALCULATOR</div>
+          <h3 class="font-display text-2xl sm:text-3xl font-bold text-editorial-dark">
+            Interactive Project Scope &amp; Investment Estimator
+          </h3>
+          <p class="text-editorial-gray text-sm mt-2">
+            Configure your technical requirements to generate an instant estimate. Once configured, lock in your scope via direct WhatsApp or Email with Shahroz.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Controls Column -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Step 1: System Type -->
+            <div>
+              <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-editorial-dark mb-2.5">
+                1. Select Architecture Paradigm:
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <button type="button" class="scope-cat-btn px-3 py-2.5 rounded-xl border text-left transition-all border-moss bg-moss text-white" data-val="rag" onclick="setScopeCategory('rag', 3200, 'Custom AI / RAG System')">
+                  <div class="text-xs font-bold">RAG Knowledge Base</div>
+                  <div class="text-[10px] opacity-80 font-mono mt-0.5">$3,200 base</div>
+                </button>
+                <button type="button" class="scope-cat-btn px-3 py-2.5 rounded-xl border border-editorial-border bg-white text-editorial-dark text-left transition-all hover:border-moss/40" data-val="agents" onclick="setScopeCategory('agents', 4500, 'Multi-Agent Automation')">
+                  <div class="text-xs font-bold">Multi-Agent Workflow</div>
+                  <div class="text-[10px] opacity-80 font-mono mt-0.5">$4,500 base</div>
+                </button>
+                <button type="button" class="scope-cat-btn px-3 py-2.5 rounded-xl border border-editorial-border bg-white text-editorial-dark text-left transition-all hover:border-moss/40" data-val="sovereign" onclick="setScopeCategory('sovereign', 6800, 'Enterprise Sovereign Platform')">
+                  <div class="text-xs font-bold">Sovereign Platform</div>
+                  <div class="text-[10px] opacity-80 font-mono mt-0.5">$6,800 base</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Scale & Velocity -->
+            <div>
+              <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-editorial-dark mb-2.5">
+                2. Deployment Velocity &amp; Hardening:
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <button type="button" class="scope-scale-btn px-3 py-2.5 rounded-xl border text-left transition-all border-moss bg-moss text-white" data-scale="mvp" onclick="setScopeScale('mvp', 1.0, '1–2 Weeks (Rapid MVP)')">
+                  <div class="text-xs font-bold">Rapid MVP</div>
+                  <div class="text-[10px] opacity-80 font-mono mt-0.5">1–2 Weeks</div>
+                </button>
+                <button type="button" class="scope-scale-btn px-3 py-2.5 rounded-xl border border-editorial-border bg-white text-editorial-dark text-left transition-all hover:border-moss/40" data-scale="hardened" onclick="setScopeScale('hardened', 1.35, '3–4 Weeks (Hardened Production)')">
+                  <div class="text-xs font-bold">Production Scale</div>
+                  <div class="text-[10px] opacity-80 font-mono mt-0.5">3–4 Weeks</div>
+                </button>
+                <button type="button" class="scope-scale-btn px-3 py-2.5 rounded-xl border border-editorial-border bg-white text-editorial-dark text-left transition-all hover:border-moss/40" data-scale="enterprise" onclick="setScopeScale('enterprise', 1.75, '5–6 Weeks (Enterprise Complete)')">
+                  <div class="text-xs font-bold">Full Enterprise</div>
+                  <div class="text-[10px] opacity-80 font-mono mt-0.5">5–6 Weeks</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Add-on Capabilities -->
+            <div>
+              <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-editorial-dark mb-2.5">
+                3. Specialized Add-On Modules:
+              </label>
+              <div class="space-y-2">
+                <label class="flex items-center justify-between p-3 rounded-xl border border-black/[0.07] bg-white cursor-pointer hover:border-moss/40 transition-colors">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" id="addon-whatsapp" class="rounded text-moss focus:ring-moss border-gray-300" onchange="calculateScope()">
+                    <span class="text-xs font-medium text-editorial-dark">WhatsApp / Telegram Assistant Webhook Gateway</span>
+                  </div>
+                  <span class="text-xs font-mono text-moss font-semibold">+$650</span>
+                </label>
+                <label class="flex items-center justify-between p-3 rounded-xl border border-black/[0.07] bg-white cursor-pointer hover:border-moss/40 transition-colors">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" id="addon-vectordb" class="rounded text-moss focus:ring-moss border-gray-300" onchange="calculateScope()">
+                    <span class="text-xs font-medium text-editorial-dark">Automated Vector Ingestion Pipeline (ETL Sync)</span>
+                  </div>
+                  <span class="text-xs font-mono text-moss font-semibold">+$800</span>
+                </label>
+                <label class="flex items-center justify-between p-3 rounded-xl border border-black/[0.07] bg-white cursor-pointer hover:border-moss/40 transition-colors">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" id="addon-sla" class="rounded text-moss focus:ring-moss border-gray-300" onchange="calculateScope()">
+                    <span class="text-xs font-medium text-editorial-dark">30-Day Dedicated Post-Launch SLA &amp; Support</span>
+                  </div>
+                  <span class="text-xs font-mono text-moss font-semibold">+$750</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Summary & Instant Action Card -->
+          <div class="lg:col-span-5 bg-white rounded-2xl p-6 sm:p-7 border border-black/[0.08] shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono uppercase tracking-wider text-editorial-gray mb-1">Estimated Investment</div>
+              <div class="text-4xl sm:text-5xl font-mono font-bold text-editorial-dark tracking-tight" id="estimate-price-display">
+                $3,200
+              </div>
+              
+              <div class="mt-6 pt-5 border-t border-black/[0.06] space-y-2 text-xs font-mono">
+                <div class="flex justify-between text-editorial-gray">
+                  <span>Selected System:</span>
+                  <span class="text-editorial-dark font-medium" id="summary-category">Custom AI / RAG System</span>
+                </div>
+                <div class="flex justify-between text-editorial-gray">
+                  <span>Delivery Velocity:</span>
+                  <span class="text-editorial-dark font-medium" id="summary-timeline">1–2 Weeks (Rapid MVP)</span>
+                </div>
+                <div class="flex justify-between text-editorial-gray">
+                  <span>Direct Architect:</span>
+                  <span class="text-moss font-semibold">Shahroz Ahmed</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-5 border-t border-black/[0.06] space-y-2.5">
+              <!-- WhatsApp Lock-in CTA -->
+              <a id="btn-lock-scope" href="#" class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm" target="_blank" rel="noopener noreferrer">
+                <span>Lock In Scope on WhatsApp</span>
+                <span>→</span>
+              </a>
+
+              <!-- Email Scope Summary CTA -->
+              <a id="btn-email-scope" href="#" class="w-full py-2.5 px-4 rounded-xl border border-editorial-border bg-white hover:bg-moss-soft hover:text-moss text-editorial-dark text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
+                <span>Email Scope to Shahroz</span>
+                <span>✉</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 03: WHO BUILDS THIS — SHAHROZ AHMED PROFILE                      -->
+    <!-- ========================================================================= -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10" id="who-builds-this">
+      <div class="mb-12">
+        <div class="text-xs font-mono font-medium uppercase tracking-wider text-moss mb-2">// 03. WHO BUILDS THIS</div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-editorial-dark">
+          Shahroz Ahmed
+        </h2>
+        <p class="text-sm font-normal text-editorial-gray mt-2">
+          Senior IT &amp; AI Solutions Architect · 7+ years architecting and shipping enterprise software
+        </p>
+      </div>
+
+      <div class="frosted-card rounded-[24px] p-6 sm:p-10 shadow-glass border border-black/[0.08]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Avatar Column -->
+          <div class="lg:col-span-4 flex flex-col items-center text-center">
+            <div class="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-2 border-moss/40 p-1 bg-white shadow-xl mb-4 group">
+              <img 
+                alt="Shahroz Ahmed" 
+                class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-300 transform group-hover:scale-105" 
+                src="assets/shahroz_avatar.png">
+            </div>
+            <span class="font-display font-bold text-xl text-editorial-dark">Shahroz Ahmed</span>
+            <span class="text-xs font-mono text-moss mt-0.5">Senior IT &amp; AI Solutions Architect</span>
+            
+            <div class="flex items-center gap-2 mt-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono bg-moss-soft text-moss font-semibold border border-moss/20">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                7+ Years Experience
+              </span>
+            </div>
+          </div>
+
+          <!-- Bio & Highlights Column -->
+          <div class="lg:col-span-8">
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-editorial-dark mb-4 leading-snug">
+              Turning AI from a vague theoretical concept into robust software that scales, performs, and creates quantifiable ROI.
+            </h3>
+            
+            <p class="text-editorial-gray text-sm sm:text-base leading-relaxed mb-6">
+              I have collaborated with engineering teams and business leadership across the globe — turning complex neural architectures, RAG pipelines, and agentic workflows into production-grade reality. Strategy through deployment, with absolute zero handoffs to junior developers. My open-source code and technical implementations are accessible on GitHub, allowing you to evaluate the engineering standard before you ever book a call.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-b border-black/[0.06] py-4 mb-6 text-xs font-mono">
+              <div>
+                <div class="text-xl font-bold text-moss">50+ Systems</div>
+                <div class="text-editorial-gray text-[11px]">Deployed Worldwide</div>
+              </div>
+              <div>
+                <div class="text-xl font-bold text-moss">Zero Handoffs</div>
+                <div class="text-editorial-gray text-[11px]">Direct Architect Accountability</div>
+              </div>
+              <div>
+                <div class="text-xl font-bold text-moss">100% Proven</div>
+                <div class="text-editorial-gray text-[11px]">Transparent GitHub Architecture</div>
+              </div>
+            </div>
+
+            <!-- Profile Action Links -->
+            <div class="flex flex-wrap items-center gap-4">
+              <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-editorial-dark text-white text-xs font-semibold hover:bg-moss transition-colors shadow-sm" href="mailto:harral008@gmail.com?subject=Consultation%20with%20Shahroz">
+                <span>Book a Strategy Call</span>
+                <span>→</span>
+              </a>
+
+              <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-editorial-dark border border-editorial-border hover:border-moss/40 hover:text-moss text-xs font-semibold transition-colors shadow-sm" href="https://github.com/Shahroz-Harral" target="_blank" rel="noopener noreferrer">
+                <span>GitHub Profile</span>
+                <span>↗</span>
+              </a>
+
+              <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60 hover:bg-emerald-100 text-xs font-semibold transition-colors shadow-sm" href="https://wa.me/923349791008" target="_blank" rel="noopener noreferrer">
+                <span>WhatsApp Shahroz</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 04: TECHNICAL BLOG & APPLIED INSIGHTS                             -->
+    <!-- ========================================================================= -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 border-t border-black/[0.05]" id="blog">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="text-xs font-mono font-medium uppercase tracking-wider text-moss mb-2">// 04. FROM THE BLOG</div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-editorial-dark">
+            AI, explained and applied
+          </h2>
+        </div>
+        <a class="text-xs font-mono font-semibold text-moss hover:underline inline-flex items-center gap-1.5" href="https://github.com/Shahroz-Harral" target="_blank" rel="noopener noreferrer">
+          <span>All research &amp; repositories</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Article 1 -->
+        <div class="frosted-card rounded-[20px] p-7 flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group border border-black/[0.06]">
+          <div>
+            <div class="text-[11px] font-mono text-moss mb-3 font-semibold">
+              August 16, 2026 · 5 min read
+            </div>
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-3 group-hover:text-moss transition-colors leading-snug">
+              5 Ways Your AI Agent Will Get Hacked (And How to Stop Each One)
+            </h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
+              Prompt injection is just the baseline. Here are the five real threat categories that kill production AI agents — from tool parameter poisoning to credential leakage — and the architectural mitigation for each.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06] text-xs font-mono text-editorial-gray flex justify-between items-center">
+            <span class="text-editorial-dark font-medium">Read article</span>
+            <span class="text-moss font-semibold group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="frosted-card rounded-[20px] p-7 flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group border border-black/[0.06]">
+          <div>
+            <div class="text-[11px] font-mono text-moss mb-3 font-semibold">
+              July 20, 2026 · 4 min read
+            </div>
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-3 group-hover:text-moss transition-colors leading-snug">
+              How AI Is Actually Being Used in Healthcare (Beyond the Hype)
+            </h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
+              Most healthcare AI applications delivering real ROI are utilitarian — clinical note synthesis, patient triage routing, and compliance audits. An analysis of what actually works today versus venture hype.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06] text-xs font-mono text-editorial-gray flex justify-between items-center">
+            <span class="text-editorial-dark font-medium">Read article</span>
+            <span class="text-moss font-semibold group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="frosted-card rounded-[20px] p-7 flex flex-col justify-between hover:shadow-glass-hover transition-all duration-300 group border border-black/[0.06]">
+          <div>
+            <div class="text-[11px] font-mono text-moss mb-3 font-semibold">
+              July 17, 2026 · 3 min read
+            </div>
+            <h3 class="font-display text-xl font-bold text-editorial-dark mb-3 group-hover:text-moss transition-colors leading-snug">
+              The AI Receptionist: How Businesses Stop Losing Inbound Deals
+            </h3>
+            <p class="text-editorial-gray text-sm leading-relaxed mb-6">
+              Prospective clients who reach an answering machine rarely call back. An automated AI voice &amp; WhatsApp receptionist qualifies leads 24/7, syncs directly with calendar schedules, and costs a fraction of an agency hire.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06] text-xs font-mono text-editorial-gray flex justify-between items-center">
+            <span class="text-editorial-dark font-medium">Read article</span>
+            <span class="text-moss font-semibold group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 05: CLIENT TESTIMONIALS                                           -->
+    <!-- ========================================================================= -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 border-t border-black/[0.05]" id="testimonials">
+      <div class="mb-12">
+        <div class="text-xs font-mono font-medium uppercase tracking-wider text-moss mb-2">// 05. CLIENT TESTIMONIALS</div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-editorial-dark">
+          What clients say: Results, in their words
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <!-- Testimonial 1 -->
+        <div class="frosted-card rounded-2xl p-7 border border-black/[0.06] flex flex-col justify-between shadow-sm hover:shadow-glass-hover transition-all">
+          <div>
+            <div class="text-moss text-3xl font-serif mb-3 leading-none">“</div>
+            <p class="text-editorial-dark text-sm sm:text-base italic leading-relaxed mb-6 font-serif">
+              Shahroz automated our entire client onboarding workflow. What used to take our team 3 hours per client now runs itself in minutes. The ROI was visible within the first week.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06]">
+            <div class="font-display font-bold text-sm text-editorial-dark">Sarah K.</div>
+            <div class="text-xs font-mono text-editorial-gray mt-0.5">Operations Director · SaaS Startup, UK</div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="frosted-card rounded-2xl p-7 border border-black/[0.06] flex flex-col justify-between shadow-sm hover:shadow-glass-hover transition-all">
+          <div>
+            <div class="text-moss text-3xl font-serif mb-3 leading-none">“</div>
+            <p class="text-editorial-dark text-sm sm:text-base italic leading-relaxed mb-6 font-serif">
+              We were sceptical about AI actually fitting our niche. Shahroz spent real time understanding how we operate before writing a single line of code. The result works exactly the way we do.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06]">
+            <div class="font-display font-bold text-sm text-editorial-dark">Marcus T.</div>
+            <div class="text-xs font-mono text-editorial-gray mt-0.5">Founder · Logistics Company, Germany</div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="frosted-card rounded-2xl p-7 border border-black/[0.06] flex flex-col justify-between shadow-sm hover:shadow-glass-hover transition-all">
+          <div>
+            <div class="text-moss text-3xl font-serif mb-3 leading-none">“</div>
+            <p class="text-editorial-dark text-sm sm:text-base italic leading-relaxed mb-6 font-serif">
+              The voice and WhatsApp messaging agents Shahroz built handle 80% of our inbound enquiries without any human involvement. Our team now focuses entirely on closing high-value deals.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-black/[0.06]">
+            <div class="font-display font-bold text-sm text-editorial-dark">Priya M.</div>
+            <div class="text-xs font-mono text-editorial-gray mt-0.5">Head of Sales · B2B Services, UAE</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================================= -->
+      <!-- SECTION 06: READY TO TALK / START WITH CLARITY                          -->
+      <!-- ======================================================================= -->
+      <div class="frosted-card rounded-[28px] p-8 sm:p-14 border border-moss/20 bg-gradient-to-br from-white via-moss-soft/40 to-[#EBF3ED]/50 shadow-glass text-center max-w-4xl mx-auto" id="ready-to-talk">
+        <div class="text-xs font-mono uppercase tracking-wider text-moss mb-3 font-semibold">// START WITH CLARITY</div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-editorial-dark mb-4">
+          Ready to talk?
+        </h2>
+        <p class="text-editorial-gray text-base sm:text-lg max-w-xl mx-auto mb-8">
+          Get direct clarity on where AI can realistically create value in your business. Start with an architectural strategy session.
+        </p>
+        
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-6">
+          <a class="px-6 py-3.5 rounded-full bg-editorial-dark text-white text-sm font-semibold hover:bg-moss transition-colors shadow-md flex items-center gap-2" href="mailto:harral008@gmail.com?subject=AI%20Strategy%20Call%20Booking">
+            <span>Book a Free AI Strategy Call</span>
+            <span>→</span>
+          </a>
+
+          <a class="px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors shadow-sm flex items-center gap-2" href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20book%20an%20AI%20strategy%20session" target="_blank" rel="noopener noreferrer">
+            <span class="w-2 h-2 rounded-full bg-white"></span>
+            <span>WhatsApp Shahroz</span>
+          </a>
+        </div>
+
+        <p class="text-xs font-mono text-editorial-gray">
+          Direct email: <a class="text-moss font-semibold hover:underline" href="mailto:harral008@gmail.com">harral008@gmail.com</a> · Direct WhatsApp: <a class="text-moss font-semibold hover:underline" href="https://wa.me/923349791008">+92 334 9791008</a> · Response within 24 business hours.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE-OUT ARIA AI TECH ADVISOR DRAWER                                     -->
+  <!-- ========================================================================= -->
+  <div class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="ai-drawer-backdrop" onclick="toggleAiDrawer(false)"></div>
+  <aside class="fixed top-0 right-0 h-full w-full max-w-md bg-white/95 backdrop-blur-2xl border-l border-black/[0.08] shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between" id="ai-drawer" aria-label="Aria AI Architecture Advisor">
+    
+    <!-- Drawer Header -->
+    <div class="p-5 border-b border-black/[0.06] flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-moss text-white font-display font-bold flex items-center justify-center text-xs shadow-sm">
+          A
+        </div>
+        <div>
+          <div class="text-sm font-bold text-editorial-dark flex items-center gap-2">
+            Aria — Architecture Advisor
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          </div>
+          <div class="text-[10px] font-mono text-editorial-gray">Trained on Shahroz Ahmed's Tech Stack</div>
+        </div>
+      </div>
+      <button class="w-8 h-8 rounded-full hover:bg-black/[0.05] flex items-center justify-center text-editorial-gray hover:text-editorial-dark transition-colors text-lg" onclick="toggleAiDrawer(false)" aria-label="Close Advisor Drawer">
+        ×
+      </button>
+    </div>
+
+    <!-- Chat Messages Window -->
+    <div class="flex-1 p-5 overflow-y-auto space-y-4 text-xs" id="chat-messages">
+      <div class="flex items-start gap-2.5">
+        <div class="w-6 h-6 rounded-full bg-moss text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">A</div>
+        <div class="bg-moss-soft p-3.5 rounded-2xl rounded-tl-sm text-editorial-dark max-w-[85%] border border-moss/10 leading-relaxed">
+          Hello! I'm Aria, Shahroz's technical architecture assistant. How can I help you scope an AI architecture, RAG knowledge base, or full-stack software system today?
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggested Prompt Chips & Input -->
+    <div class="p-4 border-t border-black/[0.06] bg-white space-y-3">
+      <div class="flex flex-wrap gap-1.5">
+        <button class="text-[10px] font-mono bg-black/[0.03] hover:bg-moss-soft hover:text-moss text-editorial-dark px-2.5 py-1 rounded-full border border-black/[0.05] transition-colors" onclick="sendQuickPrompt('How do you prevent hallucinations in RAG?')">
+          RAG Hallucination Guardrails?
+        </button>
+        <button class="text-[10px] font-mono bg-black/[0.03] hover:bg-moss-soft hover:text-moss text-editorial-dark px-2.5 py-1 rounded-full border border-black/[0.05] transition-colors" onclick="sendQuickPrompt('What is the typical MVP turnaround time?')">
+          MVP Turnaround?
+        </button>
+        <button class="text-[10px] font-mono bg-black/[0.03] hover:bg-moss-soft hover:text-moss text-editorial-dark px-2.5 py-1 rounded-full border border-black/[0.05] transition-colors" onclick="sendQuickPrompt('Can you integrate a WhatsApp bot with our backend?')">
+          WhatsApp Bot Integration?
+        </button>
+        <button class="text-[10px] font-mono bg-black/[0.03] hover:bg-moss-soft hover:text-moss text-editorial-dark px-2.5 py-1 rounded-full border border-black/[0.05] transition-colors" onclick="sendQuickPrompt('Do you deploy self-hosted models on our own AWS/GCP?')">
+          Self-Hosted vs API Models?
+        </button>
+      </div>
+
+      <!-- Input Bar -->
+      <form class="flex gap-2" onsubmit="handleChatSubmit(event)">
+        <input class="flex-1 text-xs px-3.5 py-2.5 rounded-xl border border-black/[0.1] focus:ring-1 focus:ring-moss focus:border-moss outline-none transition-all" id="chat-input-field" placeholder="Ask a technical architecture question..." type="text">
+        <button class="px-4 py-2.5 rounded-xl bg-editorial-dark hover:bg-moss text-white text-xs font-semibold transition-colors" type="submit">
+          Send
+        </button>
+      </form>
+    </div>
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- FLOATING WHATSAPP QUICK-CONNECT BUTTON                                    -->
+  <!-- ========================================================================= -->
+  <aside class="fixed bottom-6 right-6 z-40" id="floating-whatsapp">
+    <a aria-label="Direct WhatsApp Message to Shahroz" class="group relative flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500 text-white shadow-xl hover:scale-105 transition-all duration-300 hover:bg-emerald-600" href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20discuss%20an%20AI%20or%20Software%20project." rel="noopener noreferrer" target="_blank">
+      <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white animate-ping"></span>
+      <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white"></span>
+      
+      <!-- WhatsApp Icon SVG -->
+      <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766 0-3.18-2.586-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.057-1.121-.082-.26-.086-.593-.207-1.025-.395-1.815-.788-3.003-2.617-3.094-2.738-.09-.12-1.229-1.635-1.229-3.118 0-1.483.774-2.214 1.05-2.515.275-.3.599-.375.799-.375.2 0 .399.002.574.01.187.009.437-.07.686.527.261.624.896 2.186.974 2.346.078.16.13.348.026.557-.104.208-.156.338-.312.521-.156.182-.328.406-.468.545-.156.155-.319.324-.137.636.182.312.809 1.334 1.734 2.158 1.189 1.06 2.19 1.388 2.502 1.544.312.156.495.13.677-.078.182-.208.78-.91 1.015-1.222.234-.312.469-.26.78-.156.312.104 1.977.933 2.315 1.102.338.169.564.252.646.395.083.143.083.827-.061 1.232z"></path>
+      </svg>
+      
+      <!-- Tooltip Bubble -->
+      <span class="absolute right-16 px-3 py-1.5 rounded-lg bg-editorial-dark text-white text-[11px] font-mono whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+        Chat directly with Shahroz
+      </span>
+    </a>
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- EDITORIAL MINIMALIST FOOTER                                              -->
+  <!-- ========================================================================= -->
+  <footer class="border-t border-black/[0.08] bg-white/70 py-16 px-4 sm:px-6 lg:px-8 relative z-10" id="site-footer">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-black/[0.06]">
+      
+      <div class="md:col-span-2">
+        <div class="font-display font-bold text-xl text-editorial-dark tracking-tight">SHAHROZ AHMED</div>
+        <p class="text-xs font-mono text-editorial-gray mt-1">
+          Senior IT &amp; AI Solutions Architect
+        </p>
+        <p class="text-xs text-editorial-gray/80 mt-2 max-w-sm leading-relaxed">
+          Strategy through deployment — fully built, battle-tested, done right, and delivered fast. Direct email: harral008@gmail.com
+        </p>
+      </div>
+
+      <div>
+        <div class="text-xs font-mono uppercase font-semibold text-editorial-dark mb-3">Navigation</div>
+        <div class="flex flex-col space-y-2 text-xs font-mono text-editorial-gray">
+          <a class="hover:text-moss transition-colors" href="#why-it-works">Why It Works</a>
+          <a class="hover:text-moss transition-colors" href="#services">Services Catalog</a>
+          <a class="hover:text-moss transition-colors" href="#scope-estimator">Cost Estimator</a>
+          <a class="hover:text-moss transition-colors" href="#who-builds-this">About Shahroz</a>
+          <a class="hover:text-moss transition-colors" href="#blog">Blog &amp; Insights</a>
+          <a class="hover:text-moss transition-colors" href="#testimonials">Testimonials</a>
+          <a class="hover:text-moss transition-colors text-moss font-semibold" href="mailto:harral008@gmail.com?subject=AI%20Strategy%20Call">Book a Call</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="text-xs font-mono uppercase font-semibold text-editorial-dark mb-3">Connect &amp; Social</div>
+        <div class="flex flex-col space-y-2 text-xs font-mono text-editorial-gray">
+          <a class="hover:text-moss transition-colors" href="https://github.com/Shahroz-Harral" target="_blank" rel="noopener noreferrer">GitHub Profile ↗</a>
+          <a class="hover:text-moss transition-colors" href="https://wa.me/923349791008" target="_blank" rel="noopener noreferrer">WhatsApp Direct ↗</a>
+          <a class="hover:text-moss transition-colors" href="mailto:harral008@gmail.com">harral008@gmail.com</a>
+          <a class="hover:text-moss transition-colors text-moss font-semibold" href="#ready-to-talk">Free Strategy Consultation</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-editorial-gray gap-4">
+      <div>
+        © 2026 Shahroz Ahmed. All rights reserved.
+      </div>
+      <div class="flex items-center gap-6">
+        <a class="hover:text-moss transition-colors" href="mailto:harral008@gmail.com">harral008@gmail.com</a>
+        <a class="hover:text-moss transition-colors" href="#">Privacy &amp; Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT LOGIC SCRIPTS                                                  -->
+  <!-- ========================================================================= -->
+  <script>
+    // ---------------------------------------------------------------------------
+    // 1. Framer Aurora Parallax Physics Engine
+    // ---------------------------------------------------------------------------
+    const heroTrack = document.getElementById('heroTrack');
+    const heroStickyFrame = document.getElementById('heroStickyFrame');
+    const heroArea = document.getElementById('hero-area');
+    const framerBgMotion = document.getElementById('framerBgMotion');
+    const heroGradientOverlay = document.getElementById('heroGradientOverlay');
+    const heroArch = document.getElementById('hero-arch');
+    const archMovingGlow = document.getElementById('archMovingGlow');
+    const archLightHighlight = document.getElementById('archLightHighlight');
+    const heroContentStack = document.getElementById('heroContentStack');
+    const heroScrollLine = document.getElementById('heroScrollLine');
+    const siteHeader = document.getElementById('primary-header');
+
+    let scrollProgress = 0;
+    let targetProgress = 0;
+
+    function calculateScrollProgress() {
+      if (!heroTrack) return;
+      const trackRect = heroTrack.getBoundingClientRect();
+      const totalDistance = heroTrack.offsetHeight - window.innerHeight;
+      if (totalDistance <= 0) return;
+      
+      const scrolled = -trackRect.top;
+      const progress = Math.min(Math.max(scrolled / totalDistance, 0), 1);
+      targetProgress = progress;
+
+      // Header glass transition on scroll
+      if (siteHeader) {
+        if (window.scrollY > 80) {
+          siteHeader.classList.add('header-scrolled');
+        } else {
+          siteHeader.classList.remove('header-scrolled');
+        }
+      }
+    }
+
+    function updateFramerArchPhysics(f) {
+      if (!heroArea || !heroArch) return;
+
+      // 1. Background Scroll Motion: top = -277 * f (px)
+      if (framerBgMotion) {
+        const bgTop = -277 * f;
+        framerBgMotion.style.top = `${bgTop}px`;
+      }
+
+      // 2. Soft Grey Arch: translateY = -160 * f (px)
+      if (heroArch) {
+        const archTranslateY = -160 * f;
+        heroArch.style.transform = `translateY(${archTranslateY}px)`;
+      }
+
+      // 3. Hero Gradient Overlay: top = 104 - 201 * f (px)
+      if (heroGradientOverlay) {
+        const overlayTop = 104 - 201 * f;
+        heroGradientOverlay.style.top = `${overlayTop}px`;
+      }
+
+      // 4 & 5. Elliptical Rim Calculations for Arch Light Highlight & Moving Glow
+      const heroRect = heroArea.getBoundingClientRect();
+      const archRect = heroArch.getBoundingClientRect();
+
+      if (heroRect.width > 0 && heroRect.height > 0 && archRect.width > 0 && archRect.height > 0) {
+        const o = archRect.left - heroRect.left + archRect.width / 2; // Center X
+        const l = archRect.top - heroRect.top + archRect.height / 2;   // Center Y
+        const u = archRect.width / 2;                                  // Radius X
+        const d = archRect.height / 2;                                 // Radius Y
+
+        const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+
+        const m = -Math.acos(clamp((heroRect.width - o) / u, -1, 1));
+        const h = -Math.acos(clamp((0 - o) / u, -1, 1));
+        const g = Math.asin(clamp((heroRect.height - l) / d, -1, 0));
+
+        const minAngle = Math.min(m, g);
+        const maxAngle = Math.max(h, -Math.PI - g);
+
+        // Interpolate angle based on scroll progress f:
+        const angle = minAngle + (maxAngle - minAngle) * f;
+
+        // Calculate perimeter (x, y) coordinates:
+        const ee = o + u * Math.cos(angle);
+        const te = l + d * Math.sin(angle);
+
+        // Tangent direction vectors:
+        const b = -u * Math.sin(angle);
+        const ne = d * Math.cos(angle);
+        const re = (Math.atan2(ne, b) * 180) / Math.PI;
+
+        // Apply to Arch Light Highlight (#archLightHighlight):
+        if (archLightHighlight) {
+          archLightHighlight.style.left = `${ee}px`;
+          archLightHighlight.style.top = `${te}px`;
+          archLightHighlight.style.transform = `translate(-50%, -50%) rotate(${re}deg)`;
+        }
+
+        // Apply to Arch Moving Gradient Glow (#archMovingGlow):
+        if (archMovingGlow) {
+          archMovingGlow.style.left = `${ee}px`;
+          archMovingGlow.style.top = `${te}px`;
+          archMovingGlow.style.transform = `translate(-50%, -50%) rotate(${re}deg)`;
+        }
+      }
+    }
+
+    function updateHeroUiDynamics(progress) {
+      if (!heroContentStack) return;
+      const fadeStart = 0.20;
+      const fadeEnd = 0.85;
+
+      let uiOpacity = 1;
+      let uiTranslateY = 0;
+      let uiBlur = 0;
+
+      if (progress > fadeStart) {
+        const factor = Math.min((progress - fadeStart) / (fadeEnd - fadeStart), 1);
+        uiOpacity = Math.max(1 - factor * 1.25, 0);
+        uiTranslateY = -factor * 45;
+        uiBlur = factor * 6;
+      }
+
+      heroContentStack.style.opacity = uiOpacity.toFixed(3);
+      heroContentStack.style.transform = `translateY(${uiTranslateY.toFixed(1)}px)`;
+      heroContentStack.style.filter = uiBlur > 0 ? `blur(${uiBlur.toFixed(1)}px)` : 'none';
+
+      if (heroScrollLine) {
+        const beam = heroScrollLine.querySelector('.line-beam');
+        if (beam) {
+          const lineScale = 0.4 + progress * 0.6;
+          beam.style.transform = `scaleY(${lineScale})`;
+          beam.style.opacity = (0.7 + progress * 0.3).toFixed(2);
+        }
+      }
+    }
+
+    function tickAnimation() {
+      // Smooth lerp for buttery organic response
+      scrollProgress += (targetProgress - scrollProgress) * 0.16;
+      if (Math.abs(targetProgress - scrollProgress) < 0.0005) {
+        scrollProgress = targetProgress;
+      }
+
+      updateFramerArchPhysics(scrollProgress);
+      updateHeroUiDynamics(scrollProgress);
+
+      requestAnimationFrame(tickAnimation);
+    }
+
+    window.addEventListener('scroll', calculateScrollProgress, { passive: true });
+    window.addEventListener('resize', () => {
+      calculateScrollProgress();
+      updateFramerArchPhysics(scrollProgress);
+    });
+
+    // Generate Dot Matrix Background SVG
+    function generateDotMatrix() {
+      const svg = document.getElementById('dotMatrixSvg');
+      if (!svg) return;
+      const width = 1880;
+      const height = 1102;
+      const step = 48;
+      let circlesHtml = '';
+      for (let x = step / 2; x < width; x += step) {
+        for (let y = step / 2; y < height; y += step) {
+          const dx = (x - width / 2) / (width / 2);
+          const dy = (y - height * 0.6) / (height / 2);
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist > 0.25 && dist < 1.1) {
+            const alpha = (0.05 + (1 - dist) * 0.09).toFixed(3);
+            circlesHtml += `<circle cx="${x}" cy="${y}" r="1.5" fill="rgba(255,255,255,${alpha})" />`;
+          }
+        }
+      }
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      svg.innerHTML = circlesHtml;
+    }
+
+    // ---------------------------------------------------------------------------
+    // 2. Services Filtering Logic
+    // ---------------------------------------------------------------------------
+    function filterServices(category) {
+      const cards = document.querySelectorAll('.service-card');
+      const buttons = document.querySelectorAll('.service-filter-btn');
+
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-category') === category) {
+          btn.classList.add('bg-editorial-dark', 'text-white');
+          btn.classList.remove('bg-white', 'text-editorial-gray', 'border-editorial-border');
+        } else {
+          btn.classList.remove('bg-editorial-dark', 'text-white');
+          btn.classList.add('bg-white', 'text-editorial-gray', 'border-editorial-border');
+        }
+      });
+
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-cat');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // ---------------------------------------------------------------------------
+    // 3. Interactive Scope & Cost Estimator State
+    // ---------------------------------------------------------------------------
+    let currentCategoryBase = 3200;
+    let currentCategoryName = 'Custom AI / RAG System';
+    let currentScaleMultiplier = 1.0;
+    let currentTimelineText = '1–2 Weeks (Rapid MVP)';
+
+    function setScopeCategory(type, basePrice, name) {
+      currentCategoryBase = basePrice;
+      currentCategoryName = name;
+
+      document.querySelectorAll('.scope-cat-btn').forEach(btn => {
+        if (btn.getAttribute('data-val') === type) {
+          btn.classList.add('border-moss', 'bg-moss', 'text-white');
+          btn.classList.remove('border-editorial-border', 'bg-white', 'text-editorial-dark');
+        } else {
+          btn.classList.remove('border-moss', 'bg-moss', 'text-white');
+          btn.classList.add('border-editorial-border', 'bg-white', 'text-editorial-dark');
+        }
+      });
+
+      calculateScope();
+    }
+
+    function setScopeScale(scale, multiplier, timelineDesc) {
+      currentScaleMultiplier = multiplier;
+      currentTimelineText = timelineDesc;
+
+      document.querySelectorAll('.scope-scale-btn').forEach(btn => {
+        if (btn.getAttribute('data-scale') === scale) {
+          btn.classList.add('border-moss', 'bg-moss', 'text-white');
+          btn.classList.remove('border-editorial-border', 'bg-white', 'text-editorial-dark');
+        } else {
+          btn.classList.remove('border-moss', 'bg-moss', 'text-white');
+          btn.classList.add('border-editorial-border', 'bg-white', 'text-editorial-dark');
+        }
+      });
+
+      calculateScope();
+    }
+
+    function calculateScope() {
+      const waChecked = document.getElementById('addon-whatsapp').checked;
+      const vecChecked = document.getElementById('addon-vectordb').checked;
+      const slaChecked = document.getElementById('addon-sla').checked;
+
+      let addonsTotal = 0;
+      let addonList = [];
+      if (waChecked) { addonsTotal += 650; addonList.push('WhatsApp Assistant Gateway'); }
+      if (vecChecked) { addonsTotal += 800; addonList.push('Vector Ingestion Pipeline'); }
+      if (slaChecked) { addonsTotal += 750; addonList.push('30d Dedicated SLA'); }
+
+      const rawTotal = Math.round((currentCategoryBase * currentScaleMultiplier) + addonsTotal);
+
+      // Display formatted output
+      document.getElementById('estimate-price-display').innerText = `$${rawTotal.toLocaleString()}`;
+      document.getElementById('summary-category').innerText = currentCategoryName;
+      document.getElementById('summary-timeline').innerText = currentTimelineText;
+
+      // Compile WhatsApp message
+      const waMessage = `Hi Shahroz, I generated an estimate on your portfolio:
+- Architecture Paradigm: ${currentCategoryName}
+- Target Velocity: ${currentTimelineText}
+- Add-ons: ${addonList.length > 0 ? addonList.join(', ') : 'None'}
+- Estimated Budget: ~$${rawTotal.toLocaleString()}
+I'd like to discuss and confirm this project scope with you.`;
+
+      const encodedMessage = encodeURIComponent(waMessage);
+      const waButton = document.getElementById('btn-lock-scope');
+      waButton.href = `https://wa.me/923349791008?text=${encodedMessage}`;
+
+      // Compile Mailto Link
+      const mailtoSubj = encodeURIComponent(`Architecture Scope: ${currentCategoryName}`);
+      const mailtoBody = encodeURIComponent(`Hi Shahroz,\n\nI reviewed your portfolio scope estimator:\n- System: ${currentCategoryName}\n- Timeline: ${currentTimelineText}\n- Add-ons: ${addonList.join(', ') || 'Standard'}\n- Budget Estimate: ~$${rawTotal.toLocaleString()}\n\nLet's schedule a call to review.`);
+      const emailButton = document.getElementById('btn-email-scope');
+      emailButton.href = `mailto:harral008@gmail.com?subject=${mailtoSubj}&body=${mailtoBody}`;
+    }
+
+    // ---------------------------------------------------------------------------
+    // 4. Slide-Out Aria AI Advisor Chat Drawer
+    // ---------------------------------------------------------------------------
+    function toggleAiDrawer(open) {
+      const drawer = document.getElementById('ai-drawer');
+      const backdrop = document.getElementById('ai-drawer-backdrop');
+      
+      if (open) {
+        backdrop.classList.remove('pointer-events-none', 'opacity-0');
+        backdrop.classList.add('opacity-100');
+        drawer.classList.remove('translate-x-full');
+      } else {
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        backdrop.classList.remove('opacity-100');
+        drawer.classList.add('translate-x-full');
+      }
+    }
+
+    function appendMessage(sender, text) {
+      const chatContainer = document.getElementById('chat-messages');
+      const messageDiv = document.createElement('div');
+      
+      if (sender === 'user') {
+        messageDiv.className = 'flex items-start justify-end gap-2.5';
+        messageDiv.innerHTML = `
+          <div class="bg-editorial-dark text-white p-3.5 rounded-2xl rounded-tr-sm max-w-[85%] leading-relaxed">
+            ${text}
+          </div>
+        `;
+      } else {
+        messageDiv.className = 'flex items-start gap-2.5';
+        messageDiv.innerHTML = `
+          <div class="w-6 h-6 rounded-full bg-moss text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">A</div>
+          <div class="bg-moss-soft p-3.5 rounded-2xl rounded-tl-sm text-editorial-dark max-w-[85%] border border-moss/10 leading-relaxed">
+            ${text}
+          </div>
+        `;
+      }
+
+      chatContainer.appendChild(messageDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chat-input-field');
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendMessage('user', text);
+      input.value = '';
+
+      // Intelligent simulated responses based on Shahroz's architecture standards
+      setTimeout(() => {
+        let reply = "Shahroz's architecture standard emphasizes sub-second retrieval, clean Python/FastAPI decoupled microservices, and verified synthetic evaluation sets.";
+        const lower = text.toLowerCase();
+        
+        if (lower.includes('hallucination') || lower.includes('rag')) {
+          reply = "For enterprise RAG systems, Shahroz implements DeepEval guardrails, synthetic benchmark datasets, hybrid BM25 + dense vector embeddings (Pinecone/Qdrant), and contextual rerankers to ensure hallucination rates stay strictly below 5%.";
+        } else if (lower.includes('mvp') || lower.includes('timeline') || lower.includes('turnaround')) {
+          reply = "Rapid MVPs are delivered in 1-2 weeks. Full hardened production-grade systems with integration testing, automated CI/CD, and security monitoring take 3-4 weeks.";
+        } else if (lower.includes('whatsapp') || lower.includes('bot')) {
+          reply = "Yes! Shahroz builds asynchronous WhatsApp webhooks using Meta Graph and Twilio APIs connected directly to FastAPI backends with real-time calendar and CRM syncing.";
+        } else if (lower.includes('self-hosted') || lower.includes('aws') || lower.includes('gcp') || lower.includes('model')) {
+          reply = "Absolutely. For high-security or sovereign requirements, Shahroz deploys quantized models (e.g., Llama 3.3, Mistral, Qwen) using vLLM on your own private AWS/GCP GPU instances behind air-gapped VPCs.";
+        }
+        
+        appendMessage('assistant', reply);
+      }, 400);
+    }
+
+    function sendQuickPrompt(promptText) {
+      const input = document.getElementById('chat-input-field');
+      input.value = promptText;
+      const formEvent = new Event('submit', { cancelable: true });
+      document.querySelector('#ai-drawer form').dispatchEvent(formEvent);
+    }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      generateDotMatrix();
+      calculateScope();
+      calculateScrollProgress();
+      updateFramerArchPhysics(0);
+      requestAnimationFrame(tickAnimation);
+    });
+  </script>
+</body>
+</html>
