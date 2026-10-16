@@ -953,7 +953,7 @@
        ========================================================================= */
     .hero-scroll-track {
       position: relative;
-      height: 250vh;
+      height: 140vh;
       width: 100%;
       background-color: #FCFCFB;
     }
@@ -2133,6 +2133,34 @@
 
     let scrollProgress = 0;
     let targetProgress = 0;
+    let isTicking = false;
+    let heroMetrics = null;
+
+    function updateHeroGeometryCache() {
+      if (!heroArea || !heroArch) return;
+      const heroW = heroArea.offsetWidth;
+      const heroH = heroArea.offsetHeight;
+      const archW = heroArch.offsetWidth;
+      const archH = heroArch.offsetHeight;
+      const archLeft = heroArch.offsetLeft;
+      const archTop = heroArch.offsetTop;
+
+      const u = archW / 2;
+      const d = archH / 2;
+      const o = archLeft + u;
+      const l = archTop + d;
+
+      const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+      const m = -Math.acos(clamp((heroW - o) / u, -1, 1));
+      const h = -Math.acos(clamp((0 - o) / u, -1, 1));
+      const g = Math.asin(clamp((heroH - l) / d, -1, 0));
+
+      heroMetrics = {
+        o, l, u, d,
+        minAngle: Math.min(m, g),
+        maxAngle: Math.max(h, -Math.PI - g)
+      };
+    }
 
     function calculateScrollProgress() {
       if (!heroTrack) return;
@@ -2141,8 +2169,7 @@
       if (totalDistance <= 0) return;
       
       const scrolled = -trackRect.top;
-      const progress = Math.min(Math.max(scrolled / totalDistance, 0), 1);
-      targetProgress = progress;
+      targetProgress = Math.min(Math.max(scrolled / totalDistance, 0), 1);
 
       // Header glass transition on scroll
       if (siteHeader) {
@@ -2152,52 +2179,41 @@
           siteHeader.classList.remove('header-scrolled');
         }
       }
+
+      if (!isTicking) {
+        isTicking = true;
+        requestAnimationFrame(tickAnimation);
+      }
     }
 
     function updateFramerArchPhysics(f) {
       if (!heroArea || !heroArch) return;
 
-      // 1. Background Scroll Motion: top = -277 * f (px)
+      // 1. Background Scroll Motion: translateY = -277 * f (px) GPU composited
       if (framerBgMotion) {
-        const bgTop = -277 * f;
-        framerBgMotion.style.top = `${bgTop}px`;
+        framerBgMotion.style.transform = `translate3d(0, ${-277 * f}px, 0)`;
       }
 
-      // 2. Soft Grey Arch: translateY = -160 * f (px)
+      // 2. Soft Grey Arch: translateY = -160 * f (px) GPU composited
       if (heroArch) {
-        const archTranslateY = -160 * f;
-        heroArch.style.transform = `translateY(${archTranslateY}px)`;
+        heroArch.style.transform = `translate3d(0, ${-160 * f}px, 0)`;
       }
 
-      // 3. Hero Gradient Overlay: top = 104 - 201 * f (px)
+      // 3. Hero Gradient Overlay: translateY = -201 * f (px) GPU composited
       if (heroGradientOverlay) {
-        const overlayTop = 104 - 201 * f;
-        heroGradientOverlay.style.top = `${overlayTop}px`;
+        heroGradientOverlay.style.transform = `translate3d(0, ${-201 * f}px, 0)`;
       }
 
-      // 4 & 5. Elliptical Rim Calculations for Arch Light Highlight & Moving Glow
-      const heroRect = heroArea.getBoundingClientRect();
-      const archRect = heroArch.getBoundingClientRect();
+      // 4 & 5. Elliptical Rim Calculations with cached geometry (zero layout thrashing)
+      if (!heroMetrics) {
+        updateHeroGeometryCache();
+      }
 
-      if (heroRect.width > 0 && heroRect.height > 0 && archRect.width > 0 && archRect.height > 0) {
-        const o = archRect.left - heroRect.left + archRect.width / 2; // Center X
-        const l = archRect.top - heroRect.top + archRect.height / 2;   // Center Y
-        const u = archRect.width / 2;                                  // Radius X
-        const d = archRect.height / 2;                                 // Radius Y
-
-        const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
-
-        const m = -Math.acos(clamp((heroRect.width - o) / u, -1, 1));
-        const h = -Math.acos(clamp((0 - o) / u, -1, 1));
-        const g = Math.asin(clamp((heroRect.height - l) / d, -1, 0));
-
-        const minAngle = Math.min(m, g);
-        const maxAngle = Math.max(h, -Math.PI - g);
-
-        // Interpolate angle based on scroll progress f:
+      if (heroMetrics) {
+        const { o, l, u, d, minAngle, maxAngle } = heroMetrics;
         const angle = minAngle + (maxAngle - minAngle) * f;
 
-        // Calculate perimeter (x, y) coordinates:
+        // Perimeter (x, y) coordinates:
         const ee = o + u * Math.cos(angle);
         const te = l + d * Math.sin(angle);
 
@@ -2206,14 +2222,14 @@
         const ne = d * Math.cos(angle);
         const re = (Math.atan2(ne, b) * 180) / Math.PI;
 
-        // Apply to Arch Light Highlight (#archLightHighlight):
+        // Arch Light Highlight (#archLightHighlight)
         if (archLightHighlight) {
           archLightHighlight.style.left = `${ee}px`;
           archLightHighlight.style.top = `${te}px`;
           archLightHighlight.style.transform = `translate(-50%, -50%) rotate(${re}deg)`;
         }
 
-        // Apply to Arch Moving Gradient Glow (#archMovingGlow):
+        // Arch Moving Gradient Glow (#archMovingGlow)
         if (archMovingGlow) {
           archMovingGlow.style.left = `${ee}px`;
           archMovingGlow.style.top = `${te}px`;
@@ -2224,23 +2240,20 @@
 
     function updateHeroUiDynamics(progress) {
       if (!heroContentStack) return;
-      const fadeStart = 0.20;
-      const fadeEnd = 0.85;
+      const fadeStart = 0.12;
+      const fadeEnd = 0.78;
 
       let uiOpacity = 1;
       let uiTranslateY = 0;
-      let uiBlur = 0;
 
       if (progress > fadeStart) {
         const factor = Math.min((progress - fadeStart) / (fadeEnd - fadeStart), 1);
         uiOpacity = Math.max(1 - factor * 1.25, 0);
-        uiTranslateY = -factor * 45;
-        uiBlur = factor * 6;
+        uiTranslateY = -factor * 38;
       }
 
       heroContentStack.style.opacity = uiOpacity.toFixed(3);
-      heroContentStack.style.transform = `translateY(${uiTranslateY.toFixed(1)}px)`;
-      heroContentStack.style.filter = uiBlur > 0 ? `blur(${uiBlur.toFixed(1)}px)` : 'none';
+      heroContentStack.style.transform = `translate3d(0, ${uiTranslateY.toFixed(1)}px, 0)`;
 
       if (heroScrollLine) {
         const beam = heroScrollLine.querySelector('.line-beam');
@@ -2253,20 +2266,23 @@
     }
 
     function tickAnimation() {
-      // Smooth lerp for buttery organic response
-      scrollProgress += (targetProgress - scrollProgress) * 0.16;
-      if (Math.abs(targetProgress - scrollProgress) < 0.0005) {
+      // Snappy and responsive lerp factor (0.35) for instant direct feel without lag
+      const diff = targetProgress - scrollProgress;
+      if (Math.abs(diff) < 0.001) {
         scrollProgress = targetProgress;
+        isTicking = false;
+      } else {
+        scrollProgress += diff * 0.35;
+        requestAnimationFrame(tickAnimation);
       }
 
       updateFramerArchPhysics(scrollProgress);
       updateHeroUiDynamics(scrollProgress);
-
-      requestAnimationFrame(tickAnimation);
     }
 
     window.addEventListener('scroll', calculateScrollProgress, { passive: true });
     window.addEventListener('resize', () => {
+      updateHeroGeometryCache();
       calculateScrollProgress();
       updateFramerArchPhysics(scrollProgress);
     });
@@ -2677,13 +2693,14 @@
     // Initialize on page load and after full font/asset settlement
     window.addEventListener('DOMContentLoaded', () => {
       generateDotMatrix();
+      updateHeroGeometryCache();
       calculateScrollProgress();
       updateFramerArchPhysics(0);
       initFeaturesCircuit();
-      requestAnimationFrame(tickAnimation);
     });
 
     window.addEventListener('load', () => {
+      updateHeroGeometryCache();
       initFeaturesCircuit();
       setTimeout(initFeaturesCircuit, 300);
       setTimeout(initFeaturesCircuit, 1000);
