@@ -383,7 +383,7 @@
     /* 4. Aigocy-Matched Liquid Glass Feature Box (Matching Reference Site Box Design) */
     .features-wrap {
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: space-between;
       gap: 32px;
     }
@@ -392,6 +392,7 @@
       .features-wrap {
         flex-direction: column;
         gap: 28px;
+        align-items: center;
       }
     }
 
@@ -400,6 +401,7 @@
       flex-direction: column;
       gap: 32px;
       flex: 1;
+      max-width: 440px;
       width: 100%;
     }
 
@@ -408,6 +410,11 @@
       border-radius: 32px;
       position: relative;
       overflow: hidden;
+      flex: 1 1 0px;
+      min-height: 270px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       background: linear-gradient(
         135deg,
         rgba(255, 255, 255, 0.48) 0%,
@@ -509,6 +516,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      align-self: center;
       flex-shrink: 0;
       width: 208px;
       height: 160px;
@@ -597,17 +605,25 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 1;
+      z-index: 2;
       overflow: visible;
     }
 
-    /* Base hairline circuit track line */
+    /* Base hairline circuit track line - matching Aigocy reference */
     .circuit-track-path {
       fill: none;
-      stroke: rgba(0, 0, 0, 0.08);
+      stroke: #CBD5E1;
       stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
+      transition: stroke 0.3s ease, stroke-width 0.3s ease, filter 0.3s ease;
+    }
+
+    /* Active hover highlight */
+    .circuit-track-path.track-active {
+      stroke: #10B981;
+      stroke-width: 2;
+      filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.8));
     }
 
     /* Animated flowing electric beam */
@@ -618,24 +634,88 @@
       pointer-events: none;
     }
 
+    .circuit-beam-aura {
+      fill: none;
+      stroke: #10B981;
+      stroke-width: 5px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 8px #10B981) drop-shadow(0 0 16px rgba(16, 185, 129, 0.7));
+      stroke-dasharray: 95 900;
+      animation: electricBeamFlow 3.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      pointer-events: none;
+    }
+
+    .circuit-beam-core {
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 5px #34D399);
+      stroke-dasharray: 95 900;
+      animation: electricBeamFlow 3.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      pointer-events: none;
+    }
+
+    @keyframes electricBeamFlow {
+      0% {
+        stroke-dashoffset: 95;
+        opacity: 0;
+      }
+      12% {
+        stroke-dashoffset: 40;
+        opacity: 1;
+      }
+      70% {
+        opacity: 1;
+      }
+      88% {
+        stroke-dashoffset: -460;
+        opacity: 0.95;
+      }
+      100% {
+        stroke-dashoffset: -560;
+        opacity: 0;
+      }
+    }
+
     /* Center terminal dots */
     .circuit-node-center {
       fill: #10B981;
       stroke: #ffffff;
-      stroke-width: 1.5;
-      filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.8));
+      stroke-width: 2;
+      filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.9));
+    }
+
+    /* Junction node dots (matching reference design) */
+    .circuit-node-junction {
+      fill: #ffffff;
+      stroke: #94A3B8;
+      stroke-width: 2;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.08));
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .circuit-node-junction.pulse-active {
+      fill: #10B981;
+      stroke: #ffffff;
+      filter: drop-shadow(0 0 10px rgba(16, 185, 129, 1));
+      transform: scale(1.4);
+      transform-origin: center;
     }
 
     /* Card edge terminal dots */
     .circuit-node-card {
-      fill: #4D6B3C;
-      stroke: #ffffff;
+      fill: #ffffff;
+      stroke: #94A3B8;
       stroke-width: 1.5;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .circuit-node-card.pulse-active {
       fill: #10B981;
+      stroke: #ffffff;
       filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.95));
       transform: scale(1.4);
       transform-origin: center;
@@ -643,7 +723,7 @@
 
     /* Coordinated Central Engine Breathing Animation */
     .features-center-card.engine-pulsing {
-      animation: engineHeartbeatPulse 3.8s ease-in-out infinite;
+      animation: engineHeartbeatPulse 3.5s ease-in-out infinite;
     }
 
     @keyframes engineHeartbeatPulse {
@@ -655,7 +735,7 @@
           0px 14px 34px 0px rgba(77, 107, 60, 0.5), 
           0px 0px 24px 0px rgba(77, 107, 60, 0.4);
       }
-      12% {
+      15% {
         transform: scale(1.04);
         box-shadow: 
           0px -3px 0px 0px rgba(0, 0, 0, 0.25) inset, 
@@ -664,7 +744,7 @@
           0px 0px 60px 8px rgba(52, 211, 153, 0.85),
           0px 0px 90px 16px rgba(77, 107, 60, 0.55);
       }
-      28% {
+      30% {
         transform: scale(1.008);
         box-shadow: 
           0px -3px 0px 0px rgba(0, 0, 0, 0.25) inset, 
@@ -675,7 +755,7 @@
 
     /* Ambient Flare Expansion in sync with heartbeat */
     .features-ambient-glow.flare-active {
-      animation: ambientGlowFlare 3.8s ease-in-out infinite;
+      animation: ambientGlowFlare 3.5s ease-in-out infinite;
     }
 
     @keyframes ambientGlowFlare {
@@ -683,12 +763,12 @@
         opacity: 0.75;
         transform: scale(0.95);
       }
-      12% {
+      15% {
         opacity: 1;
         transform: scale(1.25);
         filter: blur(48px);
       }
-      35% {
+      38% {
         opacity: 0.75;
         transform: scale(0.95);
       }
@@ -697,11 +777,12 @@
     /* Card Edge Reception Highlight when beam arrives */
     .features-item-liquid.beam-arrived {
       box-shadow: 
-        0px 16px 40px -6px rgba(16, 185, 129, 0.2), 
-        0px 0px 28px rgba(52, 211, 153, 0.35),
+        0px 16px 40px -6px rgba(16, 185, 129, 0.25), 
+        0px 0px 30px rgba(52, 211, 153, 0.4),
         inset 2.5px 2.5px 4px 0px rgba(255, 255, 255, 1),
         inset -2px -2px 4px 0px rgba(0, 0, 0, 0.06);
-      border-color: rgba(16, 185, 129, 0.5);
+      border-color: rgba(16, 185, 129, 0.55);
+      transition: box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
     /* Liquid Glass Card Container */
@@ -2347,7 +2428,10 @@
       const ambientGlow = wrap.querySelector('.features-ambient-glow');
 
       function clearTimers() {
-        circuitTimers.forEach(id => clearInterval(id));
+        circuitTimers.forEach(id => {
+          clearTimeout(id);
+          clearInterval(id);
+        });
         circuitTimers = [];
       }
 
@@ -2364,8 +2448,12 @@
         if (ambientGlow) ambientGlow.classList.add('flare-active');
 
         const wrapRect = wrap.getBoundingClientRect();
-        const leftCol = wrap.querySelector('.features-col:first-child');
-        const rightCol = wrap.querySelector('.features-col:last-child');
+        if (!wrapRect.width || !wrapRect.height) return;
+
+        const cols = wrap.querySelectorAll('.features-col');
+        if (cols.length < 2) return;
+        const leftCol = cols[0];
+        const rightCol = cols[1];
         const centerAnchor = wrap.querySelector('.features-center-anchor');
 
         if (!leftCol || !rightCol || !centerAnchor) return;
@@ -2387,50 +2475,78 @@
         beamsGroup.innerHTML = '';
         nodesGroup.innerHTML = '';
 
-        // Add center output node markers
-        addCircle(cLeftX, cY, 4.5, 'circuit-node-center');
-        addCircle(cRightX, cY, 4.5, 'circuit-node-center');
+        const r = 24; // Smooth 90-degree corner radius
 
-        const r = 20;
+        // -------------------------------------------------------------
+        // LEFT SIDE: Center -> Left Column Cards
+        // -------------------------------------------------------------
+        const leftCardRects = leftCards.map(c => c.getBoundingClientRect());
+        const leftTargetPoints = leftCardRects.map(cr => ({
+          x: cr.right - wrapRect.left,
+          y: cr.top + cr.height / 2 - wrapRect.top
+        }));
 
-        // Left 3 cards (Center -> Left cards)
-        leftCards.forEach((card, idx) => {
-          const cardRect = card.getBoundingClientRect();
-          const targetX = cardRect.right - wrapRect.left;
-          const targetY = cardRect.top + cardRect.height / 2 - wrapRect.top;
-          const gap = cLeftX - targetX;
-          const cornerX = cLeftX - gap * 0.42;
+        const leftEdgeX = Math.max(...leftTargetPoints.map(p => p.x));
+        const junctionX_left = cLeftX - (cLeftX - leftEdgeX) * 0.46;
+        const trunkY_left = leftTargetPoints[1].y;
 
-          let d = '';
-          if (idx === 1 || Math.abs(targetY - cY) < 15) {
-            d = `M ${cLeftX} ${cY} L ${targetX} ${targetY}`;
-          } else if (targetY < cY) {
-            d = `M ${cLeftX} ${cY} L ${cornerX + r} ${cY} Q ${cornerX} ${cY} ${cornerX} ${cY - r} L ${cornerX} ${targetY + r} Q ${cornerX} ${targetY} ${cornerX - r} ${targetY} L ${targetX} ${targetY}`;
-          } else {
-            d = `M ${cLeftX} ${cY} L ${cornerX + r} ${cY} Q ${cornerX} ${cY} ${cornerX} ${cY + r} L ${cornerX} ${targetY - r} Q ${cornerX} ${targetY} ${cornerX - r} ${targetY} L ${targetX} ${targetY}`;
-          }
+        // Output dot on center badge
+        addCircle(cLeftX, trunkY_left, 4, 'circuit-node-center');
 
-          createBeamLine(d, targetX, targetY, idx, card);
+        // 1. Base Static Circuit Tracks (Single non-overlapping crisp skeleton)
+        createStaticTrack(`M ${cLeftX} ${trunkY_left} L ${junctionX_left} ${trunkY_left}`);
+        createStaticTrack(`M ${junctionX_left} ${trunkY_left} L ${junctionX_left} ${leftTargetPoints[0].y + r} Q ${junctionX_left} ${leftTargetPoints[0].y} ${junctionX_left - r} ${leftTargetPoints[0].y} L ${leftTargetPoints[0].x} ${leftTargetPoints[0].y}`);
+        createStaticTrack(`M ${junctionX_left} ${trunkY_left} L ${leftTargetPoints[1].x} ${trunkY_left}`);
+        createStaticTrack(`M ${junctionX_left} ${trunkY_left} L ${junctionX_left} ${leftTargetPoints[2].y - r} Q ${junctionX_left} ${leftTargetPoints[2].y} ${junctionX_left - r} ${leftTargetPoints[2].y} L ${leftTargetPoints[2].x} ${leftTargetPoints[2].y}`);
+
+        // Junction Node Dot
+        const leftJunctionNode = addCircle(junctionX_left, trunkY_left, 4.5, 'circuit-node-junction');
+
+        // Continuous Flow Beams (Center Badge -> Junction -> Left Cards)
+        const leftBeamsPaths = [
+          `M ${cLeftX} ${trunkY_left} L ${junctionX_left} ${trunkY_left} L ${junctionX_left} ${leftTargetPoints[0].y + r} Q ${junctionX_left} ${leftTargetPoints[0].y} ${junctionX_left - r} ${leftTargetPoints[0].y} L ${leftTargetPoints[0].x} ${leftTargetPoints[0].y}`,
+          `M ${cLeftX} ${trunkY_left} L ${leftTargetPoints[1].x} ${trunkY_left}`,
+          `M ${cLeftX} ${trunkY_left} L ${junctionX_left} ${trunkY_left} L ${junctionX_left} ${leftTargetPoints[2].y - r} Q ${junctionX_left} ${leftTargetPoints[2].y} ${junctionX_left - r} ${leftTargetPoints[2].y} L ${leftTargetPoints[2].x} ${leftTargetPoints[2].y}`
+        ];
+
+        leftBeamsPaths.forEach((d, idx) => {
+          createBeamAnimation(d, leftTargetPoints[idx].x, idx === 1 ? trunkY_left : leftTargetPoints[idx].y, leftCards[idx], leftJunctionNode);
         });
 
-        // Right 3 cards (Center -> Right cards)
-        rightCards.forEach((card, idx) => {
-          const cardRect = card.getBoundingClientRect();
-          const targetX = cardRect.left - wrapRect.left;
-          const targetY = cardRect.top + cardRect.height / 2 - wrapRect.top;
-          const gap = targetX - cRightX;
-          const cornerX = cRightX + gap * 0.42;
+        // -------------------------------------------------------------
+        // RIGHT SIDE: Center -> Right Column Cards
+        // -------------------------------------------------------------
+        const rightCardRects = rightCards.map(c => c.getBoundingClientRect());
+        const rightTargetPoints = rightCardRects.map(cr => ({
+          x: cr.left - wrapRect.left,
+          y: cr.top + cr.height / 2 - wrapRect.top
+        }));
 
-          let d = '';
-          if (idx === 1 || Math.abs(targetY - cY) < 15) {
-            d = `M ${cRightX} ${cY} L ${targetX} ${targetY}`;
-          } else if (targetY < cY) {
-            d = `M ${cRightX} ${cY} L ${cornerX - r} ${cY} Q ${cornerX} ${cY} ${cornerX} ${cY - r} L ${cornerX} ${targetY + r} Q ${cornerX} ${targetY} ${cornerX + r} ${targetY} L ${targetX} ${targetY}`;
-          } else {
-            d = `M ${cRightX} ${cY} L ${cornerX - r} ${cY} Q ${cornerX} ${cY} ${cornerX} ${cY + r} L ${cornerX} ${targetY - r} Q ${cornerX} ${targetY} ${cornerX + r} ${targetY} L ${targetX} ${targetY}`;
-          }
+        const rightEdgeX = Math.min(...rightTargetPoints.map(p => p.x));
+        const junctionX_right = cRightX + (rightEdgeX - cRightX) * 0.46;
+        const trunkY_right = rightTargetPoints[1].y;
 
-          createBeamLine(d, targetX, targetY, idx + 3, card);
+        // Output dot on center badge
+        addCircle(cRightX, trunkY_right, 4, 'circuit-node-center');
+
+        // 1. Base Static Circuit Tracks (Right skeleton)
+        createStaticTrack(`M ${cRightX} ${trunkY_right} L ${junctionX_right} ${trunkY_right}`);
+        createStaticTrack(`M ${junctionX_right} ${trunkY_right} L ${junctionX_right} ${rightTargetPoints[0].y + r} Q ${junctionX_right} ${rightTargetPoints[0].y} ${junctionX_right + r} ${rightTargetPoints[0].y} L ${rightTargetPoints[0].x} ${rightTargetPoints[0].y}`);
+        createStaticTrack(`M ${junctionX_right} ${trunkY_right} L ${rightTargetPoints[1].x} ${trunkY_right}`);
+        createStaticTrack(`M ${junctionX_right} ${trunkY_right} L ${junctionX_right} ${rightTargetPoints[2].y - r} Q ${junctionX_right} ${rightTargetPoints[2].y} ${junctionX_right + r} ${rightTargetPoints[2].y} L ${rightTargetPoints[2].x} ${rightTargetPoints[2].y}`);
+
+        // Junction Node Dot
+        const rightJunctionNode = addCircle(junctionX_right, trunkY_right, 4.5, 'circuit-node-junction');
+
+        // Continuous Flow Beams (Center Badge -> Junction -> Right Cards)
+        const rightBeamsPaths = [
+          `M ${cRightX} ${trunkY_right} L ${junctionX_right} ${trunkY_right} L ${junctionX_right} ${rightTargetPoints[0].y + r} Q ${junctionX_right} ${rightTargetPoints[0].y} ${junctionX_right + r} ${rightTargetPoints[0].y} L ${rightTargetPoints[0].x} ${rightTargetPoints[0].y}`,
+          `M ${cRightX} ${trunkY_right} L ${rightTargetPoints[1].x} ${trunkY_right}`,
+          `M ${cRightX} ${trunkY_right} L ${junctionX_right} ${trunkY_right} L ${junctionX_right} ${rightTargetPoints[2].y - r} Q ${junctionX_right} ${rightTargetPoints[2].y} ${junctionX_right + r} ${rightTargetPoints[2].y} L ${rightTargetPoints[2].x} ${rightTargetPoints[2].y}`
+        ];
+
+        rightBeamsPaths.forEach((d, idx) => {
+          createBeamAnimation(d, rightTargetPoints[idx].x, idx === 1 ? trunkY_right : rightTargetPoints[idx].y, rightCards[idx], rightJunctionNode);
         });
       }
 
@@ -2444,89 +2560,109 @@
         return c;
       }
 
-      function createBeamLine(d, targetX, targetY, pathIndex, cardElement) {
-        // 1. Static Circuit Track
+      function createStaticTrack(d) {
         const track = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         track.setAttribute('d', d);
         track.setAttribute('class', 'circuit-track-path');
         tracksGroup.appendChild(track);
+        return track;
+      }
 
-        // 2. Terminal Node on Card Border
-        const targetNode = addCircle(targetX, targetY, 4, 'circuit-node-card');
+      function createBeamAnimation(d, targetX, targetY, cardElement, junctionNode) {
+        // Terminal Node on Card Border
+        const targetNode = addCircle(targetX, targetY, 3.5, 'circuit-node-card');
 
-        // 3. Wide Ambient Glow Beam
+        // 1. Wide Ambient Emerald Glow Beam
         const auraBeam = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         auraBeam.setAttribute('d', d);
-        auraBeam.setAttribute('class', 'circuit-beam-path');
-        auraBeam.style.stroke = '#10B981';
-        auraBeam.style.strokeWidth = '6px';
-        auraBeam.style.opacity = '0';
-        auraBeam.style.filter = 'blur(4px)';
+        auraBeam.setAttribute('class', 'circuit-beam-path circuit-beam-aura');
         beamsGroup.appendChild(auraBeam);
 
-        // 4. Intense Core Laser Beam
+        // 2. High-Intensity Core Laser Beam (White-Emerald)
         const coreBeam = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         coreBeam.setAttribute('d', d);
-        coreBeam.setAttribute('class', 'circuit-beam-path');
-        coreBeam.style.stroke = '#FFFFFF';
-        coreBeam.style.strokeWidth = '2px';
-        coreBeam.style.filter = 'url(#beamEmeraldGlow)';
+        coreBeam.setAttribute('class', 'circuit-beam-path circuit-beam-core');
         beamsGroup.appendChild(coreBeam);
 
-        // Interactive card hover highlights track
+        // Interactive Card Hover
         cardElement.addEventListener('mouseenter', () => {
-          track.style.stroke = '#10B981';
-          track.style.strokeWidth = '2px';
-          track.style.filter = 'drop-shadow(0 0 6px rgba(16, 185, 129, 0.8))';
           targetNode.classList.add('pulse-active');
+          if (junctionNode) junctionNode.classList.add('pulse-active');
         });
         cardElement.addEventListener('mouseleave', () => {
-          track.style.stroke = '';
-          track.style.strokeWidth = '';
-          track.style.filter = '';
           targetNode.classList.remove('pulse-active');
+          if (junctionNode) junctionNode.classList.remove('pulse-active');
         });
 
-        // Setup Animations with totalLength
-        requestAnimationFrame(() => {
-          const len = coreBeam.getTotalLength();
-          if (!len) return;
+        // Setup Coordinated Flow Animations
+        const len = coreBeam.getTotalLength() || 400;
+        const beamLen = Math.max(70, Math.min(130, len * 0.36));
+        const animDuration = 3500; // Synchronized with central engine 3.5s pulse
 
-          const beamLen = Math.max(55, Math.min(100, len * 0.42));
+        // Native SVG SMIL animate elements ensure persistent rendering across screenshots
+        [auraBeam, coreBeam].forEach(el => {
+          el.setAttribute('stroke-dasharray', `${beamLen} ${len + beamLen * 2}`);
+          el.setAttribute('stroke-dashoffset', `${beamLen}`);
 
-          [auraBeam, coreBeam].forEach(el => {
-            el.style.strokeDasharray = `${beamLen} ${len + beamLen * 2}`;
-            el.style.strokeDashoffset = `${beamLen}`;
+          const animOffset = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+          animOffset.setAttribute('attributeName', 'stroke-dashoffset');
+          animOffset.setAttribute('values', `${beamLen}; -${len + beamLen}`);
+          animOffset.setAttribute('dur', `${animDuration}ms`);
+          animOffset.setAttribute('repeatCount', 'indefinite');
+          animOffset.setAttribute('calcMode', 'spline');
+          animOffset.setAttribute('keyTimes', '0; 1');
+          animOffset.setAttribute('keySplines', '0.22 1 0.36 1');
+          el.appendChild(animOffset);
 
-            el.animate([
-              { strokeDashoffset: beamLen, opacity: 0 },
-              { strokeDashoffset: 0, opacity: 1, offset: 0.12 },
-              { strokeDashoffset: -len + beamLen * 0.3, opacity: 1, offset: 0.78 },
-              { strokeDashoffset: -len, opacity: 0.85, offset: 0.88 },
-              { strokeDashoffset: -(len + beamLen), opacity: 0, offset: 1.0 }
-            ], {
-              duration: 3800,
-              iterations: Infinity,
-              easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-              delay: 200
-            });
+          const animOpacity = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+          animOpacity.setAttribute('attributeName', 'opacity');
+          animOpacity.setAttribute('values', '0; 1; 1; 0.9; 0');
+          animOpacity.setAttribute('dur', `${animDuration}ms`);
+          animOpacity.setAttribute('repeatCount', 'indefinite');
+          animOpacity.setAttribute('keyTimes', '0; 0.1; 0.7; 0.9; 1');
+          el.appendChild(animOpacity);
+
+          // Web Animations API for 60fps GPU smoothness
+          el.animate([
+            { strokeDashoffset: beamLen, opacity: 0 },
+            { strokeDashoffset: beamLen * 0.35, opacity: 1, offset: 0.1 },
+            { strokeDashoffset: -len * 0.45, opacity: 1, offset: 0.65 },
+            { strokeDashoffset: -len, opacity: 0.95, offset: 0.88 },
+            { strokeDashoffset: -(len + beamLen), opacity: 0, offset: 1.0 }
+          ], {
+            duration: animDuration,
+            iterations: Infinity,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            delay: 100
           });
-
-          // Impact Flash on Card and Node when beam arrives
-          const impactArrivalDelay = 200 + 3800 * 0.82;
-          function triggerArrival() {
-            targetNode.classList.add('pulse-active');
-            cardElement.classList.add('beam-arrived');
-            setTimeout(() => {
-              targetNode.classList.remove('pulse-active');
-              cardElement.classList.remove('beam-arrived');
-            }, 550);
-          }
-
-          const timeoutId = setTimeout(triggerArrival, impactArrivalDelay);
-          const intervalId = setInterval(triggerArrival, 3800);
-          circuitTimers.push(timeoutId, intervalId);
         });
+
+        // Junction flare when beam passes through the junction node (~28% of travel)
+        const junctionDelay = 100 + animDuration * 0.28;
+        function triggerJunction() {
+          if (junctionNode) {
+            junctionNode.classList.add('pulse-active');
+            setTimeout(() => junctionNode.classList.remove('pulse-active'), 450);
+          }
+        }
+        const jTimeout = setTimeout(triggerJunction, junctionDelay);
+        const jInterval = setInterval(triggerJunction, animDuration);
+        circuitTimers.push(jTimeout, jInterval);
+
+        // Impact Flash on Card and Terminal Node when beam arrives at the card (~86% of travel)
+        const arrivalDelay = 100 + animDuration * 0.86;
+        function triggerArrival() {
+          targetNode.classList.add('pulse-active');
+          cardElement.classList.add('beam-arrived');
+          setTimeout(() => {
+            targetNode.classList.remove('pulse-active');
+            cardElement.classList.remove('beam-arrived');
+          }, 600);
+        }
+
+        const timeoutId = setTimeout(triggerArrival, arrivalDelay);
+        const intervalId = setInterval(triggerArrival, animDuration);
+        circuitTimers.push(timeoutId, intervalId);
       }
 
       renderCircuit();
@@ -2538,13 +2674,19 @@
       window.addEventListener('resize', renderCircuit);
     }
 
-    // Initialize on page load
+    // Initialize on page load and after full font/asset settlement
     window.addEventListener('DOMContentLoaded', () => {
       generateDotMatrix();
       calculateScrollProgress();
       updateFramerArchPhysics(0);
       initFeaturesCircuit();
       requestAnimationFrame(tickAnimation);
+    });
+
+    window.addEventListener('load', () => {
+      initFeaturesCircuit();
+      setTimeout(initFeaturesCircuit, 300);
+      setTimeout(initFeaturesCircuit, 1000);
     });
   </script>
 </body>
