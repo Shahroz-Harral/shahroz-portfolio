@@ -655,100 +655,9 @@
 
   <main>
     <!-- ========================================================================= -->
-    <!-- FULL-WIDTH HERO SECTION COVERING WHOLE SCREEN WITH FRAMER PARALLAX STAGE  -->
+    <!-- UPGRADED 4-LAYER HERO SECTION ARCHITECTURE WITH GREY ARC AURORA & DOTGRID -->
     <!-- ========================================================================= -->
-    <section class="hero-scroll-track w-full relative" id="heroTrack" aria-label="Hero Section">
-      
-      <!-- Pinned Sticky Container (100vw x 100vh) -->
-      <div class="hero-sticky-frame sticky top-0 left-0 w-full h-screen overflow-hidden flex items-center justify-center bg-[#FCFCFB]" id="heroStickyFrame">
-        
-        <!-- Full-Width Hero Stage -->
-        <div class="hero-aspect-stage framer-nr2y0a w-full h-full relative overflow-hidden" id="hero-area">
-          
-          <!-- 1. Background Video Layer (High-Resolution Looping Aurora) -->
-          <div class="framer-8n5uqp" id="framerBgMotion">
-            <div class="framer-18qjevd-container">
-              <video 
-                id="framerAuroraVideo"
-                poster="assets/hero-aurora-poster.webp" 
-                autoplay 
-                loop 
-                muted 
-                playsinline
-                preload="auto">
-                <source src="assets/hero-aurora-2560.webm" type="video/webm">
-                <source src="assets/hero-aurora-2560.mp4" type="video/mp4">
-                <source src="assets/hero-aurora-1080.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-
-          <!-- 2. White Light Gradient Parallax Overlay (Rises up during scroll) -->
-          <div class="framer-uru8mj" id="heroGradientOverlay"></div>
-
-          <!-- 3. Soft Grey Arch -->
-          <div class="framer-bsrji8" id="hero-arch"></div>
-
-          <!-- 4. Arch Moving Gradient Glow (White-Teal Ambient Radiant Glow) -->
-          <div class="framer-nest18" id="archMovingGlow"></div>
-
-          <!-- 5. Arch Light Highlight (Crisp White-Teal Rim Highlight) -->
-          <div class="framer-xiz7ec" id="archLightHighlight"></div>
-
-          <!-- 6. Dot Matrix Grid Overlay -->
-          <div class="matrix-grid-overlay" id="matrixGridOverlay" aria-hidden="true">
-            <svg class="dot-matrix-svg" id="dotMatrixSvg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"></svg>
-          </div>
-
-          <!-- 7. In-Stage Foreground Interactive UI Content Stack -->
-          <div class="hero-ui-overlay" id="heroUiOverlay">
-            <div class="hero-content-stack" id="heroContentStack">
-              
-              <!-- Category Badge -->
-              <div class="hero-badge-wrap mb-4" id="heroBadgeWrap">
-                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-black/[0.08] text-[11px] font-mono uppercase tracking-wider text-editorial-dark shadow-sm">
-                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  Senior IT &amp; AI Solutions Architect
-                </span>
-              </div>
-
-              <!-- Main Display Headline -->
-              <h1 class="hero-title font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-editorial-dark mb-4 leading-[1.12] max-w-4xl mx-auto" id="heroTitle">
-                <span>Architecting Production AI Systems</span><br>
-                <span class="font-serif italic font-normal text-3xl sm:text-4xl lg:text-5xl text-editorial-dark/90">with Zero Fluff</span>
-              </h1>
-
-              <!-- Subtitle -->
-              <p class="text-sm sm:text-base font-normal text-editorial-gray max-w-xl mx-auto mb-7 leading-relaxed">
-                From high-precision enterprise RAG knowledge bases to autonomous multi-agent pipelines and sovereign models. Fully built, battle-tested, done right — delivered fast.
-              </p>
-
-              <!-- Interactive Buttons -->
-              <div class="hero-cta-group flex flex-wrap items-center justify-center gap-3.5" id="heroCtaGroup">
-                <a href="mailto:harral008@gmail.com?subject=AI%20Strategy%20Consultation" class="px-6 py-3 rounded-full bg-editorial-dark text-white text-xs sm:text-sm font-semibold hover:bg-moss transition-all duration-300 shadow-md flex items-center gap-2" id="btnStartNow">
-                  <span>Book a Strategy Call</span>
-                  <span>→</span>
-                </a>
-
-                <a href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20discuss%20an%20AI%20project" class="px-6 py-3 rounded-full bg-white/85 hover:bg-white text-editorial-dark border border-black/10 text-xs sm:text-sm font-semibold transition-all duration-300 shadow-sm flex items-center gap-2" id="btnWhatsAppHero" target="_blank" rel="noopener noreferrer">
-                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                  <span>WhatsApp Shahroz</span>
-                </a>
-              </div>
-
-              <!-- Glowing Center Scroll Indicator -->
-              <div class="hero-scroll-line" id="heroScrollLine" aria-hidden="true">
-                <div class="line-beam"></div>
-              </div>
-
-            </div>
-          </div> <!-- /hero-ui-overlay -->
-
-        </div> <!-- /hero-area -->
-
-      </div> <!-- /hero-sticky-frame -->
-
-    </section> <!-- /hero-scroll-track -->
+    <div id="hero-mount" class="w-full relative"></div>
 
     <!-- ========================================================================= -->
     <!-- SOCIAL PROOF & METRICS ROW                                                -->
@@ -1427,202 +1336,24 @@
   </footer>
 
   <!-- ========================================================================= -->
+  <!-- MAIN REACT & GSAP + LENIS APP MODULE                                        -->
+  <!-- ========================================================================= -->
+  <script type="module" src="/src/main.tsx"></script>
+
+  <!-- ========================================================================= -->
   <!-- JAVASCRIPT LOGIC SCRIPTS                                                  -->
   <!-- ========================================================================= -->
   <script>
-    // ---------------------------------------------------------------------------
-    // 1. Framer Aurora Parallax Physics Engine
-    // ---------------------------------------------------------------------------
-    const heroTrack = document.getElementById('heroTrack');
-    const heroStickyFrame = document.getElementById('heroStickyFrame');
-    const heroArea = document.getElementById('hero-area');
-    const framerBgMotion = document.getElementById('framerBgMotion');
-    const heroGradientOverlay = document.getElementById('heroGradientOverlay');
-    const heroArch = document.getElementById('hero-arch');
-    const archMovingGlow = document.getElementById('archMovingGlow');
-    const archLightHighlight = document.getElementById('archLightHighlight');
-    const heroContentStack = document.getElementById('heroContentStack');
-    const heroScrollLine = document.getElementById('heroScrollLine');
+    // Header glass transition on scroll
     const siteHeader = document.getElementById('primary-header');
-
-    let scrollProgress = 0;
-    let targetProgress = 0;
-    let isTicking = false;
-    let heroMetrics = null;
-
-    function updateHeroGeometryCache() {
-      if (!heroArea || !heroArch) return;
-      const heroW = heroArea.offsetWidth;
-      const heroH = heroArea.offsetHeight;
-      const archW = heroArch.offsetWidth;
-      const archH = heroArch.offsetHeight;
-      const archLeft = heroArch.offsetLeft;
-      const archTop = heroArch.offsetTop;
-
-      const u = archW / 2;
-      const d = archH / 2;
-      const o = archLeft + u;
-      const l = archTop + d;
-
-      const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
-      const m = -Math.acos(clamp((heroW - o) / u, -1, 1));
-      const h = -Math.acos(clamp((0 - o) / u, -1, 1));
-      const g = Math.asin(clamp((heroH - l) / d, -1, 0));
-
-      heroMetrics = {
-        o, l, u, d,
-        minAngle: Math.min(m, g),
-        maxAngle: Math.max(h, -Math.PI - g)
-      };
-    }
-
-    function calculateScrollProgress() {
-      if (!heroTrack) return;
-      const trackRect = heroTrack.getBoundingClientRect();
-      const totalDistance = heroTrack.offsetHeight - window.innerHeight;
-      if (totalDistance <= 0) return;
-      
-      const scrolled = -trackRect.top;
-      targetProgress = Math.min(Math.max(scrolled / totalDistance, 0), 1);
-
-      // Header glass transition on scroll
-      if (siteHeader) {
-        if (window.scrollY > 80) {
-          siteHeader.classList.add('header-scrolled');
-        } else {
-          siteHeader.classList.remove('header-scrolled');
-        }
-      }
-
-      if (!isTicking) {
-        isTicking = true;
-        requestAnimationFrame(tickAnimation);
-      }
-    }
-
-    function updateFramerArchPhysics(f) {
-      if (!heroArea || !heroArch) return;
-
-      // 1. Background Scroll Motion: translateY = -277 * f (px) GPU composited
-      if (framerBgMotion) {
-        framerBgMotion.style.transform = `translate3d(0, ${-277 * f}px, 0)`;
-      }
-
-      // 2. Soft Grey Arch: translateY = -160 * f (px) GPU composited
-      if (heroArch) {
-        heroArch.style.transform = `translate3d(0, ${-160 * f}px, 0)`;
-      }
-
-      // 3. Hero Gradient Overlay: translateY = -201 * f (px) GPU composited
-      if (heroGradientOverlay) {
-        heroGradientOverlay.style.transform = `translate3d(0, ${-201 * f}px, 0)`;
-      }
-
-      // 4 & 5. Elliptical Rim Calculations with cached geometry (zero layout thrashing)
-      if (!heroMetrics) {
-        updateHeroGeometryCache();
-      }
-
-      if (heroMetrics) {
-        const { o, l, u, d, minAngle, maxAngle } = heroMetrics;
-        const angle = minAngle + (maxAngle - minAngle) * f;
-
-        // Perimeter (x, y) coordinates:
-        const ee = o + u * Math.cos(angle);
-        const te = l + d * Math.sin(angle);
-
-        // Tangent direction vectors:
-        const b = -u * Math.sin(angle);
-        const ne = d * Math.cos(angle);
-        const re = (Math.atan2(ne, b) * 180) / Math.PI;
-
-        // Arch Light Highlight (#archLightHighlight)
-        if (archLightHighlight) {
-          archLightHighlight.style.left = `${ee}px`;
-          archLightHighlight.style.top = `${te}px`;
-          archLightHighlight.style.transform = `translate(-50%, -50%) rotate(${re}deg)`;
-        }
-
-        // Arch Moving Gradient Glow (#archMovingGlow)
-        if (archMovingGlow) {
-          archMovingGlow.style.left = `${ee}px`;
-          archMovingGlow.style.top = `${te}px`;
-          archMovingGlow.style.transform = `translate(-50%, -50%) rotate(${re}deg)`;
-        }
-      }
-    }
-
-    function updateHeroUiDynamics(progress) {
-      if (!heroContentStack) return;
-      const fadeStart = 0.12;
-      const fadeEnd = 0.78;
-
-      let uiOpacity = 1;
-      let uiTranslateY = 0;
-
-      if (progress > fadeStart) {
-        const factor = Math.min((progress - fadeStart) / (fadeEnd - fadeStart), 1);
-        uiOpacity = Math.max(1 - factor * 1.25, 0);
-        uiTranslateY = -factor * 38;
-      }
-
-      heroContentStack.style.opacity = uiOpacity.toFixed(3);
-      heroContentStack.style.transform = `translate3d(0, ${uiTranslateY.toFixed(1)}px, 0)`;
-
-      if (heroScrollLine) {
-        const beam = heroScrollLine.querySelector('.line-beam');
-        if (beam) {
-          const lineScale = 0.4 + progress * 0.6;
-          beam.style.transform = `scaleY(${lineScale})`;
-          beam.style.opacity = (0.7 + progress * 0.3).toFixed(2);
-        }
-      }
-    }
-
-    function tickAnimation() {
-      // Snappy and responsive lerp factor (0.35) for instant direct feel without lag
-      const diff = targetProgress - scrollProgress;
-      if (Math.abs(diff) < 0.001) {
-        scrollProgress = targetProgress;
-        isTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!siteHeader) return;
+      if (window.scrollY > 80) {
+        siteHeader.classList.add('header-scrolled');
       } else {
-        scrollProgress += diff * 0.35;
-        requestAnimationFrame(tickAnimation);
+        siteHeader.classList.remove('header-scrolled');
       }
-
-      updateFramerArchPhysics(scrollProgress);
-      updateHeroUiDynamics(scrollProgress);
-    }
-
-    window.addEventListener('scroll', calculateScrollProgress, { passive: true });
-    window.addEventListener('resize', () => {
-      updateHeroGeometryCache();
-      calculateScrollProgress();
-      updateFramerArchPhysics(scrollProgress);
-    });
-
-    // Generate Dot Matrix Background SVG
-    function generateDotMatrix() {
-      const svg = document.getElementById('dotMatrixSvg');
-      if (!svg) return;
-      const width = 1880;
-      const height = 1102;
-      const step = 48;
-      let circlesHtml = '';
-      for (let x = step / 2; x < width; x += step) {
-        for (let y = step / 2; y < height; y += step) {
-          const dx = (x - width / 2) / (width / 2);
-          const dy = (y - height * 0.6) / (height / 2);
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist > 0.25 && dist < 1.1) {
-            const alpha = (0.05 + (1 - dist) * 0.09).toFixed(3);
-            circlesHtml += `<circle cx="${x}" cy="${y}" r="1.5" fill="rgba(255,255,255,${alpha})" />`;
-          }
-        }
-      }
-      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-      svg.innerHTML = circlesHtml;
-    }
+    }, { passive: true });
 
     // ---------------------------------------------------------------------------
     // 2. Services Filtering Logic
@@ -1741,18 +1472,6 @@
       const formEvent = new Event('submit', { cancelable: true });
       document.querySelector('#ai-drawer form').dispatchEvent(formEvent);
     }
-
-    // Initialize on page load and after full font/asset settlement
-    window.addEventListener('DOMContentLoaded', () => {
-      generateDotMatrix();
-      updateHeroGeometryCache();
-      calculateScrollProgress();
-      updateFramerArchPhysics(0);
-    });
-
-    window.addEventListener('load', () => {
-      updateHeroGeometryCache();
-    });
   </script>
 </body>
 </html>
