@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Aurora from "./react-bits/Aurora/Aurora";
+import GradientASCII from "./react-bits/GradientASCII/GradientASCII";
 import DotGrid from "./react-bits/DotGrid/DotGrid";
 import BlurText from "./react-bits/BlurText/BlurText";
 import Magnet from "./react-bits/Magnet/Magnet";
@@ -25,6 +26,7 @@ export function HeroSection({
 }: HeroSectionProps) {
   const containerRef = useRef<HTMLElement>(null);
   const auroraContainerRef = useRef<HTMLDivElement>(null);
+  const asciiArcContainerRef = useRef<HTMLDivElement>(null);
   const dotGridContainerRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
@@ -34,7 +36,7 @@ export function HeroSection({
   const ctaGroupRef = useRef<HTMLDivElement>(null);
   const scrollLineRef = useRef<HTMLDivElement>(null);
 
-  // Performance Guard: Pause Aurora & DotGrid when out of viewport
+  // Performance Guard: Pause Aurora, GradientASCII & DotGrid when out of viewport
   const [isPaused, setIsPaused] = useState(false);
 
   // IntersectionObserver performance guard
@@ -74,7 +76,7 @@ export function HeroSection({
           defaults: { ease: "power4.out" },
         });
 
-        // 0.00s: Fade and scale in the Aurora container (opacity: 0 -> 1, scale: 0.96 -> 1, duration: 1.6)
+        // 0.00s: Fade and scale in the Aurora container
         if (auroraContainerRef.current) {
           entranceTl.fromTo(
             auroraContainerRef.current,
@@ -84,7 +86,17 @@ export function HeroSection({
           );
         }
 
-        // 0.15s: Slide and fade in the Senior IT & AI Solutions Architect pill badge (y: 20 -> 0, autoAlpha: 0 -> 1)
+        // 0.10s: Fade and rise in the Grey Arc GradientASCII
+        if (asciiArcContainerRef.current) {
+          entranceTl.fromTo(
+            asciiArcContainerRef.current,
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1.4, ease: "power4.out" },
+            0.1
+          );
+        }
+
+        // 0.15s: Slide and fade in the Senior IT & AI Solutions Architect pill badge
         if (badgeRef.current) {
           entranceTl.fromTo(
             badgeRef.current,
@@ -94,7 +106,7 @@ export function HeroSection({
           );
         }
 
-        // 0.25s: Reveal Architecting Production AI Systems from an overflow-hidden line mask (yPercent: 115 -> 0, duration: 1.0)
+        // 0.25s: Reveal Architecting Production AI Systems from an overflow-hidden line mask
         if (titleClipRef.current) {
           entranceTl.fromTo(
             titleClipRef.current,
@@ -114,7 +126,7 @@ export function HeroSection({
           );
         }
 
-        // 0.55s: Fade up the subheadline paragraph (y: 24 -> 0, autoAlpha: 0 -> 1)
+        // 0.55s: Fade up the subheadline paragraph
         if (paragraphRef.current) {
           entranceTl.fromTo(
             paragraphRef.current,
@@ -124,7 +136,7 @@ export function HeroSection({
           );
         }
 
-        // 0.70s: Stagger in the dual CTA buttons (y: 20 -> 0, autoAlpha: 0 -> 1)
+        // 0.70s: Stagger in the dual CTA buttons
         if (ctaGroupRef.current) {
           entranceTl.fromTo(
             ctaGroupRef.current.children,
@@ -147,9 +159,9 @@ export function HeroSection({
         // ---------------------------------------------------------------------
         // Scrubbed Scroll Transition:
         // Pinned to the Hero section (start: "top top", end: "bottom 35%", scrub: true)
-        // Gently moves foreground content upward (yPercent: -22, autoAlpha: 0)
-        // while subtly scaling the Aurora (scale: 1.06, yPercent: 10)
-        // as the metrics section scrolls into view.
+        // - Gently moves foreground content upward
+        // - Arc rises slightly as user scrolls down (y: -110px)
+        // - Subtly scales Aurora
         // ---------------------------------------------------------------------
         const scrubTl = gsap.timeline({
           scrollTrigger: {
@@ -169,6 +181,15 @@ export function HeroSection({
           );
         }
 
+        // Grey Arc rises smoothly as user scrolls down
+        if (asciiArcContainerRef.current) {
+          scrubTl.to(
+            asciiArcContainerRef.current,
+            { y: -110, ease: "none" },
+            0
+          );
+        }
+
         if (auroraContainerRef.current) {
           scrubTl.to(
             auroraContainerRef.current,
@@ -180,6 +201,7 @@ export function HeroSection({
 
       mm.add("(prefers-reduced-motion: reduce)", () => {
         if (auroraContainerRef.current) gsap.set(auroraContainerRef.current, { opacity: 1, scale: 1 });
+        if (asciiArcContainerRef.current) gsap.set(asciiArcContainerRef.current, { opacity: 1, y: 0 });
         if (badgeRef.current) gsap.set(badgeRef.current, { autoAlpha: 1, y: 0 });
         if (titleClipRef.current) gsap.set(titleClipRef.current, { yPercent: 0 });
         if (blurTextWrapRef.current) gsap.set(blurTextWrapRef.current, { autoAlpha: 1, y: 0 });
@@ -247,6 +269,42 @@ export function HeroSection({
               "linear-gradient(to right, transparent 5%, black 25%, black 75%, transparent 95%)",
             WebkitMaskImage:
               "linear-gradient(to right, transparent 5%, black 25%, black 75%, transparent 95%)",
+          }}
+          aria-hidden="true"
+        />
+      </div>
+
+      {/* LAYER 1.5: Grey Arc <GradientASCII /> with shape="rise" (z-index: 15) */}
+      <div
+        ref={asciiArcContainerRef}
+        className="absolute inset-x-0 bottom-0 z-15 pointer-events-none flex items-end justify-center overflow-hidden will-change-transform"
+      >
+        <div style={{ width: "100%", height: "600px", position: "relative" }}>
+          <GradientASCII
+            colors={["#94a3b8", "#94a3b8", "#94a3b8", "#FBFBFA"]}
+            shape="rise"
+            characters=" .·•●"
+            cellSize={11}
+            density={0.02}
+            glow={0.35}
+            depthOfField={0.44}
+            flicker={0.17}
+            scale={0.85}
+            gradientOpacity={0.41}
+            grain={0}
+            variation={16}
+            scrambleRadius={0.02}
+            clickEffect="burst"
+            paused={isPaused}
+          />
+        </div>
+
+        {/* Bottom linear vignette so GradientASCII seamlessly blends into #FBFBFA background */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent 0%, rgba(251, 251, 250, 0.9) 70%, #FBFBFA 100%)",
           }}
           aria-hidden="true"
         />
