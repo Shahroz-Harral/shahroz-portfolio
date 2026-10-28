@@ -5,10 +5,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Aurora from "./react-bits/Aurora/Aurora";
-import GradientASCII from "./react-bits/GradientASCII/GradientASCII";
+import GradientWaves from "./react-bits/GradientWaves/GradientWaves";
 import DotGrid from "./react-bits/DotGrid/DotGrid";
 import BlurText from "./react-bits/BlurText/BlurText";
 import Magnet from "./react-bits/Magnet/Magnet";
+import WavesCustomizer, { DEFAULT_WAVES_CONFIG, type WavesConfig } from "./WavesCustomizer";
+import AuroraCustomizer, { DEFAULT_AURORA_CONFIG, type AuroraConfig } from "./AuroraCustomizer";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -26,7 +28,7 @@ export function HeroSection({
 }: HeroSectionProps) {
   const containerRef = useRef<HTMLElement>(null);
   const auroraContainerRef = useRef<HTMLDivElement>(null);
-  const asciiArcContainerRef = useRef<HTMLDivElement>(null);
+  const wavesContainerRef = useRef<HTMLDivElement>(null);
   const dotGridContainerRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
@@ -36,7 +38,16 @@ export function HeroSection({
   const ctaGroupRef = useRef<HTMLDivElement>(null);
   const scrollLineRef = useRef<HTMLDivElement>(null);
 
-  // Performance Guard: Pause Aurora, GradientASCII & DotGrid when out of viewport
+  // Active customizer studio drawer: 'aurora' | 'waves' | null
+  const [activeStudio, setActiveStudio] = useState<'aurora' | 'waves' | null>(null);
+
+  // Aurora customization state for real-time visual tuning
+  const [auroraConfig, setAuroraConfig] = useState<AuroraConfig>(DEFAULT_AURORA_CONFIG);
+
+  // GradientWaves customization state for real-time visual tuning
+  const [wavesConfig, setWavesConfig] = useState<WavesConfig>(DEFAULT_WAVES_CONFIG);
+
+  // Performance Guard: Pause Aurora, GradientWaves & DotGrid when out of viewport
   const [isPaused, setIsPaused] = useState(false);
 
   // IntersectionObserver performance guard
@@ -76,21 +87,22 @@ export function HeroSection({
           defaults: { ease: "power4.out" },
         });
 
-        // 0.00s: Fade and scale in the Aurora container
+        // 0.00s: Fade in the Aurora container (full screen width from start)
         if (auroraContainerRef.current) {
+          gsap.set(auroraContainerRef.current, { scale: 1 });
           entranceTl.fromTo(
             auroraContainerRef.current,
-            { opacity: 0, scale: 0.96 },
-            { opacity: 1, scale: 1, duration: 1.6, ease: "power4.out" },
+            { opacity: 0 },
+            { opacity: 1, duration: 1.5, ease: "power2.out" },
             0.0
           );
         }
 
-        // 0.10s: Fade and rise in the Grey Arc GradientASCII
-        if (asciiArcContainerRef.current) {
+        // 0.10s: Fade and rise in the GradientWaves simulation
+        if (wavesContainerRef.current) {
           entranceTl.fromTo(
-            asciiArcContainerRef.current,
-            { opacity: 0, y: 50 },
+            wavesContainerRef.current,
+            { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 1.4, ease: "power4.out" },
             0.1
           );
@@ -181,11 +193,11 @@ export function HeroSection({
           );
         }
 
-        // Grey Arc rises smoothly as user scrolls down
-        if (asciiArcContainerRef.current) {
+        // GradientWaves rises smoothly on scroll
+        if (wavesContainerRef.current) {
           scrubTl.to(
-            asciiArcContainerRef.current,
-            { y: -110, ease: "none" },
+            wavesContainerRef.current,
+            { y: wavesConfig.parallaxRise, ease: "none" },
             0
           );
         }
@@ -193,7 +205,7 @@ export function HeroSection({
         if (auroraContainerRef.current) {
           scrubTl.to(
             auroraContainerRef.current,
-            { scale: 1.06, yPercent: 10, ease: "none" },
+            { yPercent: 8, ease: "none" },
             0
           );
         }
@@ -201,7 +213,7 @@ export function HeroSection({
 
       mm.add("(prefers-reduced-motion: reduce)", () => {
         if (auroraContainerRef.current) gsap.set(auroraContainerRef.current, { opacity: 1, scale: 1 });
-        if (asciiArcContainerRef.current) gsap.set(asciiArcContainerRef.current, { opacity: 1, y: 0 });
+        if (wavesContainerRef.current) gsap.set(wavesContainerRef.current, { opacity: 1, y: 0 });
         if (badgeRef.current) gsap.set(badgeRef.current, { autoAlpha: 1, y: 0 });
         if (titleClipRef.current) gsap.set(titleClipRef.current, { yPercent: 0 });
         if (blurTextWrapRef.current) gsap.set(blurTextWrapRef.current, { autoAlpha: 1, y: 0 });
@@ -210,13 +222,14 @@ export function HeroSection({
         if (scrollLineRef.current) gsap.set(scrollLineRef.current, { autoAlpha: 1, scaleY: 1 });
       });
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [wavesConfig.parallaxRise] }
   );
 
   return (
-    /* LAYER 0: Base Hero Container */
-    <section
-      ref={containerRef}
+    <>
+      {/* LAYER 0: Base Hero Container */}
+      <section
+        ref={containerRef}
       className="relative w-full min-h-screen h-screen overflow-hidden bg-[#FBFBFA] text-editorial-dark flex items-center justify-center pt-16 md:pt-20 select-none"
       id="heroTrack"
       aria-label="Hero Section"
@@ -224,37 +237,45 @@ export function HeroSection({
       {/* LAYER 1: Mint & Lime Arc <Aurora /> Background (z-index: 10) */}
       <div
         ref={auroraContainerRef}
-        className="absolute inset-0 z-10 pointer-events-none overflow-hidden flex items-start justify-center will-change-transform"
+        className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden flex items-start justify-center will-change-transform"
       >
         {/* Top Crown Horizon Ambient Glow */}
-        <div
-          className="absolute -top-16 left-1/2 -translate-x-1/2 w-[880px] max-w-[95vw] h-[240px] blur-3xl pointer-events-none opacity-40"
-          style={{
-            background:
-              "radial-gradient(closest-side, rgba(94, 238, 178, 0.3) 0%, rgba(124, 255, 103, 0.15) 50%, transparent 100%)",
-          }}
-          aria-hidden="true"
-        />
+        {auroraConfig.showTopGlow && (
+          <div
+            className="absolute -top-16 left-1/2 -translate-x-1/2 w-full max-w-none h-[240px] blur-3xl pointer-events-none opacity-40 transition-colors duration-500"
+            style={{
+              background: `radial-gradient(ellipse 90% 70% at 50% 0%, ${auroraConfig.topGlowColor} 0%, rgba(124, 255, 103, 0.15) 60%, transparent 100%)`,
+            }}
+            aria-hidden="true"
+          />
+        )}
 
-        {/* WebGL Mint / Lime Aurora with Light Mode and 2 Layers */}
-        <div style={{ width: "100%", height: "85vh", minHeight: "750px", position: "relative" }}>
+        {/* WebGL Mint / Lime Aurora with Light Mode and Configurable Layers */}
+        <div className="w-full relative" style={{ width: "100%", height: `${auroraConfig.containerHeight}vh`, minHeight: "750px" }}>
           <Aurora
-            colorStops={["#5eeeb2", "#7cff67", "#5eeeb2"]}
-            amplitude={2.7}
-            blend={0.39}
-            height={0.61}
-            speed={1}
-            glow={1.5}
-            layers={2}
-            lightMode
+            colorStops={auroraConfig.colorStops}
+            amplitude={auroraConfig.amplitude}
+            blend={auroraConfig.blend}
+            height={auroraConfig.height}
+            speed={auroraConfig.speed}
+            scale={auroraConfig.scale}
+            glow={auroraConfig.glow}
+            brightness={auroraConfig.brightness}
+            layers={auroraConfig.layers}
+            direction={auroraConfig.direction}
+            opacity={auroraConfig.opacity}
+            lightMode={auroraConfig.lightMode}
+            mouseInteraction={auroraConfig.mouseInteraction}
+            intro={auroraConfig.intro}
             paused={isPaused}
           />
         </div>
 
         {/* Bottom linear gradient vignette so aurora fades cleanly into website's #FBFBFA background */}
         <div
-          className="absolute inset-x-0 bottom-0 h-48 pointer-events-none"
+          className="absolute inset-x-0 bottom-0 pointer-events-none"
           style={{
+            height: `${auroraConfig.bottomFadeHeight}px`,
             background:
               "linear-gradient(to bottom, transparent 0%, rgba(251, 251, 250, 0.8) 65%, #FBFBFA 100%)",
           }}
@@ -274,37 +295,52 @@ export function HeroSection({
         />
       </div>
 
-      {/* LAYER 1.5: Grey Arc <GradientASCII /> with shape="rise" (z-index: 15) */}
+      {/* LAYER 1.5: React Bits <GradientWaves /> Fluid Simulation (z-index: 15) */}
       <div
-        ref={asciiArcContainerRef}
-        className="absolute inset-x-0 bottom-0 z-15 pointer-events-none flex items-end justify-center overflow-hidden will-change-transform"
+        ref={wavesContainerRef}
+        className="absolute inset-x-0 bottom-0 z-15 pointer-events-auto flex items-end justify-center overflow-hidden will-change-transform"
+        style={{
+          marginBottom: `${wavesConfig.bottomOffset}px`,
+        }}
       >
-        <div style={{ width: "100%", height: "600px", position: "relative" }}>
-          <GradientASCII
-            colors={["#94a3b8", "#94a3b8", "#94a3b8", "#FBFBFA"]}
-            shape="rise"
-            characters=" .·•●"
-            cellSize={11}
-            density={0.02}
-            glow={0.35}
-            depthOfField={0.44}
-            flicker={0.17}
-            scale={0.85}
-            gradientOpacity={0.41}
-            grain={0}
-            variation={16}
-            scrambleRadius={0.02}
-            clickEffect="burst"
+        <div style={{ width: "100%", height: `${wavesConfig.containerHeight}px`, position: "relative" }}>
+          <GradientWaves
+            horizonColor={wavesConfig.horizonColor}
+            waveColor={wavesConfig.waveColor}
+            crestColor={wavesConfig.crestColor}
+            backgroundColor={wavesConfig.backgroundColor}
+            lightMode={wavesConfig.lightMode}
+            speed={wavesConfig.speed}
+            amplitude={wavesConfig.amplitude}
+            waveScale={wavesConfig.waveScale}
+            waveRatio={wavesConfig.waveRatio}
+            swell={wavesConfig.swell}
+            turbulence={wavesConfig.turbulence}
+            tilt={wavesConfig.tilt}
+            zoom={wavesConfig.zoom}
+            height={wavesConfig.height}
+            fogDepth={wavesConfig.fogDepth}
+            relief={wavesConfig.relief}
+            lightAngle={wavesConfig.lightAngle}
+            sheen={wavesConfig.sheen}
+            brightness={wavesConfig.brightness}
+            opacity={wavesConfig.opacity}
+            grain={wavesConfig.grain}
+            intro={wavesConfig.intro}
+            mouseInteraction={wavesConfig.mouseInteraction}
+            parallaxStrength={wavesConfig.parallaxStrength}
+            mouseStrength={wavesConfig.mouseStrength}
+            swellOnClick={wavesConfig.swellOnClick}
             paused={isPaused}
           />
         </div>
 
-        {/* Bottom linear vignette so GradientASCII seamlessly blends into #FBFBFA background */}
+        {/* Bottom linear blend so waves fade cleanly into #FBFBFA website background */}
         <div
           className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to bottom, transparent 0%, rgba(251, 251, 250, 0.9) 70%, #FBFBFA 100%)",
+              "linear-gradient(to bottom, transparent 0%, rgba(251, 251, 250, 0.85) 65%, #FBFBFA 100%)",
           }}
           aria-hidden="true"
         />
@@ -445,6 +481,54 @@ export function HeroSection({
         </div>
       </div>
     </section>
+
+    {/* Floating Studio Trigger Toolbar Dock */}
+    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 select-none">
+      <button
+        onClick={() => setActiveStudio(activeStudio === 'aurora' ? null : 'aurora')}
+        className={`flex items-center gap-2 px-3.5 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider font-semibold shadow-2xl border transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-xl ${
+          activeStudio === 'aurora'
+            ? 'bg-emerald-500 text-black border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.4)]'
+            : 'bg-[#111310]/90 hover:bg-black text-white border-white/20'
+        }`}
+        id="btnToggleAuroraCustomizer"
+      >
+        <span className={`w-2 h-2 rounded-full ${activeStudio === 'aurora' ? 'bg-black' : 'bg-emerald-400 animate-pulse'}`} />
+        <span>{activeStudio === 'aurora' ? '✕ Close Aurora' : '✨ Aurora'}</span>
+      </button>
+
+      <button
+        onClick={() => setActiveStudio(activeStudio === 'waves' ? null : 'waves')}
+        className={`flex items-center gap-2 px-3.5 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider font-semibold shadow-2xl border transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-xl ${
+          activeStudio === 'waves'
+            ? 'bg-cyan-400 text-black border-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.4)]'
+            : 'bg-[#111310]/90 hover:bg-black text-white border-white/20'
+        }`}
+        id="btnToggleWavesCustomizer"
+      >
+        <span className={`w-2 h-2 rounded-full ${activeStudio === 'waves' ? 'bg-black' : 'bg-cyan-400 animate-pulse'}`} />
+        <span>{activeStudio === 'waves' ? '✕ Close Waves' : '🌊 Waves'}</span>
+      </button>
+    </div>
+
+    {/* Interactive Aurora Customizer */}
+    <AuroraCustomizer
+      config={auroraConfig}
+      onChange={setAuroraConfig}
+      isOpen={activeStudio === 'aurora'}
+      onToggle={() => setActiveStudio(activeStudio === 'aurora' ? null : 'aurora')}
+      onSwitchToWaves={() => setActiveStudio('waves')}
+    />
+
+    {/* Interactive GradientWaves Customizer */}
+    <WavesCustomizer
+      config={wavesConfig}
+      onChange={setWavesConfig}
+      isOpen={activeStudio === 'waves'}
+      onToggle={() => setActiveStudio(activeStudio === 'waves' ? null : 'waves')}
+      onSwitchToAurora={() => setActiveStudio('aurora')}
+    />
+  </>
   );
 }
 
