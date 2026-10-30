@@ -36,6 +36,7 @@ export interface WavesConfig {
   parallaxStrength: number;
   swellOnClick: boolean;
   intro: boolean;
+  dpr: number;
 
   // Dimensions & Layout
   containerHeight: number;
@@ -70,6 +71,7 @@ export const DEFAULT_WAVES_CONFIG: WavesConfig = {
   parallaxStrength: 0.5,
   swellOnClick: true,
   intro: true,
+  dpr: 1,
   containerHeight: 610,
   bottomOffset: 0,
   parallaxRise: -120,

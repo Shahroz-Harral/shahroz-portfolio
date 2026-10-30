@@ -301,7 +301,7 @@ export function GradientWaves({
   mouseStrength = 0.6,
   swellOnClick = true,
   paused = false,
-  dpr = 2,
+  dpr = 1,
   className = '',
   style
 }: GradientWavesProps) {
@@ -340,7 +340,7 @@ export function GradientWaves({
     mouseStrength: clamp(mouseStrength, 0, 1),
     swellOnClick,
     paused,
-    dpr: Math.max(0.5, dpr)
+    dpr: clamp(dpr, 0.5, 1.25)
   };
   const settingsRef = useRef(settings);
   settingsRef.current = settings;

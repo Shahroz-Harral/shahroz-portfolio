@@ -7,7 +7,7 @@ import { useGSAP } from "@gsap/react";
 import Aurora from "./react-bits/Aurora/Aurora";
 import GradientWaves from "./react-bits/GradientWaves/GradientWaves";
 import DotGrid from "./react-bits/DotGrid/DotGrid";
-import BlurText from "./react-bits/BlurText/BlurText";
+import VaporType from "./react-bits/VaporType/VaporType";
 import Magnet from "./react-bits/Magnet/Magnet";
 import WavesCustomizer, { DEFAULT_WAVES_CONFIG, type WavesConfig } from "./WavesCustomizer";
 import AuroraCustomizer, { DEFAULT_AURORA_CONFIG, type AuroraConfig } from "./AuroraCustomizer";
@@ -31,10 +31,8 @@ export function HeroSection({
   const wavesContainerRef = useRef<HTMLDivElement>(null);
   const dotGridContainerRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
-  const titleClipRef = useRef<HTMLDivElement>(null);
-  const blurTextWrapRef = useRef<HTMLDivElement>(null);
-  const paragraphRef = useRef<HTMLParagraphElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const fixedTextRef = useRef<HTMLSpanElement>(null);
   const ctaGroupRef = useRef<HTMLDivElement>(null);
   const scrollLineRef = useRef<HTMLDivElement>(null);
 
@@ -108,63 +106,33 @@ export function HeroSection({
           );
         }
 
-        // 0.15s: Slide and fade in the Senior IT & AI Solutions Architect pill badge
-        if (badgeRef.current) {
+        // 0.20s: Subtle one-time entrance animation for the fixed headline portion
+        if (fixedTextRef.current) {
           entranceTl.fromTo(
-            badgeRef.current,
-            { y: 20, autoAlpha: 0 },
-            { y: 0, autoAlpha: 1, duration: 0.8, ease: "power4.out" },
-            0.15
+            fixedTextRef.current,
+            { y: 22, autoAlpha: 0 },
+            { y: 0, autoAlpha: 1, duration: 1.0, ease: "power4.out" },
+            0.20
           );
         }
 
-        // 0.25s: Reveal Architecting Production AI Systems from an overflow-hidden line mask
-        if (titleClipRef.current) {
-          entranceTl.fromTo(
-            titleClipRef.current,
-            { yPercent: 115 },
-            { yPercent: 0, duration: 1.0, ease: "power4.out" },
-            0.25
-          );
-        }
-
-        // 0.35s: Trigger <BlurText /> on "with Zero Fluff"
-        if (blurTextWrapRef.current) {
-          entranceTl.fromTo(
-            blurTextWrapRef.current,
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.85, ease: "power4.out" },
-            0.35
-          );
-        }
-
-        // 0.55s: Fade up the subheadline paragraph
-        if (paragraphRef.current) {
-          entranceTl.fromTo(
-            paragraphRef.current,
-            { y: 24, autoAlpha: 0 },
-            { y: 0, autoAlpha: 1, duration: 0.9, ease: "power4.out" },
-            0.55
-          );
-        }
-
-        // 0.70s: Stagger in the dual CTA buttons
+        // 0.45s: Stagger in the dual CTA buttons
         if (ctaGroupRef.current) {
           entranceTl.fromTo(
             ctaGroupRef.current.children,
             { y: 20, autoAlpha: 0 },
             { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.12, ease: "power4.out" },
-            0.70
+            0.45
           );
         }
 
-        // Optional scroll indicator entrance
+        // 0.70s: Optional scroll indicator entrance
         if (scrollLineRef.current) {
           entranceTl.fromTo(
             scrollLineRef.current,
             { autoAlpha: 0, scaleY: 0 },
             { autoAlpha: 1, scaleY: 1, duration: 0.6, ease: "power2.out" },
-            0.95
+            0.70
           );
         }
 
@@ -214,10 +182,7 @@ export function HeroSection({
       mm.add("(prefers-reduced-motion: reduce)", () => {
         if (auroraContainerRef.current) gsap.set(auroraContainerRef.current, { opacity: 1, scale: 1 });
         if (wavesContainerRef.current) gsap.set(wavesContainerRef.current, { opacity: 1, y: 0 });
-        if (badgeRef.current) gsap.set(badgeRef.current, { autoAlpha: 1, y: 0 });
-        if (titleClipRef.current) gsap.set(titleClipRef.current, { yPercent: 0 });
-        if (blurTextWrapRef.current) gsap.set(blurTextWrapRef.current, { autoAlpha: 1, y: 0 });
-        if (paragraphRef.current) gsap.set(paragraphRef.current, { autoAlpha: 1, y: 0 });
+        if (fixedTextRef.current) gsap.set(fixedTextRef.current, { autoAlpha: 1, y: 0 });
         if (ctaGroupRef.current) gsap.set(ctaGroupRef.current.children, { autoAlpha: 1, y: 0 });
         if (scrollLineRef.current) gsap.set(scrollLineRef.current, { autoAlpha: 1, scaleY: 1 });
       });
@@ -267,6 +232,7 @@ export function HeroSection({
             lightMode={auroraConfig.lightMode}
             mouseInteraction={auroraConfig.mouseInteraction}
             intro={auroraConfig.intro}
+            dpr={auroraConfig.dpr}
             paused={isPaused}
           />
         </div>
@@ -331,6 +297,7 @@ export function HeroSection({
             parallaxStrength={wavesConfig.parallaxStrength}
             mouseStrength={wavesConfig.mouseStrength}
             swellOnClick={wavesConfig.swellOnClick}
+            dpr={wavesConfig.dpr}
             paused={isPaused}
           />
         </div>
@@ -370,6 +337,7 @@ export function HeroSection({
             glow={1.2}
             fade={1}
             intro={true}
+            dpr={1}
             paused={isPaused}
           />
         </div>
@@ -388,50 +356,57 @@ export function HeroSection({
       {/* LAYER 3: Foreground Typography, CTAs & Pointer-Events Passthrough (z-index: 30) */}
       <div
         ref={heroContentRef}
-        className="relative z-30 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center pointer-events-none will-change-transform"
+        className="relative z-30 w-full max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center pointer-events-none will-change-transform"
       >
-        {/* Badge: Senior IT & AI Solutions Architect */}
-        <div ref={badgeRef} className="hero-badge-wrap mb-5" id="heroBadgeWrap">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-xl border border-black/[0.08] text-[11px] sm:text-xs font-mono uppercase tracking-wider text-editorial-dark shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]" />
-            Senior IT &amp; AI Solutions Architect
-          </span>
-        </div>
-
-        {/* Main Display Headline */}
+        {/* Semantic Display Headline */}
         <h1
-          className="hero-title font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-editorial-dark mb-5 leading-[1.1] max-w-4xl mx-auto"
+          ref={headlineRef}
+          className="hero-title font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] xl:text-[3.15rem] 2xl:text-[3.65rem] font-bold tracking-tight text-editorial-dark mb-10 leading-[1.2] text-center max-w-7xl mx-auto"
           id="heroTitle"
         >
-          {/* Line 1: Architecting Production AI Systems */}
-          <div className="overflow-hidden pb-1">
-            <div ref={titleClipRef} className="inline-block transform-gpu text-editorial-dark">
-              Architecting Production AI Systems
-            </div>
-          </div>
-
-          {/* Line 2: with Zero Fluff (rendered via BlurText) */}
-          <div ref={blurTextWrapRef} className="flex justify-center mt-2">
-            <span className="font-serif italic font-normal text-3xl sm:text-5xl lg:text-6xl text-moss">
-              <BlurText
-                text="with Zero Fluff"
-                delay={90}
-                animateBy="words"
-                direction="bottom"
-                trigger="load"
-                className="justify-center"
-              />
-            </span>
-          </div>
+          <span ref={fixedTextRef} className="inline will-change-[transform,opacity]">
+            We make your business more{" "}
+          </span>
+          <span className="inline-block whitespace-nowrap align-baseline">
+            <VaporType
+              words={[
+                "efficient",
+                "responsive",
+                "consistent",
+                "scalable",
+                "productive",
+              ]}
+              as="span"
+              align="start"
+              color="currentColor"
+              vaporColor="#10B981"
+              density={1.2}
+              particleSize={1.2}
+              spread={1.2}
+              rise={1}
+              turbulence={0.8}
+              diffusion={0.35}
+              grain={1}
+              sweep="left"
+              stagger={0.8}
+              condense={1.8}
+              hold={2.4}
+              dissolve={2}
+              overlap={0.6}
+              loop={true}
+              startOnView={true}
+              interactive={true}
+              breath={1}
+              breathRadius={0.8}
+              recovery={1.2}
+              clickAdvance={true}
+              pauseOnHover={true}
+              area="parent"
+              className="align-baseline"
+            />
+            <span className="inline">.</span>
+          </span>
         </h1>
-
-        {/* Paragraph */}
-        <p
-          ref={paragraphRef}
-          className="text-sm sm:text-base lg:text-lg font-normal text-editorial-gray max-w-2xl mx-auto mb-8 leading-relaxed font-sans"
-        >
-          From high-precision enterprise RAG knowledge bases to autonomous multi-agent pipelines and sovereign models. Fully built, battle-tested, done right — delivered fast.
-        </p>
 
         {/* CTAs: Re-enable pointer-events: auto only on the buttons container & wrap with Magnet */}
         <div

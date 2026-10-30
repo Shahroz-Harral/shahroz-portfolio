@@ -371,10 +371,18 @@ const Aurora = ({
     let raf = 0;
     let last = 0;
     let visible = true;
+    let lastStopsKey = '';
+
+    const updatePalette = (stops: string[]) => {
+      const key = stops.join(',');
+      if (key === lastStopsKey) return;
+      lastStopsKey = key;
+      unwrapHues(stops.map(value => toOklch(parse(value)))).forEach((stop, index) => palette.set(stop, index * 3));
+    };
 
     const render = () => {
       const s = settingsRef.current;
-      unwrapHues(s.stops.map(value => toOklch(parse(value)))).forEach((stop, index) => palette.set(stop, index * 3));
+      updatePalette(s.stops);
       const reveal = state.reveal;
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.useProgram(program.program);
@@ -435,7 +443,8 @@ const Aurora = ({
       const s = settingsRef.current;
       const width = Math.max(1, container.clientWidth);
       const height = Math.max(1, container.clientHeight);
-      const ratio = Math.min(s.dpr || window.devicePixelRatio || 1, 2);
+      const targetDpr = s.dpr ?? (window.devicePixelRatio ? Math.min(window.devicePixelRatio, 1.25) : 1);
+      const ratio = Math.min(targetDpr, 1.25);
       view.width = width;
       view.height = height;
       canvas.width = Math.max(1, Math.round(width * ratio));

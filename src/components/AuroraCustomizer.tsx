@@ -20,6 +20,7 @@ export interface AuroraConfig {
   lightMode: boolean;
   mouseInteraction: boolean;
   intro: boolean;
+  dpr: number;
 
   // Layout & Vignette
   containerHeight: number; // in vh
@@ -43,6 +44,7 @@ export const DEFAULT_AURORA_CONFIG: AuroraConfig = {
   lightMode: true,
   mouseInteraction: true,
   intro: true,
+  dpr: 1,
   containerHeight: 50,
   showTopGlow: true,
   topGlowColor: '#5eeeb2',

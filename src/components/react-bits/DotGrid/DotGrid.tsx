@@ -308,7 +308,8 @@ export const DotGrid = ({
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
-      const ratio = Math.min(settingsRef.current.dpr ?? window.devicePixelRatio ?? 1, 2);
+      const targetDpr = settingsRef.current.dpr ?? (window.devicePixelRatio ? Math.min(window.devicePixelRatio, 1.25) : 1);
+      const ratio = Math.min(targetDpr, 1.25);
       const width = Math.max(1, Math.round(rect.width));
       const height = Math.max(1, Math.round(rect.height));
       Object.assign(view, { width, height, left: rect.left, top: rect.top, ratio });
@@ -340,7 +341,7 @@ export const DotGrid = ({
       const coupling = (Math.max(0, s.tension) * 900) ** 2 / (grid.cell * grid.cell);
       const viscosity = Math.sqrt(coupling) * 0.06;
       const limit = Math.sqrt(stiffness + 8 * coupling) + damping + 8 * viscosity;
-      const steps = Math.min(24, Math.max(1, Math.ceil(dt / Math.min(1 / 120, 1.2 / limit))));
+      const steps = Math.min(6, Math.max(1, Math.ceil(dt / Math.min(1 / 120, 1.2 / limit))));
       const h = dt / steps;
       for (let i = 0; i < grid.count; i++) {
         const index = i * 2;
@@ -536,6 +537,7 @@ export const DotGrid = ({
       raf = 0;
       if (settingsRef.current.paused || !visible) return;
       if (introStart !== null && introStart < 0) introStart = now;
+      if (introStart !== null && (now - introStart) / 1000 >= 1.6) introStart = null;
       const dt = Math.min(0.05, (now - last) / 1000 || 0);
       last = now;
       step(dt, now);
