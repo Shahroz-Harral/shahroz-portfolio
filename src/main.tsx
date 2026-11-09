@@ -4,6 +4,8 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroSection } from "./components/HeroSection";
+import { WhyItWorksSection } from "./components/WhyItWorksSection";
+import { ServicesSection } from "./components/ServicesSection";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -49,6 +51,34 @@ if (mountPoint) {
   root.render(
     <React.StrictMode>
       <HeroSection />
+    </React.StrictMode>
+  );
+}
+
+// ============================================================================
+// MOUNT WHY IT WORKS SECTION (HOVER STACK REDESIGN)
+// ============================================================================
+const whyItWorksMount = document.getElementById("why-it-works-mount");
+
+if (whyItWorksMount) {
+  const root = ReactDOM.createRoot(whyItWorksMount);
+  root.render(
+    <React.StrictMode>
+      <WhyItWorksSection />
+    </React.StrictMode>
+  );
+}
+
+// ============================================================================
+// MOUNT SERVICES SECTION (HOVER STACK REDESIGN)
+// ============================================================================
+const servicesMount = document.getElementById("services-mount");
+
+if (servicesMount) {
+  const root = ReactDOM.createRoot(servicesMount);
+  root.render(
+    <React.StrictMode>
+      <ServicesSection />
     </React.StrictMode>
   );
 }
