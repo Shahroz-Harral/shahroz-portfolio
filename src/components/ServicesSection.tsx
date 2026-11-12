@@ -360,7 +360,7 @@ export const ServicesSection: React.FC = () => {
   const row2Cards = useMemo(() => SERVICES_DATA.slice(4, 8), []);
 
   return (
-    <div className="relative w-full overflow-hidden bg-gradient-to-b from-[#FAFBF9] via-[#F4F9F5] to-[#EAF4ED] pt-20 pb-32 sm:pt-24 sm:pb-40">
+    <div className="relative w-full overflow-hidden bg-transparent pt-20 pb-20 sm:pt-24 sm:pb-28">
       {/* ===================================================================== */}
       {/* DECORATIVE BACKGROUND SVGS: Curved lines with green dots (Left & Right) */}
       {/* ===================================================================== */}
@@ -468,35 +468,6 @@ export const ServicesSection: React.FC = () => {
           </div>
         )}
 
-      </div>
-
-      {/* ===================================================================== */}
-      {/* SOFT PALE-GREEN BOTTOM WAVE: Smooth landscape transition to next section */}
-      {/* ===================================================================== */}
-      <div
-        className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none select-none z-0"
-        aria-hidden="true"
-      >
-        <svg
-          className="relative block w-full h-[70px] sm:h-[100px] md:h-[120px]"
-          viewBox="0 0 1440 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          {/* Back mist wave layer */}
-          <path
-            d="M0 60C320 20 640 90 960 40C1200 8 1360 45 1440 60V120H0V60Z"
-            fill="#E2F1E6"
-            fillOpacity="0.45"
-          />
-          {/* Front smooth transition wave layer */}
-          <path
-            d="M0 80C280 40 560 100 880 65C1180 35 1340 75 1440 85V120H0V80Z"
-            fill="#D9EEDB"
-            fillOpacity="0.35"
-          />
-        </svg>
       </div>
     </div>
   );

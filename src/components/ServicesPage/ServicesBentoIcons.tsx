@@ -158,3 +158,4 @@ export const AiAssistantAvatar: React.FC<{ className?: string }> = ({ className 
     </svg>
   </div>
 );
+
