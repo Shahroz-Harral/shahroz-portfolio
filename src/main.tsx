@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroSection } from "./components/HeroSection";
 import { WhyItWorksSection } from "./components/WhyItWorksSection";
 import { ServicesSection } from "./components/ServicesSection";
+import { ServicesPage } from "./components/ServicesPage/ServicesPage";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -79,6 +80,20 @@ if (servicesMount) {
   root.render(
     <React.StrictMode>
       <ServicesSection />
+    </React.StrictMode>
+  );
+}
+
+// ============================================================================
+// MOUNT FULL SERVICES PAGE REDESIGN
+// ============================================================================
+const servicesPageMount = document.getElementById("services-page-mount");
+
+if (servicesPageMount) {
+  const root = ReactDOM.createRoot(servicesPageMount);
+  root.render(
+    <React.StrictMode>
+      <ServicesPage />
     </React.StrictMode>
   );
 }
