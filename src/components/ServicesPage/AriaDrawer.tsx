@@ -83,25 +83,25 @@ export const AriaDrawer: React.FC<AriaDrawerProps> = ({ isOpen, onClose }) => {
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 transition-opacity duration-300"
+        className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 transition-opacity duration-300"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Drawer */}
       <aside
-        className="fixed top-0 right-0 h-full w-full max-w-md bg-white/95 backdrop-blur-2xl border-l border-black/[0.08] shadow-2xl z-50 flex flex-col justify-between animate-in slide-in-from-right duration-300"
+        className="fixed top-0 right-0 h-full w-full max-w-md bg-white/95 dark:bg-[#0E1411]/95 backdrop-blur-2xl border-l border-black/[0.08] dark:border-white/10 shadow-2xl z-50 flex flex-col justify-between animate-in slide-in-from-right duration-300"
         aria-label="Aria AI Architecture Advisor"
       >
         {/* Header */}
-        <div className="p-5 border-b border-black/[0.06] flex items-center justify-between">
+        <div className="p-5 border-b border-black/[0.06] dark:border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-[#111916] text-white font-bold flex items-center justify-center text-xs shadow-xs">
+            <div className="w-8 h-8 rounded-full bg-[#111916] dark:bg-[#141B17] text-white font-bold flex items-center justify-center text-xs shadow-xs border border-transparent dark:border-white/20">
               A
             </div>
             <div>
-              <div className="font-bold text-sm text-[#111916]">Aria AI Advisor</div>
-              <div className="text-[10px] font-mono text-emerald-700 flex items-center gap-1">
+              <div className="font-bold text-sm text-[#111916] dark:text-[#F3F5F4]">Aria AI Advisor</div>
+              <div className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Live Architecture Intelligence
               </div>
@@ -110,7 +110,7 @@ export const AriaDrawer: React.FC<AriaDrawerProps> = ({ isOpen, onClose }) => {
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full hover:bg-black/5 flex items-center justify-center text-gray-500 hover:text-black transition-colors"
+            className="w-8 h-8 rounded-full hover:bg-black/5 dark:hover:bg-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
             aria-label="Close Aria Advisor"
           >
             ✕
@@ -123,7 +123,7 @@ export const AriaDrawer: React.FC<AriaDrawerProps> = ({ isOpen, onClose }) => {
             <div key={idx} className="flex items-start gap-2.5">
               <div
                 className={`w-6 h-6 rounded-full text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5 ${
-                  msg.sender === 'user' ? 'bg-[#111916]' : 'bg-emerald-600'
+                  msg.sender === 'user' ? 'bg-[#111916] dark:bg-emerald-600' : 'bg-emerald-600 dark:bg-[#1F2923]'
                 }`}
               >
                 {msg.sender === 'user' ? 'U' : 'A'}
@@ -131,8 +131,8 @@ export const AriaDrawer: React.FC<AriaDrawerProps> = ({ isOpen, onClose }) => {
               <div
                 className={`p-3 rounded-2xl leading-relaxed max-w-[85%] ${
                   msg.sender === 'user'
-                    ? 'bg-white border border-black/[0.08] rounded-tr-xs text-[#111916]'
-                    : 'bg-[#E5F8EE] border border-emerald-500/15 rounded-tl-xs text-[#111916]'
+                    ? 'bg-white dark:bg-emerald-600 border border-black/[0.08] dark:border-transparent rounded-tr-xs text-[#111916] dark:text-white'
+                    : 'bg-[#E5F8EE] dark:bg-[#16201A] border border-emerald-500/15 dark:border-white/10 rounded-tl-xs text-[#111916] dark:text-[#F3F5F4]'
                 }`}
               >
                 {msg.text}
@@ -142,8 +142,8 @@ export const AriaDrawer: React.FC<AriaDrawerProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Quick Prompts */}
-        <div className="px-5 py-2.5 border-t border-black/[0.04] bg-[#FAFCFA]">
-          <div className="text-[10px] font-mono text-gray-500 mb-2 uppercase tracking-wider">
+        <div className="px-5 py-2.5 border-t border-black/[0.04] dark:border-white/10 bg-[#FAFCFA] dark:bg-[#0E1411]">
+          <div className="text-[10px] font-mono text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
             Quick Prompts:
           </div>
           <div className="flex flex-wrap gap-1.5">
@@ -152,7 +152,7 @@ export const AriaDrawer: React.FC<AriaDrawerProps> = ({ isOpen, onClose }) => {
                 key={i}
                 type="button"
                 onClick={() => handleSend(prompt)}
-                className="text-[11px] py-1 px-2.5 rounded-full bg-white border border-black/[0.08] hover:border-emerald-500 text-gray-700 hover:text-black transition-all cursor-pointer text-left"
+                className="text-[11px] py-1 px-2.5 rounded-full bg-white dark:bg-[#16201A] border border-black/[0.08] dark:border-white/10 hover:border-emerald-500 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all cursor-pointer text-left"
               >
                 {prompt}
               </button>
@@ -161,7 +161,7 @@ export const AriaDrawer: React.FC<AriaDrawerProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Input Form */}
-        <div className="p-4 border-t border-black/[0.06] bg-white">
+        <div className="p-4 border-t border-black/[0.06] dark:border-white/10 bg-white dark:bg-[#0E1411]">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -174,17 +174,17 @@ export const AriaDrawer: React.FC<AriaDrawerProps> = ({ isOpen, onClose }) => {
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
               placeholder="Ask about AI chatbots, voice agents, workflows..."
-              className="flex-1 bg-black/[0.03] border border-black/[0.08] rounded-full px-4 py-2 text-xs text-[#111916] placeholder-gray-400 focus:outline-none focus:border-emerald-500 transition-colors"
+              className="flex-1 bg-black/[0.03] dark:bg-[#121815] border border-black/[0.08] dark:border-white/15 rounded-full px-4 py-2 text-xs text-[#111916] dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors"
             />
             <button
               type="submit"
-              className="w-8 h-8 rounded-full bg-[#111916] text-white flex items-center justify-center shrink-0 hover:bg-emerald-900 transition-colors text-xs font-bold"
+              className="w-8 h-8 rounded-full bg-[#111916] dark:bg-[#10B981] text-white dark:text-[#0A0E0C] flex items-center justify-center shrink-0 hover:bg-emerald-900 dark:hover:bg-[#34D399] transition-colors text-xs font-bold"
             >
               ↑
             </button>
           </form>
           <div className="mt-2 text-center text-[10px] text-gray-400">
-            Direct WhatsApp Handoff: <a href="https://wa.me/923349791008" target="_blank" rel="noopener noreferrer" className="text-emerald-700 underline font-medium">+92 334 9791008</a>
+            Direct WhatsApp Handoff: <a href="https://wa.me/923349791008" target="_blank" rel="noopener noreferrer" className="text-emerald-700 dark:text-emerald-400 underline font-medium">+92 334 9791008</a>
           </div>
         </div>
       </aside>

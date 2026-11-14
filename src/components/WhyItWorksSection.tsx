@@ -154,7 +154,7 @@ interface WhyItWorksCardItemProps {
 const WhyItWorksCardItem: React.FC<WhyItWorksCardItemProps> = ({ card, isStack = false }) => {
   return (
     <div
-      className={`group relative flex flex-col justify-between text-left p-5 sm:p-6 rounded-2xl transition-colors duration-200 ${card.tintBg} ${
+      className={`group relative flex flex-col justify-between text-left p-5 sm:p-6 rounded-2xl transition-colors duration-200 ${card.tintBg} dark:!bg-[#121815] dark:!border-white/[0.08] hover:dark:!border-emerald-500/40 ${
         isStack ? "w-[320px] h-[435px]" : "w-full h-auto min-h-0"
       }`}
       style={{
@@ -166,35 +166,35 @@ const WhyItWorksCardItem: React.FC<WhyItWorksCardItemProps> = ({ card, isStack =
         {/* Top Header Row: 3D Icon Tile on left + Title & Step Number on right */}
         <div className="flex items-center gap-3.5 mb-3.5">
           <div
-            className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-sm border ${card.iconTileBg} ${card.iconTileBorder}`}
+            className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-sm border ${card.iconTileBg} ${card.iconTileBorder} dark:!bg-white/[0.06] dark:!border-white/10`}
           >
             {renderWhyItWorksIcon(card.iconType)}
           </div>
           <div className="flex-1 min-w-0">
-            <span className="text-[11px] font-mono font-medium text-[#60645E] block mb-0.5">
+            <span className="text-[11px] font-mono font-medium text-[#60645E] dark:text-[#8D9692] block mb-0.5">
               {card.stepNumber}
             </span>
-            <h3 className="text-[16px] sm:text-[17px] font-bold text-[#111310] tracking-tight leading-snug">
+            <h3 className="text-[16px] sm:text-[17px] font-bold text-[#111310] dark:text-[#F3F5F4] tracking-tight leading-snug">
               {card.title}
             </h3>
           </div>
         </div>
 
         {/* Card Description */}
-        <p className="text-[13.5px] sm:text-[14px] leading-[1.55] text-[#60645E]">
+        <p className="text-[13.5px] sm:text-[14px] leading-[1.55] text-[#60645E] dark:text-[#9BA3A0]">
           {card.description}
         </p>
       </div>
 
       {/* Footer Row: Feature Highlight + Circular Action Arrow Button */}
-      <div className="mt-auto pt-4 flex items-center justify-between border-t border-black/[0.05]">
-        <span className="text-xs font-mono font-medium text-[#60645E]">
+      <div className="mt-auto pt-4 flex items-center justify-between border-t border-black/[0.05] dark:border-white/[0.08]">
+        <span className="text-xs font-mono font-medium text-[#60645E] dark:text-[#8D9692]">
           {card.footerHighlight}
         </span>
         <a
           href="#ready-to-talk"
           aria-label={`Learn more about ${card.title}`}
-          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/95 border border-black/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center text-[#111310] transition-all duration-200 hover:border-black/25 hover:bg-white hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4D6B3C] focus-visible:ring-offset-2"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/95 dark:bg-[#1A231E] border border-black/10 dark:border-white/15 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center text-[#111310] dark:text-[#F3F5F4] transition-all duration-200 hover:border-black/25 hover:bg-white hover:shadow-md hover:dark:bg-[#222E27] hover:dark:border-emerald-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4D6B3C] focus-visible:ring-offset-2"
         >
           <svg
             className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
@@ -418,18 +418,18 @@ export const WhyItWorksSection: React.FC = () => {
               className="w-2 h-2 rounded-full bg-[#10B981] inline-block shadow-[0_0_8px_rgba(16,185,129,0.7)]"
               aria-hidden="true"
             />
-            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.22em] text-[#111310]">
+            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.22em] text-[#111310] dark:text-[#F3F5F4]">
               WHY IT WORKS
             </span>
           </div>
 
           {/* Heading: semantic <h2>, centred, bold, black/near-black */}
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-bold tracking-tight text-[#111310] leading-[1.14] max-w-3xl mb-5">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-bold tracking-tight text-[#111310] dark:text-[#F3F5F4] leading-[1.14] max-w-3xl mb-5">
             AI systems built<br className="hidden sm:inline" /> for real business impact.
           </h2>
 
           {/* Sub-copy: centred, grey, regular weight, max-width ~720px */}
-          <p className="text-[#60645E] text-base sm:text-lg max-w-[720px] leading-relaxed font-normal">
+          <p className="text-[#60645E] dark:text-[#9BA3A0] text-base sm:text-lg max-w-[720px] leading-relaxed font-normal">
             Built for teams ready to move fast, cut waste, and win bigger with AI. Fully built, battle-tested, done right — delivered fast.
           </p>
         </div>

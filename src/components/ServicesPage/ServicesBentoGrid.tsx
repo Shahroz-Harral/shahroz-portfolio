@@ -25,9 +25,9 @@ export const ServicesBentoGrid: React.FC = () => {
           {/* SERVICE 01 — FEATURED: AI ASSISTANTS & CHATBOTS                   */}
           {/* Spans 2 Columns on Desktop & Tablet                                */}
           {/* ================================================================= */}
-          <div className="md:col-span-2 lg:col-span-2 bg-[#FFFFFF] rounded-[24px] p-6 sm:p-8 border border-[#E3ECE7] shadow-sm hover:shadow-md hover:border-emerald-400/40 transition-all duration-300 relative group flex flex-col justify-between overflow-hidden">
+          <div className="md:col-span-2 lg:col-span-2 bg-[#FFFFFF] dark:bg-[#111714] rounded-[24px] p-6 sm:p-8 border border-[#E3ECE7] dark:border-white/[0.08] shadow-sm hover:shadow-md hover:border-emerald-400/40 hover:dark:border-emerald-500/40 transition-all duration-300 relative group flex flex-col justify-between overflow-hidden">
             {/* Subtle background gradient for featured card */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-50/60 via-[#E5F8EE]/30 to-transparent rounded-bl-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-50/60 via-[#E5F8EE]/30 to-transparent dark:from-emerald-950/30 dark:via-transparent rounded-bl-full pointer-events-none" />
 
             {/* Sparkle burst decoration on top right */}
             <div className="absolute top-7 right-7 pointer-events-none opacity-80 group-hover:scale-110 transition-transform duration-300">
@@ -39,20 +39,20 @@ export const ServicesBentoGrid: React.FC = () => {
               <div className="flex flex-col justify-between h-full">
                 <div>
                   {/* Featured Badge */}
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E5F8EE] border border-emerald-500/20 mb-4">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E5F8EE] dark:bg-emerald-950/60 border border-emerald-500/20 mb-4">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[11px] font-semibold text-emerald-800 tracking-wide">
+                    <span className="text-[11px] font-semibold text-emerald-800 dark:text-emerald-300 tracking-wide">
                       Featured
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#111916] tracking-tight mb-3 font-sans">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#111916] dark:text-[#F3F5F4] tracking-tight mb-3 font-sans">
                     AI assistants &amp; chatbots
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm text-[#6C7775] leading-relaxed mb-6">
+                  <p className="text-sm text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed mb-6">
                     Answer questions, capture leads and book appointments across your website and messaging.
                   </p>
                 </div>
@@ -62,7 +62,7 @@ export const ServicesBentoGrid: React.FC = () => {
                   href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20explore%20AI%20Assistants%20%26%20Chatbots%20for%20my%20business"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] group-hover:text-emerald-700 transition-colors w-fit pt-2"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] dark:text-[#F3F5F4] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors w-fit pt-2"
                 >
                   <span>Explore service</span>
                   <span className="text-sm transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -70,12 +70,12 @@ export const ServicesBentoGrid: React.FC = () => {
               </div>
 
               {/* Right Column: Visual Chat Demonstration */}
-              <div className="relative bg-[#FAFCFA] border border-[#E3ECE7] rounded-2xl p-4 shadow-sm">
+              <div className="relative bg-[#FAFCFA] dark:bg-[#0E1310] border border-[#E3ECE7] dark:border-white/10 rounded-2xl p-4 shadow-sm">
                 <div className="space-y-3">
                   {/* Customer Question Bubble */}
                   <div className="flex items-start gap-2.5">
                     <UserAvatar className="w-6 h-6 mt-0.5" />
-                    <div className="bg-white border border-[#E3ECE7] px-3 py-2 rounded-xl rounded-tl-sm text-xs text-[#111916] shadow-2xs leading-snug">
+                    <div className="bg-white dark:bg-[#17201B] border border-[#E3ECE7] dark:border-white/10 px-3 py-2 rounded-xl rounded-tl-sm text-xs text-[#111916] dark:text-[#F3F5F4] shadow-2xs leading-snug">
                       Can you help me book an appointment?
                     </div>
                   </div>
@@ -83,15 +83,15 @@ export const ServicesBentoGrid: React.FC = () => {
                   {/* Assistant Reply Bubble */}
                   <div className="flex items-start gap-2.5">
                     <AiAssistantAvatar className="w-6 h-6 mt-0.5" />
-                    <div className="bg-[#E5F8EE] border border-emerald-500/15 px-3 py-2 rounded-xl rounded-tl-sm text-xs text-[#111916] leading-snug">
+                    <div className="bg-[#E5F8EE] dark:bg-[#10241A] border border-emerald-500/15 dark:border-emerald-500/30 px-3 py-2 rounded-xl rounded-tl-sm text-xs text-[#111916] dark:text-[#6EE7B7] leading-snug">
                       Of course! Here are the available slots:
                     </div>
                   </div>
 
                   {/* Appointment Slot Preview Card */}
-                  <div className="ml-8 bg-white border border-[#E3ECE7] rounded-xl p-2.5 flex items-center justify-between text-xs text-[#111916]">
+                  <div className="ml-8 bg-white dark:bg-[#151D18] border border-[#E3ECE7] dark:border-white/10 rounded-xl p-2.5 flex items-center justify-between text-xs text-[#111916] dark:text-[#F3F5F4]">
                     <div className="flex items-center gap-2">
-                      <span className="text-emerald-600">📅</span>
+                      <span className="text-emerald-600 dark:text-emerald-400">📅</span>
                       <span className="font-medium text-[11px] sm:text-xs">Tomorrow, 10:00 AM</span>
                     </div>
                   </div>
@@ -125,15 +125,15 @@ export const ServicesBentoGrid: React.FC = () => {
           {/* ================================================================= */}
           {/* SERVICE 02 — META MESSAGING BOTS                                  */}
           {/* ================================================================= */}
-          <div className="bg-[#FFFFFF] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] shadow-sm hover:shadow-md hover:border-emerald-400/40 transition-all duration-300 relative group flex flex-col justify-between">
+          <div className="bg-[#FFFFFF] dark:bg-[#111714] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] dark:border-white/[0.08] shadow-sm hover:shadow-md hover:border-emerald-400/40 hover:dark:border-emerald-500/40 transition-all duration-300 relative group flex flex-col justify-between">
             <div>
               <div className="mb-5 transition-transform duration-300 group-hover:scale-105 w-fit">
                 <MetaInfinityIcon className="w-9 h-9" />
               </div>
-              <h3 className="text-lg font-bold text-[#111916] tracking-tight mb-2 font-sans">
+              <h3 className="text-lg font-bold text-[#111916] dark:text-[#F3F5F4] tracking-tight mb-2 font-sans">
                 Meta messaging bots
               </h3>
-              <p className="text-xs sm:text-sm text-[#6C7775] leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed mb-6">
                 Facebook, Instagram and WhatsApp conversations.
               </p>
             </div>
@@ -142,7 +142,7 @@ export const ServicesBentoGrid: React.FC = () => {
               href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20explore%20Meta%20Messaging%20Bots"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] group-hover:text-emerald-700 transition-colors w-fit pt-2"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] dark:text-[#F3F5F4] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors w-fit pt-2"
             >
               <span>Explore service</span>
               <span className="text-sm transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -152,15 +152,15 @@ export const ServicesBentoGrid: React.FC = () => {
           {/* ================================================================= */}
           {/* SERVICE 03 — AI VOICE AGENTS                                      */}
           {/* ================================================================= */}
-          <div className="bg-[#FFFFFF] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] shadow-sm hover:shadow-md hover:border-emerald-400/40 transition-all duration-300 relative group flex flex-col justify-between">
+          <div className="bg-[#FFFFFF] dark:bg-[#111714] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] dark:border-white/[0.08] shadow-sm hover:shadow-md hover:border-emerald-400/40 hover:dark:border-emerald-500/40 transition-all duration-300 relative group flex flex-col justify-between">
             <div>
               <div className="mb-5 transition-transform duration-300 group-hover:scale-105 w-fit">
                 <VoiceAgentWaveformIcon className="w-9 h-9" />
               </div>
-              <h3 className="text-lg font-bold text-[#111916] tracking-tight mb-2 font-sans">
+              <h3 className="text-lg font-bold text-[#111916] dark:text-[#F3F5F4] tracking-tight mb-2 font-sans">
                 AI voice agents
               </h3>
-              <p className="text-xs sm:text-sm text-[#6C7775] leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed mb-6">
                 Incoming calls, enquiry qualification.
               </p>
             </div>
@@ -169,7 +169,7 @@ export const ServicesBentoGrid: React.FC = () => {
               href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20explore%20AI%20Voice%20Agents"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] group-hover:text-emerald-700 transition-colors w-fit pt-2"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] dark:text-[#F3F5F4] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors w-fit pt-2"
             >
               <span>Explore service</span>
               <span className="text-sm transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -179,15 +179,15 @@ export const ServicesBentoGrid: React.FC = () => {
           {/* ================================================================= */}
           {/* SERVICE 04 — WORKFLOW AUTOMATION                                 */}
           {/* ================================================================= */}
-          <div className="bg-[#FFFFFF] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] shadow-sm hover:shadow-md hover:border-emerald-400/40 transition-all duration-300 relative group flex flex-col justify-between">
+          <div className="bg-[#FFFFFF] dark:bg-[#111714] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] dark:border-white/[0.08] shadow-sm hover:shadow-md hover:border-emerald-400/40 hover:dark:border-emerald-500/40 transition-all duration-300 relative group flex flex-col justify-between">
             <div>
               <div className="mb-5 transition-transform duration-300 group-hover:scale-105 w-fit">
                 <WorkflowAutomationIcon className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-bold text-[#111916] tracking-tight mb-2 font-sans">
+              <h3 className="text-lg font-bold text-[#111916] dark:text-[#F3F5F4] tracking-tight mb-2 font-sans">
                 Workflow automation
               </h3>
-              <p className="text-xs sm:text-sm text-[#6C7775] leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed mb-6">
                 Connect apps and remove repetitive tasks.
               </p>
             </div>
@@ -196,7 +196,7 @@ export const ServicesBentoGrid: React.FC = () => {
               href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20explore%20Workflow%20Automation"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] group-hover:text-emerald-700 transition-colors w-fit pt-2"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] dark:text-[#F3F5F4] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors w-fit pt-2"
             >
               <span>Explore service</span>
               <span className="text-sm transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -206,15 +206,15 @@ export const ServicesBentoGrid: React.FC = () => {
           {/* ================================================================= */}
           {/* SERVICE 05 — FINANCE AUTOMATION                                  */}
           {/* ================================================================= */}
-          <div className="bg-[#FFFFFF] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] shadow-sm hover:shadow-md hover:border-emerald-400/40 transition-all duration-300 relative group flex flex-col justify-between">
+          <div className="bg-[#FFFFFF] dark:bg-[#111714] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] dark:border-white/[0.08] shadow-sm hover:shadow-md hover:border-emerald-400/40 hover:dark:border-emerald-500/40 transition-all duration-300 relative group flex flex-col justify-between">
             <div>
               <div className="mb-5 transition-transform duration-300 group-hover:scale-105 w-fit">
                 <FinanceAutomationIcon className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-bold text-[#111916] tracking-tight mb-2 font-sans">
+              <h3 className="text-lg font-bold text-[#111916] dark:text-[#F3F5F4] tracking-tight mb-2 font-sans">
                 Finance automation
               </h3>
-              <p className="text-xs sm:text-sm text-[#6C7775] leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed mb-6">
                 Invoicing, payment reminders.
               </p>
             </div>
@@ -223,7 +223,7 @@ export const ServicesBentoGrid: React.FC = () => {
               href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20explore%20Finance%20Automation"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] group-hover:text-emerald-700 transition-colors w-fit pt-2"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] dark:text-[#F3F5F4] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors w-fit pt-2"
             >
               <span>Explore service</span>
               <span className="text-sm transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -233,15 +233,15 @@ export const ServicesBentoGrid: React.FC = () => {
           {/* ================================================================= */}
           {/* SERVICE 06 — DASHBOARDS & DATA INSIGHTS                          */}
           {/* ================================================================= */}
-          <div className="bg-[#FFFFFF] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] shadow-sm hover:shadow-md hover:border-emerald-400/40 transition-all duration-300 relative group flex flex-col justify-between">
+          <div className="bg-[#FFFFFF] dark:bg-[#111714] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] dark:border-white/[0.08] shadow-sm hover:shadow-md hover:border-emerald-400/40 hover:dark:border-emerald-500/40 transition-all duration-300 relative group flex flex-col justify-between">
             <div>
               <div className="mb-5 transition-transform duration-300 group-hover:scale-105 w-fit">
                 <DashboardInsightsIcon className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-bold text-[#111916] tracking-tight mb-2 font-sans">
+              <h3 className="text-lg font-bold text-[#111916] dark:text-[#F3F5F4] tracking-tight mb-2 font-sans">
                 Dashboards &amp; data insights
               </h3>
-              <p className="text-xs sm:text-sm text-[#6C7775] leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed mb-6">
                 Understand your business with data.
               </p>
             </div>
@@ -250,7 +250,7 @@ export const ServicesBentoGrid: React.FC = () => {
               href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20explore%20Dashboards%20%26%20Data%20Insights"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] group-hover:text-emerald-700 transition-colors w-fit pt-2"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] dark:text-[#F3F5F4] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors w-fit pt-2"
             >
               <span>Explore service</span>
               <span className="text-sm transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -260,15 +260,15 @@ export const ServicesBentoGrid: React.FC = () => {
           {/* ================================================================= */}
           {/* SERVICE 07 — WEBSITES & CUSTOM SOFTWARE                          */}
           {/* ================================================================= */}
-          <div className="bg-[#FFFFFF] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] shadow-sm hover:shadow-md hover:border-emerald-400/40 transition-all duration-300 relative group flex flex-col justify-between">
+          <div className="bg-[#FFFFFF] dark:bg-[#111714] rounded-[24px] p-6 sm:p-7 border border-[#E3ECE7] dark:border-white/[0.08] shadow-sm hover:shadow-md hover:border-emerald-400/40 hover:dark:border-emerald-500/40 transition-all duration-300 relative group flex flex-col justify-between">
             <div>
               <div className="mb-5 transition-transform duration-300 group-hover:scale-105 w-fit">
                 <WebsitesSoftwareIcon className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-bold text-[#111916] tracking-tight mb-2 font-sans">
+              <h3 className="text-lg font-bold text-[#111916] dark:text-[#F3F5F4] tracking-tight mb-2 font-sans">
                 Websites &amp; custom software
               </h3>
-              <p className="text-xs sm:text-sm text-[#6C7775] leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed mb-6">
                 Modern websites and digital tools.
               </p>
             </div>
@@ -277,7 +277,7 @@ export const ServicesBentoGrid: React.FC = () => {
               href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20explore%20Websites%20%26%20Custom%20Software"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] group-hover:text-emerald-700 transition-colors w-fit pt-2"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111916] dark:text-[#F3F5F4] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors w-fit pt-2"
             >
               <span>Explore service</span>
               <span className="text-sm transition-transform duration-200 group-hover:translate-x-1">→</span>

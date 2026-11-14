@@ -195,7 +195,7 @@ export function HeroSection({
       {/* LAYER 0: Base Hero Container */}
       <section
         ref={containerRef}
-      className="relative w-full min-h-screen h-screen overflow-hidden bg-[#FBFBFA] text-editorial-dark flex items-center justify-center pt-16 md:pt-20 select-none"
+      className="relative w-full min-h-screen h-screen overflow-hidden bg-[#FBFBFA] dark:bg-[#090C0A] text-editorial-dark dark:text-[#F3F5F4] flex items-center justify-center pt-16 md:pt-20 select-none"
       id="heroTrack"
       aria-label="Hero Section"
     >
@@ -237,20 +237,18 @@ export function HeroSection({
           />
         </div>
 
-        {/* Bottom linear gradient vignette so aurora fades cleanly into website's #FBFBFA background */}
+        {/* Bottom linear gradient vignette so aurora fades cleanly into website's background */}
         <div
-          className="absolute inset-x-0 bottom-0 pointer-events-none"
+          className="absolute inset-x-0 bottom-0 pointer-events-none bg-gradient-to-b from-transparent via-[#FBFBFA]/80 to-[#FBFBFA] dark:via-[#090C0A]/85 dark:to-[#090C0A]"
           style={{
             height: `${auroraConfig.bottomFadeHeight}px`,
-            background:
-              "linear-gradient(to bottom, transparent 0%, rgba(251, 251, 250, 0.8) 65%, #FBFBFA 100%)",
           }}
           aria-hidden="true"
         />
 
         {/* Subtle curved rim highlight along the horizon */}
         <div
-          className="absolute -top-16 left-1/2 -translate-x-1/2 w-[120%] h-[85%] rounded-[100%] border-b border-black/[0.06] pointer-events-none"
+          className="absolute -top-16 left-1/2 -translate-x-1/2 w-[120%] h-[85%] rounded-[100%] border-b border-black/[0.06] dark:border-white/[0.08] pointer-events-none"
           style={{
             maskImage:
               "linear-gradient(to right, transparent 5%, black 25%, black 75%, transparent 95%)",
@@ -302,13 +300,9 @@ export function HeroSection({
           />
         </div>
 
-        {/* Bottom linear blend so waves fade cleanly into #FBFBFA website background */}
+        {/* Bottom linear blend so waves fade cleanly into website background */}
         <div
-          className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to bottom, transparent 0%, rgba(251, 251, 250, 0.85) 65%, #FBFBFA 100%)",
-          }}
+          className="absolute inset-x-0 bottom-0 h-28 pointer-events-none bg-gradient-to-b from-transparent via-[#FBFBFA]/85 to-[#FBFBFA] dark:via-[#090C0A]/85 dark:to-[#090C0A]"
           aria-hidden="true"
         />
       </div>
@@ -342,13 +336,9 @@ export function HeroSection({
           />
         </div>
 
-        {/* Bottom linear gradient vignette so dots fade cleanly into #FBFBFA background */}
+        {/* Bottom linear gradient vignette so dots fade cleanly into background */}
         <div
-          className="absolute inset-x-0 bottom-0 h-44 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to bottom, transparent 0%, rgba(251, 251, 250, 0.75) 60%, #FBFBFA 100%)",
-          }}
+          className="absolute inset-x-0 bottom-0 h-44 pointer-events-none bg-gradient-to-b from-transparent via-[#FBFBFA]/75 to-[#FBFBFA] dark:via-[#090C0A]/85 dark:to-[#090C0A]"
           aria-hidden="true"
         />
       </div>
@@ -418,8 +408,7 @@ export function HeroSection({
             <a
               href="mailto:harral008@gmail.com?subject=AI%20Strategy%20Consultation"
               onClick={onBookCallClick}
-              style={{ color: "#ffffff", backgroundColor: "#111310" }}
-              className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full font-sans font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 hover:bg-black shadow-md cursor-pointer"
+              className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full font-sans font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 bg-[#111310] dark:bg-[#10B981] text-white dark:text-[#0A0E0C] hover:bg-black dark:hover:bg-[#34D399] shadow-md cursor-pointer"
               id="btnStartNow"
             >
               <span>Book a Strategy Call</span>
@@ -435,8 +424,7 @@ export function HeroSection({
               href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20discuss%20an%20AI%20project"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "#111310", backgroundColor: "#ffffff" }}
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white hover:bg-zinc-50 border border-black/[0.08] hover:border-black/[0.16] font-sans font-semibold text-xs sm:text-sm tracking-wide backdrop-blur-md transition-all duration-300 shadow-sm cursor-pointer"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white dark:bg-[#141B17] hover:bg-zinc-50 dark:hover:bg-[#1C2520] border border-black/[0.08] dark:border-white/[0.12] text-[#111310] dark:text-[#F3F5F4] font-sans font-semibold text-xs sm:text-sm tracking-wide backdrop-blur-md transition-all duration-300 shadow-sm cursor-pointer"
               id="btnWhatsAppHero"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
@@ -448,10 +436,10 @@ export function HeroSection({
         {/* Center Glowing Scroll Indicator */}
         <div
           ref={scrollLineRef}
-          className="w-px h-10 bg-black/10 mx-auto relative overflow-hidden"
+          className="w-px h-10 bg-black/10 dark:bg-white/10 mx-auto relative overflow-hidden"
           aria-hidden="true"
         >
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-editorial-dark to-transparent animate-pulse" />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-editorial-dark dark:from-emerald-400 to-transparent animate-pulse" />
         </div>
       </div>
     </section>

@@ -166,7 +166,7 @@ interface ServiceCardItemProps {
 const ServiceCardItem: React.FC<ServiceCardItemProps> = ({ card, isStack = false }) => {
   return (
     <div
-      className={`group relative flex flex-col justify-between text-left p-5 sm:p-6 rounded-2xl transition-colors duration-200 ${card.tintBg} ${
+      className={`group relative flex flex-col justify-between text-left p-5 sm:p-6 rounded-2xl transition-colors duration-200 ${card.tintBg} dark:!bg-[#121815] dark:!border-white/[0.08] hover:dark:!border-emerald-500/40 ${
         isStack ? "w-[295px] h-[450px]" : "w-full h-auto min-h-0"
       }`}
       style={{
@@ -178,17 +178,17 @@ const ServiceCardItem: React.FC<ServiceCardItemProps> = ({ card, isStack = false
         {/* Header Row: 3D Icon Tile on left + Title on right */}
         <div className="flex items-center gap-3.5 mb-3.5">
           <div
-            className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-sm border ${card.iconTileBg} ${card.iconTileBorder}`}
+            className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-sm border ${card.iconTileBg} ${card.iconTileBorder} dark:!bg-white/[0.06] dark:!border-white/10`}
           >
             {renderCardIcon(card.iconType)}
           </div>
-          <h3 className="text-[16px] sm:text-[17px] font-bold text-[#111310] tracking-tight leading-snug flex-1 min-w-0">
+          <h3 className="text-[16px] sm:text-[17px] font-bold text-[#111310] dark:text-[#F3F5F4] tracking-tight leading-snug flex-1 min-w-0">
             {card.title}
           </h3>
         </div>
 
         {/* Card Description */}
-        <p className="text-[13.5px] leading-[1.52] text-[#60645E]">
+        <p className="text-[13.5px] leading-[1.52] text-[#60645E] dark:text-[#9BA3A0]">
           {card.description}
         </p>
       </div>
@@ -198,7 +198,7 @@ const ServiceCardItem: React.FC<ServiceCardItemProps> = ({ card, isStack = false
         <a
           href="services.html"
           aria-label={`Learn more about ${card.title}`}
-          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/95 border border-black/10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center text-[#111310] transition-all duration-200 hover:border-black/25 hover:bg-white hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4D6B3C] focus-visible:ring-offset-2"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/95 dark:bg-[#1A231E] border border-black/10 dark:border-white/15 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center text-[#111310] dark:text-[#F3F5F4] transition-all duration-200 hover:border-black/25 hover:bg-white hover:shadow-md hover:dark:bg-[#222E27] hover:dark:border-emerald-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4D6B3C] focus-visible:ring-offset-2"
         >
           <svg
             className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
@@ -432,18 +432,18 @@ export const ServicesSection: React.FC = () => {
               className="w-2 h-2 rounded-full bg-[#10B981] inline-block shadow-[0_0_8px_rgba(16,185,129,0.7)]"
               aria-hidden="true"
             />
-            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.22em] text-[#111310]">
+            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.22em] text-[#111310] dark:text-[#F3F5F4]">
               OUR SERVICES
             </span>
           </div>
 
           {/* Heading: semantic <h2>, centred, bold, black/near-black */}
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-bold tracking-tight text-[#111310] leading-[1.14] max-w-3xl mb-5">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-bold tracking-tight text-[#111310] dark:text-[#F3F5F4] leading-[1.14] max-w-3xl mb-5">
             AI solutions that<br className="hidden sm:inline" /> actually work for your business.
           </h2>
 
           {/* Sub-copy: centred, grey, regular weight, max-width ~720px */}
-          <p className="text-[#60645E] text-base sm:text-lg max-w-[720px] leading-relaxed font-normal">
+          <p className="text-[#60645E] dark:text-[#9BA3A0] text-base sm:text-lg max-w-[720px] leading-relaxed font-normal">
             From smart chatbots to fully automated workflows, we build AI solutions that save you time, reduce manual work and help you grow.
           </p>
         </div>

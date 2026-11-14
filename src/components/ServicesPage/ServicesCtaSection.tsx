@@ -5,7 +5,7 @@ export const ServicesCtaSection: React.FC = () => {
     <section className="relative w-full py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Soft Mint Gradient Rounded Card */}
-        <div className="relative rounded-[28px] sm:rounded-[36px] bg-gradient-to-br from-[#D5F2E2] via-[#E7F7EE] to-[#DDF4E7] border border-emerald-500/20 p-8 sm:p-12 md:p-16 text-center shadow-sm overflow-hidden">
+        <div className="relative rounded-[28px] sm:rounded-[36px] bg-gradient-to-br from-[#D5F2E2] via-[#E7F7EE] to-[#DDF4E7] dark:from-[#0E1B15] dark:via-[#12231B] dark:to-[#0B1510] border border-emerald-500/20 dark:border-emerald-500/30 p-8 sm:p-12 md:p-16 text-center shadow-sm overflow-hidden">
           
           {/* Decorative ambient vector curves with green accent dots */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -42,12 +42,12 @@ export const ServicesCtaSection: React.FC = () => {
 
           <div className="relative z-10 max-w-2xl mx-auto">
             {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#111916] tracking-tight mb-4 font-sans leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#111916] dark:text-white tracking-tight mb-4 font-sans leading-tight">
               Let&apos;s make work feel lighter.
             </h2>
 
             {/* Supporting Description */}
-            <p className="text-sm sm:text-base md:text-lg text-[#4E5C56] leading-relaxed mb-8 sm:mb-10 max-w-xl mx-auto font-normal">
+            <p className="text-sm sm:text-base md:text-lg text-[#4E5C56] dark:text-[#A7B5AF] leading-relaxed mb-8 sm:mb-10 max-w-xl mx-auto font-normal">
               Tell me what slows your business down. We&apos;ll map out a practical way to improve it.
             </p>
 
@@ -56,7 +56,7 @@ export const ServicesCtaSection: React.FC = () => {
               {/* Primary Discovery Call Button */}
               <a
                 href="mailto:harral008@gmail.com?subject=AI%20Discovery%20Call%20Booking"
-                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#111916] text-white text-xs sm:text-sm font-semibold tracking-wide hover:bg-emerald-950 transition-all duration-200 shadow-md hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#111916] dark:bg-[#10B981] text-white dark:text-[#0A0E0C] text-xs sm:text-sm font-semibold tracking-wide hover:bg-emerald-950 dark:hover:bg-[#34D399] transition-all duration-200 shadow-md hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Book a discovery call</span>
                 <span className="text-sm">→</span>
@@ -67,7 +67,7 @@ export const ServicesCtaSection: React.FC = () => {
                 href="https://wa.me/923349791008?text=Hi%20Shahroz,%20I'd%20like%20to%20discuss%20an%20AI%20service%20for%20my%20business."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-white text-[#111916] border border-black/[0.08] text-xs sm:text-sm font-semibold hover:bg-emerald-50/80 transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-white dark:bg-[#16201A] text-[#111916] dark:text-white border border-black/[0.08] dark:border-white/15 text-xs sm:text-sm font-semibold hover:bg-emerald-50/80 hover:dark:bg-[#1D2A22] transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.98]"
               >
                 {/* WhatsApp Green Icon */}
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />

@@ -12,25 +12,20 @@ export const ServicesPage: React.FC = () => {
   const [ariaOpen, setAriaOpen] = useState(false);
 
   return (
-    <div className="bg-[#FCFCFB] text-[#111916] font-sans antialiased selection:bg-emerald-600 selection:text-white relative overflow-x-hidden min-h-screen flex flex-col justify-between">
+    <div className="bg-[#FCFCFB] dark:bg-[#0A0E0C] text-[#111916] dark:text-[#F3F5F4] font-sans antialiased selection:bg-emerald-600 selection:text-white relative overflow-x-hidden min-h-screen flex flex-col justify-between transition-colors duration-200">
       {/* ===================================================================== */}
       {/* ATMOSPHERIC BACKGROUNDS                                               */}
       {/* ===================================================================== */}
       <div
-        className="fixed inset-0 pointer-events-none z-0 max-w-7xl mx-auto border-x border-black/[0.03]"
-        style={{
-          backgroundSize: '160px 100%',
-          backgroundImage:
-            'linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px)',
-        }}
+        className="fixed inset-0 pointer-events-none z-0 max-w-7xl mx-auto border-x border-black/[0.03] dark:border-white/[0.04] bg-swiss-grid"
         aria-hidden="true"
       />
       <div
-        className="fixed -top-24 -left-48 w-[520px] h-[720px] rounded-full pointer-events-none z-0 bg-gradient-to-br from-[#E6EFE2]/50 via-[#F2F8EE]/30 to-transparent blur-3xl"
+        className="fixed -top-24 -left-48 w-[520px] h-[720px] rounded-full pointer-events-none z-0 bg-gradient-to-br from-[#E6EFE2]/50 via-[#F2F8EE]/30 to-transparent dark:from-emerald-950/25 dark:via-emerald-900/10 blur-3xl"
         aria-hidden="true"
       />
       <div
-        className="fixed top-1/3 -right-48 w-[620px] h-[820px] rounded-full pointer-events-none z-0 bg-gradient-to-bl from-[#EBF3ED]/40 via-[#E4EFEA]/25 to-transparent blur-3xl"
+        className="fixed top-1/3 -right-48 w-[620px] h-[820px] rounded-full pointer-events-none z-0 bg-gradient-to-bl from-[#EBF3ED]/40 via-[#E4EFEA]/25 to-transparent dark:from-teal-950/20 dark:via-emerald-950/10 blur-3xl"
         aria-hidden="true"
       />
 

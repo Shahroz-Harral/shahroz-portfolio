@@ -20,9 +20,9 @@ export const HowWeWorkSection: React.FC = () => {
   ];
 
   return (
-    <section className="relative w-full py-20 md:py-28 overflow-hidden bg-gradient-to-b from-transparent via-[#F7FBF8]/80 to-transparent">
-      {/* Soft Wave Transition at the top of the section */}
-      <div className="absolute top-0 left-0 right-0 h-16 pointer-events-none opacity-50" aria-hidden="true">
+    <section className="relative w-full py-20 md:py-28 overflow-hidden bg-gradient-to-b from-transparent via-[#F7FBF8]/80 to-transparent dark:via-emerald-950/20">
+      {/* Soft Wave Transition at the top of the section (Light mode only) */}
+      <div className="absolute top-0 left-0 right-0 h-16 pointer-events-none opacity-50 dark:hidden" aria-hidden="true">
         <svg
           viewBox="0 0 1440 60"
           className="w-full h-full preserve-3d"
@@ -45,18 +45,18 @@ export const HowWeWorkSection: React.FC = () => {
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50/80 border border-emerald-500/15 mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-500/15 dark:border-emerald-500/20 mb-4">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[11px] font-semibold tracking-widest uppercase text-[#111916] font-mono">
+            <span className="text-[11px] font-semibold tracking-widest uppercase text-[#111916] dark:text-[#F3F5F4] font-mono">
               OUR PROCESS
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#111916] tracking-tight mb-4 font-sans">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#111916] dark:text-[#F3F5F4] tracking-tight mb-4 font-sans">
             How we work
           </h2>
 
-          <p className="text-base text-[#6C7775] leading-relaxed">
+          <p className="text-base text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed">
             A simple, transparent process to turn your idea into reality.
           </p>
         </div>
@@ -65,13 +65,13 @@ export const HowWeWorkSection: React.FC = () => {
         <div className="relative">
           {/* Desktop Horizontal Connecting Line */}
           <div
-            className="hidden md:block absolute top-6 left-[16%] right-[16%] h-[1px] bg-[#E3ECE7] z-0"
+            className="hidden md:block absolute top-6 left-[16%] right-[16%] h-[1px] bg-[#E3ECE7] dark:bg-white/10 z-0"
             aria-hidden="true"
           />
 
           {/* Mobile Vertical Connecting Line */}
           <div
-            className="md:hidden absolute top-6 bottom-6 left-6 w-[1px] bg-[#E3ECE7] z-0"
+            className="md:hidden absolute top-6 bottom-6 left-6 w-[1px] bg-[#E3ECE7] dark:bg-white/10 z-0"
             aria-hidden="true"
           />
 
@@ -82,16 +82,16 @@ export const HowWeWorkSection: React.FC = () => {
                 className="flex md:flex-col items-start md:items-center text-left md:text-center gap-5 md:gap-0 group"
               >
                 {/* Number Circle Indicator */}
-                <div className="w-12 h-12 rounded-full bg-[#E5F8EE] border border-emerald-500/20 text-[#111916] font-bold text-sm flex items-center justify-center shrink-0 md:mb-6 shadow-xs group-hover:scale-105 group-hover:border-emerald-500/50 transition-all duration-300">
+                <div className="w-12 h-12 rounded-full bg-[#E5F8EE] dark:bg-[#141B17] border border-emerald-500/20 dark:border-emerald-500/40 text-[#111916] dark:text-[#6EE7B7] font-bold text-sm flex items-center justify-center shrink-0 md:mb-6 shadow-xs group-hover:scale-105 group-hover:border-emerald-500/50 transition-all duration-300">
                   {step.num}
                 </div>
 
                 {/* Content */}
                 <div>
-                  <h3 className="text-lg font-bold text-[#111916] tracking-tight mb-2 font-sans">
+                  <h3 className="text-lg font-bold text-[#111916] dark:text-[#F3F5F4] tracking-tight mb-2 font-sans">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-[#6C7775] leading-relaxed max-w-[260px] md:mx-auto">
+                  <p className="text-sm text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed max-w-[260px] md:mx-auto">
                     {step.description}
                   </p>
                 </div>

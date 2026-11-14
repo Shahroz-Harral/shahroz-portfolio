@@ -42,24 +42,24 @@ export const ServicesFaqSection: React.FC = () => {
 
           {/* Left Column (Editorial Headline & Subtext) */}
           <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50/80 border border-emerald-500/15 mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-500/15 dark:border-emerald-500/20 mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-[11px] font-semibold tracking-widest uppercase text-[#111916] font-mono">
+              <span className="text-[11px] font-semibold tracking-widest uppercase text-[#111916] dark:text-[#F3F5F4] font-mono">
                 FAQ
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#111916] tracking-tight mb-4 font-sans leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#111916] dark:text-[#F3F5F4] tracking-tight mb-4 font-sans leading-tight">
               A few things you might be wondering
             </h2>
 
-            <p className="text-base text-[#6C7775] leading-relaxed mb-8">
+            <p className="text-base text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed mb-8">
               Quick answers to common questions about our services.
             </p>
 
             <a
               href="mailto:harral008@gmail.com?subject=Question%20about%20AI%20Services"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#111916] hover:text-emerald-700 transition-colors group"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#111916] dark:text-[#F3F5F4] hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors group"
             >
               <span>View all FAQs</span>
               <span className="text-base transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -76,8 +76,8 @@ export const ServicesFaqSection: React.FC = () => {
                   key={faq.id}
                   className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                     isOpen
-                      ? 'bg-white border-[#E3ECE7] shadow-sm'
-                      : 'bg-[#FAFCFA] border-[#E3ECE7]/70 hover:border-[#E3ECE7] hover:bg-white'
+                      ? 'bg-white dark:bg-[#141B17] border-[#E3ECE7] dark:border-emerald-500/30 shadow-sm'
+                      : 'bg-[#FAFCFA] dark:bg-[#111714] border-[#E3ECE7]/70 dark:border-white/[0.08] hover:border-[#E3ECE7] hover:dark:border-white/15 hover:bg-white hover:dark:bg-[#131A16]'
                   }`}
                 >
                   <button
@@ -88,14 +88,14 @@ export const ServicesFaqSection: React.FC = () => {
                     id={`${faq.id}-button`}
                     className="w-full py-5 px-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-2xl cursor-pointer"
                   >
-                    <span className="text-base sm:text-[17px] font-bold text-[#111916] font-sans tracking-tight">
+                    <span className="text-base sm:text-[17px] font-bold text-[#111916] dark:text-[#F3F5F4] font-sans tracking-tight">
                       {faq.question}
                     </span>
 
                     {/* Rotating Chevron Indicator */}
                     <div
                       className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 bg-[#E5F8EE] text-emerald-700' : 'text-[#6C7775]'
+                        isOpen ? 'rotate-180 bg-[#E5F8EE] dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300' : 'text-[#6C7775] dark:text-[#8D9692]'
                       }`}
                     >
                       <svg
@@ -122,7 +122,7 @@ export const ServicesFaqSection: React.FC = () => {
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <p className="text-sm sm:text-base text-[#6C7775] leading-relaxed">
+                      <p className="text-sm sm:text-base text-[#6C7775] dark:text-[#9BA3A0] leading-relaxed">
                         {faq.answer}
                       </p>
                     </div>

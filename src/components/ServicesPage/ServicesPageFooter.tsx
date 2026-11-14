@@ -2,55 +2,49 @@ import React from 'react';
 
 export const ServicesPageFooter: React.FC = () => {
   return (
-    <footer className="w-full border-t border-[#E3ECE7] bg-[#F8FBF8] py-12 md:py-16 relative z-10">
+    <footer className="w-full border-t border-[#E3ECE7] dark:border-white/[0.08] bg-[#F8FBF8] dark:bg-[#0A0E0C] py-12 md:py-16 relative z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Row: Brand, Nav Links, Social Icons */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-[#E3ECE7]/70">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-[#E3ECE7]/70 dark:border-white/[0.08]">
           
           {/* Brand & Subtitle */}
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#111916] text-white font-bold flex items-center justify-center text-xs tracking-wider shadow-xs">
+            <div className="w-9 h-9 rounded-full bg-[#111916] dark:bg-[#141B17] text-white font-bold flex items-center justify-center text-xs tracking-wider shadow-xs border border-transparent dark:border-white/20">
               SA
             </div>
             <div>
-              <div className="font-bold text-sm text-[#111916] font-sans">
+              <div className="font-bold text-sm text-[#111916] dark:text-[#F3F5F4] font-sans">
                 Shahroz Ahmed
               </div>
-              <div className="text-[11px] text-[#6C7775]">
+              <div className="text-[11px] text-[#6C7775] dark:text-[#8D9692]">
                 AI &amp; digital solutions
               </div>
             </div>
           </div>
 
           {/* Center Navigation Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs font-medium text-[#6C7775]">
-            <a href="index.html#why-it-works" className="hover:text-[#111916] transition-colors">
+          <nav className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs font-medium text-[#6C7775] dark:text-[#9BA3A0]">
+            <a href="index.html#why-it-works" className="hover:text-[#111916] dark:hover:text-white transition-colors">
               Why It Works
             </a>
-            <a href="services.html" className="text-[#111916] font-semibold hover:text-emerald-700 transition-colors">
+            <a href="services.html" className="text-[#111916] dark:text-emerald-400 font-semibold hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors">
               Services
             </a>
-            <a href="index.html#who-builds-this" className="hover:text-[#111916] transition-colors">
-              About
-            </a>
-            <a href="index.html#blog" className="hover:text-[#111916] transition-colors">
+            <a href="index.html#blog" className="hover:text-[#111916] dark:hover:text-white transition-colors">
               Blog
-            </a>
-            <a href="index.html#testimonials" className="hover:text-[#111916] transition-colors">
-              Testimonials
             </a>
           </nav>
 
           {/* Social Icons (LinkedIn, X, YouTube) */}
-          <div className="flex items-center gap-4 text-[#6C7775]">
+          <div className="flex items-center gap-4 text-[#6C7775] dark:text-[#9BA3A0]">
             {/* LinkedIn */}
             <a
               href="https://linkedin.com/in/shahroz-ahmed"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
-              className="w-8 h-8 rounded-full border border-[#E3ECE7] bg-white flex items-center justify-center hover:text-[#111916] hover:border-[#111916]/30 transition-all"
+              className="w-8 h-8 rounded-full border border-[#E3ECE7] dark:border-white/10 bg-white dark:bg-[#141B17] flex items-center justify-center hover:text-[#111916] dark:hover:text-white hover:border-[#111916]/30 dark:hover:border-white/30 transition-all"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.66 1.66 0 0 0-1.66 1.66 1.66 1.66 0 0 0 1.66 1.66 1.66 1.66 0 0 0 1.66-1.66c0-.92-.74-1.66-1.66-1.66Z" />
@@ -63,7 +57,7 @@ export const ServicesPageFooter: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="X (Twitter) Profile"
-              className="w-8 h-8 rounded-full border border-[#E3ECE7] bg-white flex items-center justify-center hover:text-[#111916] hover:border-[#111916]/30 transition-all"
+              className="w-8 h-8 rounded-full border border-[#E3ECE7] dark:border-white/10 bg-white dark:bg-[#141B17] flex items-center justify-center hover:text-[#111916] dark:hover:text-white hover:border-[#111916]/30 dark:hover:border-white/30 transition-all"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -76,7 +70,7 @@ export const ServicesPageFooter: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube Channel"
-              className="w-8 h-8 rounded-full border border-[#E3ECE7] bg-white flex items-center justify-center hover:text-[#111916] hover:border-[#111916]/30 transition-all"
+              className="w-8 h-8 rounded-full border border-[#E3ECE7] dark:border-white/10 bg-white dark:bg-[#141B17] flex items-center justify-center hover:text-[#111916] dark:hover:text-white hover:border-[#111916]/30 dark:hover:border-white/30 transition-all"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -87,9 +81,9 @@ export const ServicesPageFooter: React.FC = () => {
         </div>
 
         {/* Bottom Row: Copyright & Tagline with Green Dot */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs text-[#6C7775]">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs text-[#6C7775] dark:text-[#8D9692]">
           <div>
-            © 2025 Shahroz Ahmed. All rights reserved.
+            © 2026 Shahroz Ahmed. All rights reserved.
           </div>
 
           <div className="inline-flex items-center gap-2">
