@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import sunIcon from '../../../assets/sun.svg';
+import moonIcon from '../../../assets/moon.svg';
 
 interface ServicesPageHeaderProps {
-  onOpenAria: () => void;
+  onOpenAria?: () => void;
 }
 
 export const ServicesPageHeader: React.FC<ServicesPageHeaderProps> = ({ onOpenAria }) => {
@@ -78,43 +80,19 @@ export const ServicesPageHeader: React.FC<ServicesPageHeaderProps> = ({ onOpenAr
 
         {/* Action Pill Group */}
         <div className="flex items-center gap-2 sm:gap-2.5">
-          {/* Theme Mode Toggle Button */}
+          {/* Round Theme Mode Toggle Button with Moon & Sun Images (Replaces Ask Aria AI) */}
           <button
             type="button"
             onClick={handleToggleTheme}
             aria-label="Toggle dark/light mode"
-            title="Toggle theme"
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-white dark:bg-[#141A16] border border-black/[0.08] dark:border-white/10 text-editorial-dark dark:text-yellow-300 shadow-2xs hover:bg-zinc-50 hover:dark:bg-[#1C2520] transition-all"
+            title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-white dark:bg-[#141B17] border border-black/[0.08] dark:border-white/15 shadow-sm hover:scale-105 active:scale-95 transition-all duration-300 group"
           >
             {isDark ? (
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="5" strokeWidth="2" />
-                <line x1="12" y1="1" x2="12" y2="3" strokeWidth="2" strokeLinecap="round" />
-                <line x1="12" y1="21" x2="12" y2="23" strokeWidth="2" strokeLinecap="round" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" strokeWidth="2" strokeLinecap="round" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" strokeWidth="2" strokeLinecap="round" />
-                <line x1="1" y1="12" x2="3" y2="12" strokeWidth="2" strokeLinecap="round" />
-                <line x1="21" y1="12" x2="23" y2="12" strokeWidth="2" strokeLinecap="round" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" strokeWidth="2" strokeLinecap="round" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" strokeWidth="2" strokeLinecap="round" />
-              </svg>
+              <img src={sunIcon} alt="Light Mode" className="w-5 h-5 transition-transform duration-300 group-hover:rotate-45" />
             ) : (
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
+              <img src={moonIcon} alt="Dark Mode" className="w-5 h-5 transition-transform duration-300 group-hover:-rotate-12" />
             )}
-          </button>
-
-          {/* Ask Aria AI Button */}
-          <button
-            type="button"
-            onClick={onOpenAria}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 md:py-2 text-xs font-semibold text-[#111916] dark:text-[#F3F5F4] bg-white dark:bg-[#141A16] border border-[#4D6B3C]/25 dark:border-white/15 rounded-full shadow-2xs hover:bg-[#F4F8F2] hover:dark:bg-[#1B241F] hover:border-[#4D6B3C] hover:dark:border-emerald-500/40 transition-all"
-          >
-            <svg className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-            </svg>
-            <span>Ask Aria AI</span>
           </button>
 
           {/* WhatsApp Chat Button */}
@@ -174,13 +152,11 @@ export const ServicesPageHeader: React.FC<ServicesPageHeaderProps> = ({ onOpenAr
           <div className="pt-3 border-t border-black/[0.06] dark:border-white/10 flex items-center gap-2">
             <button
               type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenAria();
-              }}
-              className="flex-1 py-2 text-xs font-semibold text-[#111916] dark:text-[#F3F5F4] bg-[#F4F8F2] dark:bg-[#141A16] border border-emerald-500/20 dark:border-white/10 rounded-full flex items-center justify-center gap-1.5"
+              onClick={handleToggleTheme}
+              className="flex-1 py-2 text-xs font-semibold text-[#111916] dark:text-[#F3F5F4] bg-[#F4F5F2] dark:bg-[#141A16] border border-black/[0.08] dark:border-white/10 rounded-full flex items-center justify-center gap-2 transition-all"
             >
-              Ask Aria AI
+              <img src={isDark ? sunIcon : moonIcon} alt={isDark ? "Light Mode" : "Dark Mode"} className="w-4 h-4" />
+              <span>{isDark ? "Light Mode" : "Dark Mode"}</span>
             </button>
             <a
               href="https://wa.me/923349791008"
