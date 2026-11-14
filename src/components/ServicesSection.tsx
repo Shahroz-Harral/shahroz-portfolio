@@ -167,7 +167,7 @@ const ServiceCardItem: React.FC<ServiceCardItemProps> = ({ card, isStack = false
   return (
     <div
       className={`group relative flex flex-col justify-between text-left p-5 sm:p-6 rounded-2xl transition-colors duration-200 ${card.tintBg} ${
-        isStack ? "w-[295px] h-[450px]" : "w-full h-full min-h-[380px]"
+        isStack ? "w-[295px] h-[450px]" : "w-full h-auto min-h-0"
       }`}
       style={{
         border: `1px solid ${card.borderColor}`,
@@ -175,17 +175,17 @@ const ServiceCardItem: React.FC<ServiceCardItemProps> = ({ card, isStack = false
       }}
     >
       <div>
-        {/* 3D Icon Tile: ~56px x 56px, ~16px radius, soft pastel tile */}
-        <div
-          className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3.5 shrink-0 shadow-sm border ${card.iconTileBg} ${card.iconTileBorder}`}
-        >
-          {renderCardIcon(card.iconType)}
+        {/* Header Row: 3D Icon Tile on left + Title on right */}
+        <div className="flex items-center gap-3.5 mb-3.5">
+          <div
+            className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-sm border ${card.iconTileBg} ${card.iconTileBorder}`}
+          >
+            {renderCardIcon(card.iconType)}
+          </div>
+          <h3 className="text-[16px] sm:text-[17px] font-bold text-[#111310] tracking-tight leading-snug flex-1 min-w-0">
+            {card.title}
+          </h3>
         </div>
-
-        {/* Card Title */}
-        <h3 className="text-[17px] sm:text-[17.5px] font-bold text-[#111310] tracking-tight leading-snug mb-2">
-          {card.title}
-        </h3>
 
         {/* Card Description */}
         <p className="text-[13.5px] leading-[1.52] text-[#60645E]">

@@ -361,7 +361,7 @@ export function HeroSection({
         {/* Semantic Display Headline */}
         <h1
           ref={headlineRef}
-          className="hero-title font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] xl:text-[3.15rem] 2xl:text-[3.65rem] font-bold tracking-tight text-editorial-dark mb-10 leading-[1.2] text-center max-w-7xl mx-auto"
+          className="hero-title font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] xl:text-[3.15rem] 2xl:text-[3.65rem] font-bold tracking-tight text-white mb-10 leading-[1.2] text-center max-w-7xl mx-auto"
           id="heroTitle"
         >
           <span ref={fixedTextRef} className="inline will-change-[transform,opacity]">
@@ -370,11 +370,11 @@ export function HeroSection({
           <span className="inline-block whitespace-nowrap align-baseline">
             <VaporType
               words={[
-                "efficient",
-                "responsive",
-                "consistent",
-                "scalable",
-                "productive",
+                "efficient.",
+                "responsive.",
+                "consistent.",
+                "scalable.",
+                "productive.",
               ]}
               as="span"
               align="start"
@@ -404,7 +404,6 @@ export function HeroSection({
               area="parent"
               className="align-baseline"
             />
-            <span className="inline">.</span>
           </span>
         </h1>
 

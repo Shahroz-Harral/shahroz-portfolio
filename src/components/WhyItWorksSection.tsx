@@ -155,7 +155,7 @@ const WhyItWorksCardItem: React.FC<WhyItWorksCardItemProps> = ({ card, isStack =
   return (
     <div
       className={`group relative flex flex-col justify-between text-left p-5 sm:p-6 rounded-2xl transition-colors duration-200 ${card.tintBg} ${
-        isStack ? "w-[320px] h-[435px]" : "w-full h-full min-h-[380px]"
+        isStack ? "w-[320px] h-[435px]" : "w-full h-auto min-h-0"
       }`}
       style={{
         border: `1px solid ${card.borderColor}`,
@@ -163,27 +163,22 @@ const WhyItWorksCardItem: React.FC<WhyItWorksCardItemProps> = ({ card, isStack =
       }}
     >
       <div>
-        {/* Top Header Row: 3D Icon Tile + Step & Category Tag */}
-        <div className="flex items-center justify-between mb-4">
+        {/* Top Header Row: 3D Icon Tile on left + Title & Step Number on right */}
+        <div className="flex items-center gap-3.5 mb-3.5">
           <div
             className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-sm border ${card.iconTileBg} ${card.iconTileBorder}`}
           >
             {renderWhyItWorksIcon(card.iconType)}
           </div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono uppercase font-semibold bg-[#4D6B3C]/10 text-[#4D6B3C] border border-[#4D6B3C]/15">
-              {card.categoryTag}
-            </span>
-            <span className="text-xs font-mono font-medium text-[#60645E]">
+          <div className="flex-1 min-w-0">
+            <span className="text-[11px] font-mono font-medium text-[#60645E] block mb-0.5">
               {card.stepNumber}
             </span>
+            <h3 className="text-[16px] sm:text-[17px] font-bold text-[#111310] tracking-tight leading-snug">
+              {card.title}
+            </h3>
           </div>
         </div>
-
-        {/* Card Title */}
-        <h3 className="text-[17.5px] sm:text-[18.5px] font-bold text-[#111310] tracking-tight leading-snug mb-2.5">
-          {card.title}
-        </h3>
 
         {/* Card Description */}
         <p className="text-[13.5px] sm:text-[14px] leading-[1.55] text-[#60645E]">

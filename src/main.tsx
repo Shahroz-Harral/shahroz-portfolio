@@ -7,6 +7,7 @@ import { HeroSection } from "./components/HeroSection";
 import { WhyItWorksSection } from "./components/WhyItWorksSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { ServicesPage } from "./components/ServicesPage/ServicesPage";
+import { BlogSection } from "./components/BlogSection";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -80,6 +81,20 @@ if (servicesMount) {
   root.render(
     <React.StrictMode>
       <ServicesSection />
+    </React.StrictMode>
+  );
+}
+
+// ============================================================================
+// MOUNT BLOG SECTION (HOVER STACK REDESIGN)
+// ============================================================================
+const blogMount = document.getElementById("blog-mount");
+
+if (blogMount) {
+  const root = ReactDOM.createRoot(blogMount);
+  root.render(
+    <React.StrictMode>
+      <BlogSection />
     </React.StrictMode>
   );
 }
