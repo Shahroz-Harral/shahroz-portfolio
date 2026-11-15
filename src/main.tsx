@@ -4,6 +4,7 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroSection } from "./components/HeroSection";
+import { BusinessImpactSection } from "./components/BusinessImpactSection";
 import { WhyItWorksSection } from "./components/WhyItWorksSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { ServicesPage } from "./components/ServicesPage/ServicesPage";
@@ -53,6 +54,20 @@ if (mountPoint) {
   root.render(
     <React.StrictMode>
       <HeroSection />
+    </React.StrictMode>
+  );
+}
+
+// ============================================================================
+// MOUNT BUSINESS IMPACT & INDUSTRIES SECTION (REDESIGN)
+// ============================================================================
+const businessImpactMount = document.getElementById("business-impact-mount");
+
+if (businessImpactMount) {
+  const root = ReactDOM.createRoot(businessImpactMount);
+  root.render(
+    <React.StrictMode>
+      <BusinessImpactSection />
     </React.StrictMode>
   );
 }
